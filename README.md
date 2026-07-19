@@ -87,6 +87,14 @@ Two findings, both stronger and more specific than "it doesn't scale":
 
 **Outstanding:** the corrected hybrid loop (capturing `qpu_access_time` per size, not just wall time) has not yet been rerun after the Colab kernel caching issue was fixed — the six-sequence hybrid dataset in `scaling_results_run1.json` above still predates the `sampleset.info` capture fix and should eventually be redone for a clean side-by-side comparison, though the QPU-vs-hybrid quality gap on n=40 above is already sufficient evidence on its own.
 
+### Corrected hybrid loop, n=20-100 (`scaling_results_run3_hybrid.json`) — the most important finding so far
+
+5. **`qpu_access_time` is 0 for n=20, 30, 40, 60, and 80.** The QPU was not touched at all on 5 of 6 sequences, up to 362 variables. `charge_time`/`run_time` sit at ~2.99-3.0 million μs on every single run regardless of size — this is LeapHybridSampler's runtime floor, not work that scales with problem size. Only at n=100 does `qpu_access_time` become nonzero (103,707μs ≈ 104ms).
+
+   The honest reading: **this formulation, at these sizes, is being solved entirely by the hybrid solver's classical presolve.** Looking at the resulting structures (mostly small, disjoint stem-loops rather than one large interacting fold) explains why — a problem that decomposes into small independent components is exactly what classical presolve handles without needing the QPU, regardless of how dense or how many total variables the QUBO has on paper. The n=100 case, where QPU access finally triggers, is the first (and so far only) genuinely interesting data point for actual quantum resource usage, and is worth investigating for what distinguishes it structurally from the rest — whether that's chance sequence composition or something about scale forcing less separable structure.
+
+   This matters for how the whole project should be framed: raw variable/edge counts alone do not indicate quantum resource usage for this formulation. Whether the QPU gets invoked at all is a property of how separable the resulting structure is, not just problem size.
+
 ## References
 
 - Fox, DePrince, Skolnick. *RNA folding using quantum computers.* PLOS Comp Bio, 2022.
