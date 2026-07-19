@@ -78,10 +78,14 @@ scaling/quantum-resource analysis deliverable.
 - [ ] Dynamic-programming-scale validation (beyond brute-force's ~20-variable limit)
 - [ ] Optional: loop-length-binned energy terms (hairpin/bulge/internal loop) as an extension
 
-### Findings from first hybrid run (`scaling_results_run1.json`)
+### QPU-direct results (`scaling_results_run2_qpu_direct.json`), n=20/30/40
 
-1. **Wall time is not a valid scaling metric for LeapHybridSampler.** It stayed flat (~1.0-1.2s) from 15 to 540 variables. This is expected — the hybrid solver decomposes most of the work classically and only calls the QPU on a small subproblem — but it means wall time by itself says nothing about quantum resource usage. `run_dwave.py` now captures `sampleset.info` (`qpu_access_time`, `charge_time`, `run_time`) instead.
-2. **The constraint graph is too dense for direct QPU embedding at any real scale.** Density goes from 0.886 (n=20) down to 0.475 (n=100) — decreasing, but nowhere near the ~15-20 native connections per physical qubit on D-Wave's Pegasus/Zephyr topology. This is why hybrid solving, not direct QPU annealing, is the only viable path for this formulation, and it's a direct, quantifiable answer to the "trade-offs between qubit count and constraint enforcement" optional task.
+Two findings, both stronger and more specific than "it doesn't scale":
+
+3. **The bottleneck is classical embedding time, not the QPU.** Wall time: 0.28s → 6.40s → 40.80s (n=20→30→40). `qpu_access_time` over the same range: 126ms → 183ms → 125ms — flat, not growing. `EmbeddingComposite`'s minor-embedding search (minorminer) is almost certainly what's exploding, not the quantum hardware itself, and it's exploding because the constraint graph density (0.886 → 0.757 → 0.610 over this range) is far above the ~15-20 native connections per physical qubit that D-Wave's topology supports.
+4. **Solution quality degrades on identical inputs.** The n=40 sequence here is the same sequence run under `--hybrid` earlier: hybrid found energy -11.4 [-18.8], a 39% worse result. Chain breaks from the dense embedding are the likely cause, though `chain_break_fraction` isn't currently captured by `run_dwave.py` — logged as a script improvement, not yet done.
+
+**Outstanding:** the corrected hybrid loop (capturing `qpu_access_time` per size, not just wall time) has not yet been rerun after the Colab kernel caching issue was fixed — the six-sequence hybrid dataset in `scaling_results_run1.json` above still predates the `sampleset.info` capture fix and should eventually be redone for a clean side-by-side comparison, though the QPU-vs-hybrid quality gap on n=40 above is already sufficient evidence on its own.
 
 ## References
 
