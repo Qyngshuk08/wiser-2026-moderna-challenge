@@ -73,10 +73,12 @@ scaling/quantum-resource analysis deliverable.
 
 - [x] Real-energy stacking-only QUBO, validated against ViennaRNA on toy sequences
 - [x] BQM construction validated against independent brute force
-- [x] D-Wave Leap hybrid scaling runs, n=20 to n=100 (`scaling_results_run1.json`) — all 6 structures independently verified: balanced dot-bracket, all canonical pairs, min loop length respected
+- [x] D-Wave Leap hybrid scaling runs, n=20 to n=100, corrected to capture real `qpu_access_time`
+- [x] D-Wave QPU-direct runs, n=20/30/40 — embedding-time bottleneck and quality-gap findings
+- [x] DP-based large-scale validation, 320 random sequences — see critical finding below
+- [ ] **PRIORITY (elevated from optional): loop-length-binned energy terms** (hairpin/bulge/internal loop) — the stacking-only model's match rate collapses to 0% at n≥60 without this
 - [ ] IBM QPU QAOA comparison at small scale
-- [ ] Dynamic-programming-scale validation (beyond brute-force's ~20-variable limit)
-- [ ] Optional: loop-length-binned energy terms (hairpin/bulge/internal loop) as an extension
+- [ ] Investigate n=100 QPU-access trigger (repeat runs, test intermediate sizes)
 
 ### QPU-direct results (`scaling_results_run2_qpu_direct.json`), n=20/30/40
 
@@ -94,6 +96,50 @@ Two findings, both stronger and more specific than "it doesn't scale":
    The honest reading: **this formulation, at these sizes, is being solved entirely by the hybrid solver's classical presolve.** Looking at the resulting structures (mostly small, disjoint stem-loops rather than one large interacting fold) explains why — a problem that decomposes into small independent components is exactly what classical presolve handles without needing the QPU, regardless of how dense or how many total variables the QUBO has on paper. The n=100 case, where QPU access finally triggers, is the first (and so far only) genuinely interesting data point for actual quantum resource usage, and is worth investigating for what distinguishes it structurally from the rest — whether that's chance sequence composition or something about scale forcing less separable structure.
 
    This matters for how the whole project should be framed: raw variable/edge counts alone do not indicate quantum resource usage for this formulation. Whether the QPU gets invoked at all is a property of how separable the resulting structure is, not just problem size.
+
+**Correction:** the connected-components analysis of the constraint graph (`build_bqm.py`'s conflict graph) shows all six problems above, including n=100, are a *single* connected component — there is no independent-stems decomposition happening at the graph level. The "disjoint stems → classically trivial" explanation offered above does not hold up under direct inspection and should not be treated as established. The more likely explanation is a size-based heuristic internal to Leap's hybrid workflow (some threshold between 362 and 540 variables), but this hasn't been confirmed — repeating n=100 and testing intermediate sizes (e.g. n=90) would settle whether it's a stable threshold or stochastic per-run.
+
+## Large-scale validation: `dp_validator.py`
+
+`validate_brute_force.py`'s brute-force solver caps out around ~20 quartet
+variables — it can only validate the model on small, often hand-picked toy
+sequences. `dp_validator.py` implements the same stacking-only energy model
+as an O(n³) Zuker/Nussinov-style dynamic program, giving an *exact* optimum
+for our simplified model at real sequence lengths, cross-validated to agree
+exactly with the independent brute-force solver on all 5 toy cases before
+being trusted further.
+
+**Critical finding, on 320 random sequences (not hand-picked), `dp_validation_results.json`:**
+
+| length | n tested | match rate | avg energy gap (kcal/mol) |
+|---|---|---|---|
+| 10 | 40 | 15.0% | -1.65 |
+| 15 | 40 | 20.0% | -3.14 |
+| 20 | 40 | 32.5% | -4.02 |
+| 30 | 40 | 10.0% | -5.62 |
+| 40 | 40 | 2.5% | -6.17 |
+| 60 | 40 | 0.0% | -8.85 |
+| 80 | 40 | 0.0% | -11.01 |
+| 100 | 40 | 0.0% | -13.05 |
+
+**Overall: 32/320 = 10.0% exact structure match against real ViennaRNA MFE.**
+
+The earlier 4/5 match rate reported against 5 small, hand-picked hairpin
+sequences was not representative and should not be cited as evidence the
+model approximates MFE well. On random sequences, match rate collapses with
+length and hits **zero at n≥60** — the exact length range the D-Wave
+scaling study above has been run on. The energy gap also grows steadily
+more negative with length, meaning the stacking-only model doesn't just
+occasionally pick a different fold — it systematically overestimates
+structural stability more severely as sequences get longer, consistent
+with the missing hairpin/bulge/internal-loop entropy penalties mattering
+more, not less, at scale.
+
+**Implication:** the "approximate the classical MFE benchmark" deliverable
+does not currently hold above toy sequence lengths. Adding loop-length
+penalty terms (previously listed as an optional extension) should be
+treated as a priority, not an optional task, if the submission is to
+support its core claim at any biologically realistic sequence length.
 
 ## References
 
