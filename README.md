@@ -73,10 +73,15 @@ scaling/quantum-resource analysis deliverable.
 
 - [x] Real-energy stacking-only QUBO, validated against ViennaRNA on toy sequences
 - [x] BQM construction validated against independent brute force
-- [ ] D-Wave Leap hybrid scaling runs across sequence lengths
+- [x] D-Wave Leap hybrid scaling runs, n=20 to n=100 (`scaling_results_run1.json`) — all 6 structures independently verified: balanced dot-bracket, all canonical pairs, min loop length respected
 - [ ] IBM QPU QAOA comparison at small scale
 - [ ] Dynamic-programming-scale validation (beyond brute-force's ~20-variable limit)
 - [ ] Optional: loop-length-binned energy terms (hairpin/bulge/internal loop) as an extension
+
+### Findings from first hybrid run (`scaling_results_run1.json`)
+
+1. **Wall time is not a valid scaling metric for LeapHybridSampler.** It stayed flat (~1.0-1.2s) from 15 to 540 variables. This is expected — the hybrid solver decomposes most of the work classically and only calls the QPU on a small subproblem — but it means wall time by itself says nothing about quantum resource usage. `run_dwave.py` now captures `sampleset.info` (`qpu_access_time`, `charge_time`, `run_time`) instead.
+2. **The constraint graph is too dense for direct QPU embedding at any real scale.** Density goes from 0.886 (n=20) down to 0.475 (n=100) — decreasing, but nowhere near the ~15-20 native connections per physical qubit on D-Wave's Pegasus/Zephyr topology. This is why hybrid solving, not direct QPU annealing, is the only viable path for this formulation, and it's a direct, quantifiable answer to the "trade-offs between qubit count and constraint enforcement" optional task.
 
 ## References
 

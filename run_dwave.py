@@ -32,8 +32,16 @@ from validate_brute_force import pairs_used, to_dot_bracket
 
 def run(seq, mode, min_loop=3, num_reads=1000):
     bqm, quartets = build_bqm(seq, min_loop)
-    print(f"seq length: {len(seq)}   quartet variables: {len(bqm.variables)}   "
-          f"quadratic terms (constraint edges): {len(bqm.quadratic)}")
+    v = len(bqm.variables)
+    e = len(bqm.quadratic)
+    max_possible = v * (v - 1) // 2
+    density = e / max_possible if max_possible else 0.0
+    print(f"seq length: {len(seq)}   quartet variables: {v}   "
+          f"quadratic terms (constraint edges): {e}   "
+          f"graph density: {density:.3f}  "
+          f"(D-Wave QPU native connectivity is ~15-20 per qubit -- dense "
+          f"logical graphs like this embed poorly or not at all without "
+          f"the hybrid solver's classical decomposition)")
 
     if mode == "hybrid":
         from dwave.system import LeapHybridSampler
@@ -52,7 +60,18 @@ def run(seq, mode, min_loop=3, num_reads=1000):
     selected = [q for q, v in best.sample.items() if v == 1]
     db = to_dot_bracket(len(seq), pairs_used(selected))
 
+    # sampleset.info carries the actual quantum-resource breakdown -- wall
+    # time alone is dominated by classical presolve on hybrid solves and is
+    # NOT a scaling signal by itself. Field names differ slightly between
+    # LeapHybridSampler and QPU-direct solves, so pull whatever's present.
+    info = dict(sampleset.info) if hasattr(sampleset, "info") else {}
+    qpu_access_time_us = info.get("qpu_access_time")  # hybrid: microseconds
+    charge_time_us = info.get("charge_time")
+    run_time_us = info.get("run_time")
+    timing = info.get("timing", {})  # QPU-direct solves nest timing here
+
     print(f"mode: {mode}   wall time: {wall_time:.2f}s")
+    print(f"sampleset.info: {info}")
     print(f"best energy (incl. penalty, should be near pure-stacking energy "
           f"if feasible): {best.energy:.2f}")
     print(f"structure: {db}")
@@ -61,11 +80,25 @@ def run(seq, mode, min_loop=3, num_reads=1000):
     print(f"raw stacking energy of selected quartets: {raw_energy:.2f}  "
           f"({'feasible' if abs(raw_energy - best.energy) < 1e-6 else 'CONSTRAINT VIOLATED -- raise penalty weight'})")
 
+    def jsonable(x):
+        # dimod/numpy scalars aren't JSON-serializable directly -- cast at
+        # the source instead of patching it after every run.
+        if isinstance(x, dict):
+            return {str(k): jsonable(v) for k, v in x.items()}
+        if hasattr(x, "item"):
+            return x.item()
+        return x
+
     return {
         "seq": seq, "n": len(seq), "mode": mode,
         "num_variables": len(bqm.variables), "num_edges": len(bqm.quadratic),
-        "wall_time_s": wall_time, "energy": best.energy,
-        "structure": db, "feasible": abs(raw_energy - best.energy) < 1e-6,
+        "wall_time_s": jsonable(wall_time),
+        "qpu_access_time_us": jsonable(qpu_access_time_us),
+        "charge_time_us": jsonable(charge_time_us),
+        "run_time_us": jsonable(run_time_us),
+        "qpu_timing_raw": jsonable(timing),
+        "energy": jsonable(best.energy),
+        "structure": db, "feasible": bool(abs(raw_energy - best.energy) < 1e-6),
     }
 
 

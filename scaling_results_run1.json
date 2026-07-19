@@ -1,0 +1,8 @@
+[
+  {"seq": "GGACGGCGCUUCUACUCAAC", "n": 20, "mode": "hybrid", "num_variables": 15, "num_edges": 93, "wall_time_s": 1.16, "energy": -5.0, "structure": "((..((.....))..))...", "feasible": true},
+  {"seq": "GACGCUGGCAAAGAGCUCAUUUUGAACGAC", "n": 30, "mode": "hybrid", "num_variables": 41, "num_edges": 621, "wall_time_s": 1.01, "energy": -11.2, "structure": "..((..(((.....)))((...))..))..", "feasible": true},
+  {"seq": "CACUCGAGCUCUUUACGAAUUAAGCUUGCGGCACAGCUUA", "n": 40, "mode": "hybrid", "num_variables": 72, "num_edges": 1560, "wall_time_s": 1.06, "energy": -18.8, "structure": "...(((((...))..)))..((((((((...)).))))))", "feasible": true},
+  {"seq": "CAUCUCGAAUUAAAAUAGACAAAUUAGUAAGACAUACCGUAGAAGUCCGUUAUUCCAGUA", "n": 60, "mode": "hybrid", "num_variables": 178, "num_edges": 8591, "wall_time_s": 1.14, "energy": -17.5, "structure": "...((.((((...(((.(((...((((((.....)))..)))..))).))))))).))..", "feasible": true},
+  {"seq": "GGCCGCUAGACACUUGCCCUCGGAAUCUUUGGGAGGAUGACUGGAAGCCGAGUAUAGGCAUAAAUAUCCUAGGAACGACU", "n": 80, "mode": "hybrid", "num_variables": 362, "num_edges": 32499, "wall_time_s": 1.21, "energy": -38.1, "structure": "(((....((...)).))).(((...(((.(((((..((((((((...)).))).....))).....)))))))).)))..", "feasible": true},
+  {"seq": "CAUCAAAUCCCAGGGCUUGCAUUCCCCACAACUUCCGUCAGUACUACGCCGAAGGCCAGAGGACCUUGAAAUUAGAAGCGGUGACUCUGUCAAAGUAGGC", "n": 100, "mode": "hybrid", "num_variables": 540, "num_edges": 69134, "wall_time_s": 1.22, "energy": -43.8, "structure": ".((...)).((.(((.........)))...((((.(((.......)))(((((((((...)).))))....((...)))))((((...)))))))).)).", "feasible": true}
+]
