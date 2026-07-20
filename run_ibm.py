@@ -4,18 +4,25 @@ API isn't reachable from here.
 
 Setup (once):
     pip install qiskit-ibm-runtime
-    # save your IBM Quantum API token:
+    # save your IBM Quantum API token -- IBM retired the old "ibm_quantum"
+    # channel; only ibm_cloud and ibm_quantum_platform are valid now:
     python -c "from qiskit_ibm_runtime import QiskitRuntimeService; \
-        QiskitRuntimeService.save_account(channel='ibm_quantum', token='YOUR_TOKEN')"
+        QiskitRuntimeService.save_account(channel='ibm_quantum_platform', \
+        token='YOUR_TOKEN', overwrite=True, set_as_default=True)"
+    # if that alone errors, you likely also need your instance CRN from the
+    # 'Instances' tab on your IBM Quantum Platform dashboard:
+    #   QiskitRuntimeService.save_account(channel='ibm_quantum_platform',
+    #       token='YOUR_TOKEN', instance='YOUR_CRN', overwrite=True,
+    #       set_as_default=True)
 
 Usage:
     python run_ibm.py GGGAAACCC
     python run_ibm.py GCGCUUCGGCGC --backend ibm_fez
 
 Small sequences only -- realistically 10-15 qubits before circuit depth and
-noise make QAOA output unusable on real hardware. Use qaoa_simulator.py's
-tight-penalty finding (penalty ~1.5x max single quartet energy, NOT the
-classical-exactness penalty from build_bqm.py) or QAOA will very likely
+noise make QAOA output unusable on real hardware. Uses the tight-penalty
+fix from qaoa_simulator.py (penalty ~1.5x max single quartet energy, NOT
+the classical-exactness penalty from build_bqm.py) or QAOA will very likely
 collapse to the trivial all-zero solution on real hardware too, same as it
 did on the simulator before the penalty was fixed.
 """
@@ -52,7 +59,7 @@ def run(seq, backend_name=None, reps=2, maxiter=50, penalty=None):
 
     print(f"seq length: {len(seq)}   qubits needed: {result['num_qubits']}")
 
-    service = QiskitRuntimeService(channel="ibm_quantum")
+    service = QiskitRuntimeService(channel="ibm_quantum_platform")
     backend = service.backend(backend_name) if backend_name else service.least_busy(operational=True, simulator=False)
     print(f"backend: {backend.name}")
 
