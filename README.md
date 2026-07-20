@@ -76,6 +76,10 @@ scaling/quantum-resource analysis deliverable.
 - [x] D-Wave Leap hybrid scaling runs, n=20 to n=100, corrected to capture real `qpu_access_time`
 - [x] D-Wave QPU-direct runs, n=20/30/40 — embedding-time bottleneck and quality-gap findings
 - [x] DP-based large-scale validation, 320 random sequences — see critical finding below
+- [x] Full-loop-energy DP (`dp_full_energy.py`): real hairpin/bulge/internal loop terms via ViennaRNA's own evaluators, caught and fixed a real free-multiloop bug, validated 10.0% → 53.4% match rate improvement on the same 320-sequence sweep
+- [ ] **NEXT: port full loop energies into the actual QUBO** (`rna_qubo.py`/`build_bqm.py` still stacking-only) — the DP proves it's worth doing, hasn't been done yet
+- [ ] Proper multiloop DP (WM table, MLbase/MLintern/MLclosing) — currently unsupported, named limitation
+- [ ] Rerun D-Wave scaling once the QUBO reflects the improved model (current results all reflect stacking-only)
 - [ ] **PRIORITY (elevated from optional): loop-length-binned energy terms** (hairpin/bulge/internal loop) — the stacking-only model's match rate collapses to 0% at n≥60 without this
 - [ ] IBM QPU QAOA comparison at small scale
 - [ ] Investigate n=100 QPU-access trigger (repeat runs, test intermediate sizes)
@@ -140,6 +144,65 @@ does not currently hold above toy sequence lengths. Adding loop-length
 penalty terms (previously listed as an optional extension) should be
 treated as a priority, not an optional task, if the submission is to
 support its core claim at any biologically realistic sequence length.
+
+## Full-loop-energy DP: `dp_full_energy.py`
+
+Direct response to the finding above. Adds real hairpin, bulge, and
+internal loop energies — pulled directly from ViennaRNA's own evaluator
+functions (`fold_compound.eval_hp_loop`, `fold_compound.eval_int_loop`)
+rather than hand-indexed parameter tables, which eliminates indexing/unit
+mistakes by construction. Verified to reconstruct ViennaRNA's real total
+energy exactly (bit for bit, e.g. -1.20 kcal/mol on `GGGAAACCC`) before
+being trusted on anything else.
+
+**A real bug was caught and fixed during this pass, not swept under the
+rug:** the first version of this DP included a "zero-cost multiloop
+fallback" meant to approximately handle multi-branch loops. Since 0 is
+always less than any real (positive) hairpin penalty, that fallback was
+being selected on *every* hairpin closure, not just genuine multiloops —
+silently fabricating free structure rather than approximating one. Caught
+by cross-checking the DP's own claimed energy against
+`RNA.energy_of_structure()` on its own predicted fold (a self-consistency
+check, independent of whether the predicted structure matches ViennaRNA's
+MFE) — the two disagreed by exactly the omitted hairpin penalty. Fixed by
+removing the fallback entirely: **this DP currently supports no multiloops
+at all** (a conservative, named gap) rather than a fallback that cheats.
+A correct fix needs a separate WM table with `MLbase`/`MLintern`/
+`MLclosing` costs and branch-count tracking — real additional work, out of
+scope for this pass, tracked below as a next step.
+
+**Result: 320-sequence sweep, same seed and lengths as the stacking-only
+sweep above, direct comparison** (`dp_full_energy_validation_results.json`):
+
+| length | n tested | match rate (stacking-only) | match rate (full loop energy) | avg energy gap (full) |
+|---|---|---|---|---|
+| 10 | 40 | 15.0% | **100.0%** | 0.00 |
+| 15 | 40 | 20.0% | **72.5%** | 0.25 |
+| 20 | 40 | 32.5% | **90.0%** | 0.51 |
+| 30 | 40 | 10.0% | **77.5%** | 0.62 |
+| 40 | 40 | 2.5% | **50.0%** | 0.96 |
+| 60 | 40 | 0.0% | **25.0%** | 3.27 |
+| 80 | 40 | 0.0% | **10.0%** | 5.34 |
+| 100 | 40 | 0.0% | **2.5%** | 6.74 |
+
+**Overall: 10.0% → 53.4% (171/320).**
+
+The remaining energy gap is now small and *positive* (the model is
+slightly conservative — missing some real stability) rather than large and
+negative (fabricating stability that isn't real), which is exactly the
+expected signature of "loop energies are now real but multiloops still
+aren't modeled" rather than a systemic flaw. The gap growing with length is
+consistent with longer sequences being more likely to need a genuine
+multi-branch fold to reach their true MFE.
+
+**Honest scope note:** `dp_full_energy.py` is a validator for the *energy
+model*, proving the full-loop-energy approach is worth carrying into the
+actual QUBO (which still only implements stacking-only, `rna_qubo.py`/
+`build_bqm.py`). Porting hairpin/bulge/internal loop energies into the QUBO
+itself — as quadratic-compatible penalty terms on quartet variables — is
+real remaining work, not yet done. The D-Wave results collected so far
+(`scaling_results_run1/2/3*.json`) all still reflect the stacking-only
+QUBO, not this improved model.
 
 ## References
 
