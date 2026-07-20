@@ -98,25 +98,58 @@ def run(seq, backend_name=None, reps=2, maxiter=50, penalty=None):
     bound = isa_ansatz.assign_parameters(opt.x)
     job = sampler.run([bound], shots=2000)
     counts = job.result()[0].data.meas.get_counts()
-    best_bitstring = max(counts, key=counts.get)
-    bits = best_bitstring[::-1]
-    assignment = {v: int(bits[i]) for i, v in enumerate(var_list)}
-    selected = [v for v, val in assignment.items() if val == 1]
+
+    # Post-select on feasibility instead of blindly taking the plurality
+    # bitstring. Real hardware noise can make the top-shot answer
+    # infeasible even with a tight penalty (confirmed empirically:
+    # GCGCUUCGGCGC on ibm_marrakesh returned an infeasible top bitstring --
+    # malformed dot-bracket, energy exactly ~2x the true value, consistent
+    # with two conflicting quartets both firing). Rank all sampled
+    # bitstrings by shot count and take the highest-count one that is
+    # ACTUALLY feasible, rather than trusting the raw plurality blindly.
+    ranked = sorted(counts.items(), key=lambda kv: -kv[1])
+    chosen = None
+    for bitstring, shots in ranked:
+        bits = bitstring[::-1]
+        assignment = {v: int(bits[i]) for i, v in enumerate(var_list)}
+        selected = [v for v, val in assignment.items() if val == 1]
+        is_feasible = not any(conflicting(q1, q2) for q1, q2 in combinations(selected, 2))
+        if is_feasible:
+            chosen = (bitstring, shots, selected, is_feasible)
+            break
+    if chosen is None:
+        # no feasible bitstring in the entire sample -- report the raw
+        # plurality anyway, but flag it loudly rather than hide it
+        bitstring, shots = ranked[0]
+        bits = bitstring[::-1]
+        assignment = {v: int(bits[i]) for i, v in enumerate(var_list)}
+        selected = [v for v, val in assignment.items() if val == 1]
+        is_feasible = False
+        chosen = (bitstring, shots, selected, is_feasible)
+        print("WARNING: no feasible bitstring found anywhere in the 2000-shot "
+              "sample. Reporting the raw plurality bitstring, which is "
+              "infeasible. This is a real result, not a bug -- report it as-is.")
+
+    best_bitstring, best_shots, selected, is_feasible = chosen
+    rank_of_chosen = [b for b, _ in ranked].index(best_bitstring) + 1
 
     raw_energy = sum(quartets[q] for q in selected)
     db = to_dot_bracket(len(seq), pairs_used(selected))
-    is_feasible = not any(conflicting(q1, q2) for q1, q2 in combinations(selected, 2))
 
     print(f"structure: {db}")
     print(f"raw stacking energy: {raw_energy:.2f}")
     print(f"feasible: {is_feasible}")
-    print(f"best bitstring shots: {counts[best_bitstring]}/{sum(counts.values())}")
+    print(f"chosen bitstring rank by shot count: {rank_of_chosen} "
+          f"(1 = plurality; >1 means the plurality bitstring was infeasible "
+          f"and this is the best feasible fallback)")
+    print(f"chosen bitstring shots: {best_shots}/{sum(counts.values())}")
 
     return {
         "seq": seq, "n": len(seq), "backend": backend.name,
         "num_qubits": result["num_qubits"], "structure": db,
         "raw_energy": raw_energy, "feasible": is_feasible,
-        "shots": counts[best_bitstring], "total_shots": sum(counts.values()),
+        "shots": best_shots, "total_shots": sum(counts.values()),
+        "rank_by_shot_count": rank_of_chosen,
     }
 
 

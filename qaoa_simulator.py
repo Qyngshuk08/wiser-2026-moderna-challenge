@@ -17,8 +17,9 @@ from qiskit.circuit.library import QAOAAnsatz
 from qiskit_aer.primitives import EstimatorV2, SamplerV2
 
 from qaoa_hamiltonian import build_qaoa_hamiltonian
-from build_bqm import solve_exact
+from build_bqm import solve_exact, conflicting
 from validate_brute_force import pairs_used, to_dot_bracket
+from itertools import combinations
 
 
 def run_qaoa_simulator(seq, min_loop=3, reps=2, maxiter=100, seed=42, restarts=1, penalty=None):
@@ -68,33 +69,45 @@ def run_qaoa_simulator(seq, min_loop=3, reps=2, maxiter=100, seed=42, restarts=1
     job = sampler.run([bound_circuit], shots=2000)
     counts = job.result()[0].data.meas.get_counts()
 
-    best_bitstring = max(counts, key=counts.get)
-    bits = best_bitstring[::-1]  # qiskit bit order
-    assignment = {v: int(bits[i]) for i, v in enumerate(var_list)}
-    selected = [v for v, val in assignment.items() if val == 1]
+    # Post-select on feasibility, same fix as run_ibm.py after real
+    # hardware demonstrated the plurality bitstring can be infeasible even
+    # with a tight penalty.
+    ranked = sorted(counts.items(), key=lambda kv: -kv[1])
+    chosen = None
+    for bitstring, shots in ranked:
+        bits = bitstring[::-1]
+        assignment = {v: int(bits[i]) for i, v in enumerate(var_list)}
+        selected_try = [v for v, val in assignment.items() if val == 1]
+        if not any(conflicting(q1, q2) for q1, q2 in combinations(selected_try, 2)):
+            chosen = (bitstring, shots, selected_try)
+            break
+    if chosen is None:
+        bitstring, shots = ranked[0]
+        bits = bitstring[::-1]
+        assignment = {v: int(bits[i]) for i, v in enumerate(var_list)}
+        chosen = (bitstring, shots, [v for v, val in assignment.items() if val == 1])
+
+    best_bitstring, best_shots, selected = chosen
 
     raw_energy = sum(quartets[q] for q in selected)
     db = to_dot_bracket(len(seq), pairs_used(selected))
     qaoa_energy = opt.fun + offset
 
-    # Direct constraint check, not an energy-tolerance proxy: does the
-    # selected set actually violate any conflict edge? This is the real
-    # correctness check -- the tight penalty above is an empirical,
+    # Direct constraint check (also used above during post-selection, kept
+    # here as a final confirmation on the chosen bitstring): not an
+    # energy-tolerance proxy -- the tight penalty is an empirical,
     # QAOA-practical choice (validated on small test cases), NOT a rigorous
     # guarantee that it forbids every possible combination of simultaneous
-    # violations on larger problems. Two conflicting quartets that are both
-    # near-maximally favorable could in principle still make a violation
-    # net-favorable if the tight penalty is too close to the single-quartet
-    # bound. Always check the real constraint, don't trust the tight
-    # penalty blindly at scale.
-    from itertools import combinations
-    from build_bqm import conflicting
+    # violations on larger problems. Real hardware (run_ibm.py,
+    # GCGCUUCGGCGC on ibm_marrakesh) demonstrated the plurality bitstring
+    # CAN be infeasible even with this penalty -- that's why post-selection
+    # exists above rather than trusting the raw top-shot bitstring blindly.
     is_feasible = not any(conflicting(q1, q2) for q1, q2 in combinations(selected, 2))
 
     return {
         "seq": seq, "n": len(seq), "num_qubits": result["num_qubits"],
         "qaoa_energy": qaoa_energy, "raw_stacking_energy": raw_energy,
-        "structure": db, "shots_for_best_bitstring": counts[best_bitstring],
+        "structure": db, "shots_for_best_bitstring": best_shots,
         "total_shots": sum(counts.values()),
         "feasible": is_feasible, "penalty_used": penalty,
     }
