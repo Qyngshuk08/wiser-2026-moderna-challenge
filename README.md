@@ -77,12 +77,62 @@ scaling/quantum-resource analysis deliverable.
 - [x] D-Wave QPU-direct runs, n=20/30/40 — embedding-time bottleneck and quality-gap findings
 - [x] DP-based large-scale validation, 320 random sequences — see critical finding below
 - [x] Full-loop-energy DP (`dp_full_energy.py`): real hairpin/bulge/internal loop terms via ViennaRNA's own evaluators, caught and fixed a real free-multiloop bug, validated 10.0% → 53.4% match rate improvement on the same 320-sequence sweep
+- [x] QAOA on Aer simulator (`qaoa_simulator.py`), caught and fixed a real penalty-landscape bug, validated exact match on 2 test sequences with a real (non-proxy) constraint check
+- [x] IBM QPU submission script built (`run_ibm.py`) — not yet run on real hardware, needs local execution with an IBM Quantum token before access expires
 - [ ] **NEXT: port full loop energies into the actual QUBO** (`rna_qubo.py`/`build_bqm.py` still stacking-only) — the DP proves it's worth doing, hasn't been done yet
 - [ ] Proper multiloop DP (WM table, MLbase/MLintern/MLclosing) — currently unsupported, named limitation
 - [ ] Rerun D-Wave scaling once the QUBO reflects the improved model (current results all reflect stacking-only)
-- [ ] **PRIORITY (elevated from optional): loop-length-binned energy terms** (hairpin/bulge/internal loop) — the stacking-only model's match rate collapses to 0% at n≥60 without this
-- [ ] IBM QPU QAOA comparison at small scale
-- [ ] Investigate n=100 QPU-access trigger (repeat runs, test intermediate sizes)
+- [ ] Run `run_ibm.py` on real IBM hardware before access expires
+- [ ] Investigate n=100 D-Wave QPU-access trigger (repeat runs, test intermediate sizes)
+
+## QAOA / IBM: `qaoa_hamiltonian.py`, `qaoa_simulator.py`, `run_ibm.py`
+
+Same stacking-only QUBO as the D-Wave path — `qaoa_hamiltonian.py` imports
+`build_bqm()` directly, converts it to a QAOA-ready Ising Hamiltonian via
+`qiskit-optimization`. Both the D-Wave and IBM paths solve the identical
+formulation; differences in results reflect the solver/hardware, not two
+different models.
+
+**A real, non-obvious bug was found and fixed here too, not just on the DP
+side.** Default QAOA runs (reps=2-3, 8 random restarts, up to 300 COBYLA
+iterations each) consistently collapsed to the trivial all-unpaired
+solution on every test — 0% match against the exact ground truth, even
+after ruling out "insufficient optimizer effort" as the cause. Root cause:
+`build_bqm.py`'s default penalty weight (sized to guarantee exactness
+against arbitrary constraint violations on classical exact solvers, ~2x the
+sum of every favorable energy in the problem) is roughly 11x larger than
+any single favorable pairing on a small instance. That's fine for a
+classical exact solver, which searches exhaustively regardless of landscape
+shape — but it makes the QAOA cost landscape so dominated by penalty terms
+that "select nothing, violate nothing" becomes a strong, easy-to-find local
+attractor that shallow QAOA can't escape from generic random
+initialization.
+
+**Fix:** `qaoa_simulator.py` and `run_ibm.py` default to a much tighter
+penalty (~1.5x the single largest quartet energy) instead of reusing
+`build_bqm.py`'s classical-exactness penalty. Validated: QAOA now finds the
+*exact* optimal structure on both test sequences (`GGGAAACCC`,
+`GCGCUUCGGCGC`), confirmed with a real constraint check (not an energy-gap
+proxy — `build_bqm.conflicting()` is called directly on the returned
+selection to confirm zero actual violations).
+
+**Honest caveat on the tight penalty itself:** it is an empirically
+validated, QAOA-practical choice on these small test cases, not a rigorous
+guarantee at arbitrary scale. Two simultaneously-violated, both
+near-maximally-favorable constraints could in principle still beat a loose
+tight-penalty bound on a larger problem. `feasible` in both scripts'
+output is always computed via the real constraint check, never assumed —
+check it on every run, don't trust the penalty blindly as sequences get
+larger.
+
+`run_ibm.py` cannot be executed from this sandbox (IBM Quantum's runtime
+API isn't network-reachable here, same limitation as `run_dwave.py` for
+D-Wave). Run it locally or in Colab with a real IBM Quantum API token. Real
+hardware queue time makes a full per-iteration expectation-value
+recomputation impractical, so `run_ibm.py` uses a cheaper proxy objective
+(best-bitstring raw energy per iteration) for the classical optimizer loop
+— documented in the script, another explicit simulator-vs-hardware
+trade-off worth stating in the writeup.
 
 ### QPU-direct results (`scaling_results_run2_qpu_direct.json`), n=20/30/40
 

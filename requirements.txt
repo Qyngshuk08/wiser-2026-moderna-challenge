@@ -1,3 +1,9 @@
 ViennaRNA
 dimod
 dwave-ocean-sdk
+qiskit
+qiskit-aer
+qiskit-optimization
+qiskit-ibm-runtime
+scipy
+numpy
