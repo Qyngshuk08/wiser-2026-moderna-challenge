@@ -1,0 +1,18 @@
+[
+  {
+    "seq": "GGGAAACCC",
+    "n": 9,
+    "backend": "ibm_kingston",
+    "num_qubits": 4,
+    "penalty_used": 6.10,
+    "structure": "(((...)))",
+    "raw_energy": -6.80,
+    "feasible": true,
+    "best_bitstring_shots": 339,
+    "total_shots": 2000,
+    "best_bitstring_confidence": 0.1695,
+    "simulator_confidence_same_seq": 0.971,
+    "exact_energy_same_seq": -6.80,
+    "match_exact": true
+  }
+]

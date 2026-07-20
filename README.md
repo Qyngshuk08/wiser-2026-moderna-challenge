@@ -82,7 +82,7 @@ scaling/quantum-resource analysis deliverable.
 - [ ] **NEXT: port full loop energies into the actual QUBO** (`rna_qubo.py`/`build_bqm.py` still stacking-only) — the DP proves it's worth doing, hasn't been done yet
 - [ ] Proper multiloop DP (WM table, MLbase/MLintern/MLclosing) — currently unsupported, named limitation
 - [ ] Rerun D-Wave scaling once the QUBO reflects the improved model (current results all reflect stacking-only)
-- [ ] Run `run_ibm.py` on real IBM hardware before access expires
+- [x] Run `run_ibm.py` on real IBM hardware — `ibm_kingston`, exact match on `GGGAAACCC`, 17.0% shot confidence vs 97.1% on simulator (real hardware noise, quantified)
 - [ ] Investigate n=100 D-Wave QPU-access trigger (repeat runs, test intermediate sizes)
 
 ## QAOA / IBM: `qaoa_hamiltonian.py`, `qaoa_simulator.py`, `run_ibm.py`
@@ -133,6 +133,22 @@ recomputation impractical, so `run_ibm.py` uses a cheaper proxy objective
 (best-bitstring raw energy per iteration) for the classical optimizer loop
 — documented in the script, another explicit simulator-vs-hardware
 trade-off worth stating in the writeup.
+
+### First real IBM hardware result (`ibm_hardware_results_run1.json`)
+
+`ibm_kingston`, 4 qubits, `GGGAAACCC`: **exact match** — structure
+`(((...)))`, raw energy `-6.80`, identical to the classical exact solver.
+Real constraint check confirms feasibility.
+
+One number worth reporting honestly, not glossing over: the winning
+bitstring appeared in only **339/2000 shots (17.0%)** on real hardware,
+versus **97.1%** for the identical problem on the Aer simulator. It still
+won — 17% was the plurality across all possible bitstrings — but that
+75-point drop in confidence is real hardware noise, visible directly in
+the data. Report both numbers side by side rather than just the pass/fail:
+QAOA found the right answer on real IBM hardware, but with markedly less
+certainty than the noiseless simulation, exactly the signature you'd
+expect from a NISQ-era device on even a small, well-conditioned problem.
 
 ### QPU-direct results (`scaling_results_run2_qpu_direct.json`), n=20/30/40
 
