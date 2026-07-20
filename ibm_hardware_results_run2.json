@@ -1,0 +1,32 @@
+[
+  {
+    "seq": "GGGAAACCC",
+    "n": 9,
+    "backend": "ibm_kingston",
+    "num_qubits": 4,
+    "penalty_used": 6.1,
+    "structure": "(((...)))",
+    "raw_energy": -6.8,
+    "feasible": true,
+    "rank_by_shot_count": 1,
+    "chosen_shots": 339,
+    "total_shots": 2000,
+    "match_exact": true,
+    "note": "plurality bitstring was already correct and feasible"
+  },
+  {
+    "seq": "GCGCUUCGGCGC",
+    "n": 12,
+    "backend": "ibm_marrakesh",
+    "num_qubits": 6,
+    "penalty_used": 5.95,
+    "structure": "............",
+    "raw_energy": 0.0,
+    "feasible": true,
+    "rank_by_shot_count": 4,
+    "chosen_shots": 103,
+    "total_shots": 2000,
+    "match_exact": false,
+    "note": "top 3 most-sampled bitstrings were infeasible (post-selection correctly skipped them); best feasible answer in the entire 2000-shot sample was the trivial empty structure, at only 5.2% confidence -- noise overwhelmed the signal between 4 and 6 qubits"
+  }
+]

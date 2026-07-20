@@ -82,7 +82,8 @@ scaling/quantum-resource analysis deliverable.
 - [ ] **NEXT: port full loop energies into the actual QUBO** (`rna_qubo.py`/`build_bqm.py` still stacking-only) — the DP proves it's worth doing, hasn't been done yet
 - [ ] Proper multiloop DP (WM table, MLbase/MLintern/MLclosing) — currently unsupported, named limitation
 - [ ] Rerun D-Wave scaling once the QUBO reflects the improved model (current results all reflect stacking-only)
-- [x] Run `run_ibm.py` on real IBM hardware — `ibm_kingston`, exact match on `GGGAAACCC`, 17.0% shot confidence vs 97.1% on simulator (real hardware noise, quantified)
+- [x] Run `run_ibm.py` on real IBM hardware — `ibm_kingston` (4 qubits): exact match, 17.0% confidence vs 97.1% simulator. `ibm_marrakesh` (6 qubits, post-selection-fixed rerun): noise wall found, correct answer lost to trivial fallback at only 5.2% confidence
+- [x] **Hardware experimentation concluded.** Two clean data points (4 qubits: works, 6 qubits: noise-dominated) is sufficient evidence for a real, quantified finding. Further runs have diminishing return against remaining time for writeup/presentation.
 - [ ] Investigate n=100 D-Wave QPU-access trigger (repeat runs, test intermediate sizes)
 
 ## QAOA / IBM: `qaoa_hamiltonian.py`, `qaoa_simulator.py`, `run_ibm.py`
@@ -149,6 +150,37 @@ the data. Report both numbers side by side rather than just the pass/fail:
 QAOA found the right answer on real IBM hardware, but with markedly less
 certainty than the noiseless simulation, exactly the signature you'd
 expect from a NISQ-era device on even a small, well-conditioned problem.
+
+### Post-selection bug, caught on the second hardware run
+
+`GCGCUUCGGCGC` (12nt, 6 qubits) on `ibm_marrakesh` initially returned an
+**infeasible plurality bitstring**: a malformed dot-bracket structure
+(unbalanced parentheses) with raw energy exactly ~2x the true optimal value
+— the signature of two conflicting quartets both firing simultaneously.
+The script was blindly trusting the top-shot bitstring regardless of
+feasibility. Fixed in both `run_ibm.py` and `qaoa_simulator.py`: rank all
+sampled bitstrings by shot count, return the highest-count one that is
+*actually* feasible, rather than trusting the raw plurality.
+
+**Result after the fix, same sequence, rerun on hardware
+(`ibm_hardware_results_run2.json`):** the top 3 most-sampled bitstrings
+were *all* infeasible — correctly skipped by the fix rather than reported
+as garbage. The best feasible answer anywhere in the 2000-shot sample was
+**the trivial all-unpaired structure** (`............`, energy 0.00), at
+only 5.2% confidence (103/2000).
+
+**This is a real, sharp finding, not a disappointing one to bury: real
+hardware noise overwhelmed the QAOA signal between 4 qubits (first run,
+17% confidence, correct nontrivial answer) and 6 qubits (this run,
+trivial fallback).** That's a much earlier noise wall than the qubit
+counts alone would suggest — two more qubits was enough to erase a
+correct answer entirely on this backend/circuit combination. Report this
+directly: QAOA's practical usable size on current IBM hardware for this
+formulation, without deeper error mitigation, appears to sit closer to 4
+qubits than 6, not a limitation this project has the remaining time to fix
+via additional error-mitigation techniques (dynamical decoupling, readout
+correction, zero-noise extrapolation), but a legitimate, quantified
+scaling-limitation finding for the writeup.
 
 ### QPU-direct results (`scaling_results_run2_qpu_direct.json`), n=20/30/40
 
