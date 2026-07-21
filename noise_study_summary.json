@@ -1,0 +1,26 @@
+[
+  {
+    "seq": "GGGAAACCC",
+    "n": 9,
+    "backend": "ibm_kingston",
+    "num_qubits": 4,
+    "num_runs": 1,
+    "mean_confidence": 0.1695,
+    "stdev_confidence": null,
+    "confidences": [
+      0.1695
+    ]
+  },
+  {
+    "seq": "GCGCUUCGGCGC",
+    "n": 12,
+    "backend": "ibm_marrakesh",
+    "num_qubits": 6,
+    "num_runs": 1,
+    "mean_confidence": 0.0515,
+    "stdev_confidence": null,
+    "confidences": [
+      0.0515
+    ]
+  }
+]
