@@ -1,0 +1,62 @@
+[
+  {
+    "seq": "GGACGGCGCUUCUACUCAAC",
+    "n": 20,
+    "num_qubits": 15,
+    "num_edges": 95,
+    "density": 0.905,
+    "classical_penalty": 69.2,
+    "tight_penalty": 11.8,
+    "ratio": 5.86
+  },
+  {
+    "seq": "GACGCUGGCAAAGAGCUCAUUUUGAACGAC",
+    "n": 30,
+    "num_qubits": 41,
+    "num_edges": 635,
+    "density": 0.774,
+    "classical_penalty": 137.8,
+    "tight_penalty": 12.85,
+    "ratio": 10.72
+  },
+  {
+    "seq": "CACUCGAGCUCUUUACGAAUUAAGCUUGCGGCACAGCUUA",
+    "n": 40,
+    "num_qubits": 72,
+    "num_edges": 1582,
+    "density": 0.619,
+    "classical_penalty": 255.4,
+    "tight_penalty": 11.8,
+    "ratio": 21.64
+  },
+  {
+    "seq": "CAUCUCGAAUUAAAAUAGACAAAUUAGUAAGACAUACCGUAGAAGUCCGUUAUUCCAGUA",
+    "n": 60,
+    "num_qubits": 178,
+    "num_edges": 8637,
+    "density": 0.548,
+    "classical_penalty": 445.2,
+    "tight_penalty": 12.3,
+    "ratio": 36.21
+  },
+  {
+    "seq": "GGCCGCUAGACACUUGCCCUCGGAAUCUUUGGGAGGAUGACUGGAAGCCGAGUAUAGGCAUAAAUAUCCUAGGAACGACU",
+    "n": 80,
+    "num_qubits": 362,
+    "num_edges": 32614,
+    "density": 0.499,
+    "classical_penalty": 1256.0,
+    "tight_penalty": 13.9,
+    "ratio": 90.36
+  },
+  {
+    "seq": "CAUCAAAUCCCAGGGCUUGCAUUCCCCACAACUUCCGUCAGUACUACGCCGAAGGCCAGAGGACCUUGAAAUUAGAAGCGGUGACUCUGUCAAAGUAGGC",
+    "n": 100,
+    "num_qubits": 540,
+    "num_edges": 69299,
+    "density": 0.476,
+    "classical_penalty": 1853.8,
+    "tight_penalty": 15.36,
+    "ratio": 120.73
+  }
+]

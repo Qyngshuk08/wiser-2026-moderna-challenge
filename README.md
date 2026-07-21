@@ -192,10 +192,52 @@ stated directly rather than implied:
    17.0% → 5.2% shot confidence across two qubit counts), which is
    stronger evidence than a synthetic noise model, but was not a
    deliberately swept experiment.
-4. **Qubit count vs. constraint enforcement trade-off** — partial, data
-   exists but wasn't assembled as its own analysis: D-Wave's constraint
-   graph density vs. embedding success (Finding 3) and QAOA's classical
-   vs. tight penalty finding (Finding 5) are both directly relevant.
+4. **Qubit count vs. constraint enforcement trade-off** — **done.** See
+   dedicated section below.
+
+## Qubit Count vs. Constraint Enforcement Trade-off (`qubit_constraint_tradeoff.py`)
+
+Two different penalty regimes exist in this project, for good reasons:
+the **classical-exactness penalty** (`build_bqm.py`'s default, sized to
+guarantee correctness against arbitrary constraint violations on
+classical exact solvers — scales with the *sum* of every favorable energy
+in the problem) and the **tight penalty** (`qaoa_simulator.py`'s default,
+sized just above the *single* largest favorable energy — small enough for
+shallow QAOA to actually navigate). Both were built and validated
+separately, for different solvers. Assembling them together against the
+same 6 sequences used throughout the D-Wave scaling work reveals a real,
+quantifiable trade-off, independent of and prior to any hardware noise:
+
+| n | qubits | density | classical penalty | tight penalty | ratio |
+|---|---|---|---|---|---|
+| 20 | 15 | 0.905 | 69.20 | 11.80 | 5.86 |
+| 30 | 41 | 0.774 | 137.80 | 12.85 | 10.72 |
+| 40 | 72 | 0.619 | 255.40 | 11.80 | 21.64 |
+| 60 | 178 | 0.548 | 445.20 | 12.30 | 36.21 |
+| 80 | 362 | 0.499 | 1256.00 | 13.90 | 90.36 |
+| 100 | 540 | 0.476 | 1853.80 | 15.36 | 120.73 |
+
+**The tight penalty stays nearly flat (11.8 → 15.4) while the
+classical-exactness penalty grows ~27x (69.2 → 1853.8) over the same
+range — so the ratio between them grows 20x, from under 6 to over 120,
+purely as a function of qubit count.** This is a structural property of
+the formulation, not a hardware or noise effect: as problems scale, the
+penalty required to *guarantee* feasibility on a classical solver becomes
+increasingly incompatible with the penalty a NISQ-era shallow circuit can
+actually work with. This directly explains, in a single quantified
+number, why QAOA's practical usable size is so much smaller than a
+classical solver's: the "safe" penalty and the "solvable" penalty diverge
+sharply with scale, independent of the noise-wall finding reported
+separately (Finding 6).
+
+**Honest note on the density column:** these density values (0.905 at
+n=20, etc.) are marginally higher than the ones reported earlier in the
+D-Wave section (0.886 at n=20) — this table uses the current default
+`build_bqm()` behavior, which now includes the hairpin-energy port. The
+hairpin delta-correction adds a small number of genuine new correlational
+edges (93 → 95 at n=20, confirmed directly) — a minor, explainable,
+expected side effect of porting more real physics into the model, not a
+discrepancy to gloss over.
 
 ## QUBO Port: Real Hairpin Energy (`rna_qubo.py`, `build_bqm.py`)
 
@@ -317,9 +359,6 @@ yet solved, honestly flagged rather than hidden.
 7. Pseudoknot-aware extension (challenge's optional advanced task).
 8. Build a second quantum encoding and compare against the quartet
    formulation (challenge's optional advanced task).
-9. Assemble the existing qubit-count/constraint-enforcement data (D-Wave
-   density findings + QAOA penalty findings) into a dedicated trade-off
-   analysis (challenge's optional advanced task).
 
 ## References
 
