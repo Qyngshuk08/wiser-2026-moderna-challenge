@@ -1,0 +1,2882 @@
+[
+  {
+    "seq": "AACUUUAAGA",
+    "n": 10,
+    "vienna_db": "..........",
+    "vienna_mfe": 0.0,
+    "our_db": "..........",
+    "our_energy": 0.0,
+    "match": true
+  },
+  {
+    "seq": "AAUUAUGUGC",
+    "n": 10,
+    "vienna_db": "..........",
+    "vienna_mfe": 0.0,
+    "our_db": "..........",
+    "our_energy": 0.0,
+    "match": true
+  },
+  {
+    "seq": "AUGCCUUCAA",
+    "n": 10,
+    "vienna_db": "..........",
+    "vienna_mfe": 0.0,
+    "our_db": "..........",
+    "our_energy": 0.0,
+    "match": true
+  },
+  {
+    "seq": "GACCCAGAGA",
+    "n": 10,
+    "vienna_db": "..........",
+    "vienna_mfe": 0.0,
+    "our_db": "..........",
+    "our_energy": 0.0,
+    "match": true
+  },
+  {
+    "seq": "CCUAAUCAUA",
+    "n": 10,
+    "vienna_db": "..........",
+    "vienna_mfe": 0.0,
+    "our_db": "..........",
+    "our_energy": 0.0,
+    "match": true
+  },
+  {
+    "seq": "GCGCUCCUCA",
+    "n": 10,
+    "vienna_db": "..........",
+    "vienna_mfe": 0.0,
+    "our_db": "..........",
+    "our_energy": 0.0,
+    "match": true
+  },
+  {
+    "seq": "UUUGGCUCAU",
+    "n": 10,
+    "vienna_db": "..........",
+    "vienna_mfe": 0.0,
+    "our_db": "..........",
+    "our_energy": 0.0,
+    "match": true
+  },
+  {
+    "seq": "ACGCAUCUGG",
+    "n": 10,
+    "vienna_db": "..........",
+    "vienna_mfe": 0.0,
+    "our_db": "..........",
+    "our_energy": 0.0,
+    "match": true
+  },
+  {
+    "seq": "GUCUUCGGCU",
+    "n": 10,
+    "vienna_db": "..........",
+    "vienna_mfe": 0.0,
+    "our_db": "..........",
+    "our_energy": 0.0,
+    "match": true
+  },
+  {
+    "seq": "UGAAAUUGAG",
+    "n": 10,
+    "vienna_db": "..........",
+    "vienna_mfe": 0.0,
+    "our_db": "..........",
+    "our_energy": 0.0,
+    "match": true
+  },
+  {
+    "seq": "GGCAACCACG",
+    "n": 10,
+    "vienna_db": "..........",
+    "vienna_mfe": 0.0,
+    "our_db": "..........",
+    "our_energy": 0.0,
+    "match": true
+  },
+  {
+    "seq": "UGACUACUUC",
+    "n": 10,
+    "vienna_db": "..........",
+    "vienna_mfe": 0.0,
+    "our_db": "..........",
+    "our_energy": 0.0,
+    "match": true
+  },
+  {
+    "seq": "UACGAACCUA",
+    "n": 10,
+    "vienna_db": "..........",
+    "vienna_mfe": 0.0,
+    "our_db": "..........",
+    "our_energy": 0.0,
+    "match": true
+  },
+  {
+    "seq": "UAAGAUUGUC",
+    "n": 10,
+    "vienna_db": "..........",
+    "vienna_mfe": 0.0,
+    "our_db": "..........",
+    "our_energy": 0.0,
+    "match": true
+  },
+  {
+    "seq": "GUUCGCGGAU",
+    "n": 10,
+    "vienna_db": "..........",
+    "vienna_mfe": 0.0,
+    "our_db": "..........",
+    "our_energy": 0.0,
+    "match": true
+  },
+  {
+    "seq": "UACAUUAAAU",
+    "n": 10,
+    "vienna_db": "..........",
+    "vienna_mfe": 0.0,
+    "our_db": "..........",
+    "our_energy": 0.0,
+    "match": true
+  },
+  {
+    "seq": "AACAUCGUUG",
+    "n": 10,
+    "vienna_db": "..........",
+    "vienna_mfe": 0.0,
+    "our_db": "..........",
+    "our_energy": 0.0,
+    "match": true
+  },
+  {
+    "seq": "UGGUAAGCGG",
+    "n": 10,
+    "vienna_db": "..........",
+    "vienna_mfe": 0.0,
+    "our_db": "..........",
+    "our_energy": 0.0,
+    "match": true
+  },
+  {
+    "seq": "GAAAGCAUUU",
+    "n": 10,
+    "vienna_db": "..........",
+    "vienna_mfe": 0.0,
+    "our_db": "..........",
+    "our_energy": 0.0,
+    "match": true
+  },
+  {
+    "seq": "GUGUCGUAGA",
+    "n": 10,
+    "vienna_db": "..........",
+    "vienna_mfe": 0.0,
+    "our_db": "..........",
+    "our_energy": 0.0,
+    "match": true
+  },
+  {
+    "seq": "AAAUUGGGUG",
+    "n": 10,
+    "vienna_db": "..........",
+    "vienna_mfe": 0.0,
+    "our_db": "..........",
+    "our_energy": 0.0,
+    "match": true
+  },
+  {
+    "seq": "AUGAGCGCGG",
+    "n": 10,
+    "vienna_db": "..........",
+    "vienna_mfe": 0.0,
+    "our_db": "..........",
+    "our_energy": 0.0,
+    "match": true
+  },
+  {
+    "seq": "UUCUAACAAG",
+    "n": 10,
+    "vienna_db": "..........",
+    "vienna_mfe": 0.0,
+    "our_db": "..........",
+    "our_energy": 0.0,
+    "match": true
+  },
+  {
+    "seq": "UAAUAAUGAU",
+    "n": 10,
+    "vienna_db": "..........",
+    "vienna_mfe": 0.0,
+    "our_db": "..........",
+    "our_energy": 0.0,
+    "match": true
+  },
+  {
+    "seq": "AAGCCUCUCG",
+    "n": 10,
+    "vienna_db": "..........",
+    "vienna_mfe": 0.0,
+    "our_db": "..........",
+    "our_energy": 0.0,
+    "match": true
+  },
+  {
+    "seq": "UCGCAAGAAU",
+    "n": 10,
+    "vienna_db": "..........",
+    "vienna_mfe": 0.0,
+    "our_db": "..........",
+    "our_energy": 0.0,
+    "match": true
+  },
+  {
+    "seq": "CUCAUCCUGC",
+    "n": 10,
+    "vienna_db": "..........",
+    "vienna_mfe": 0.0,
+    "our_db": "..........",
+    "our_energy": 0.0,
+    "match": true
+  },
+  {
+    "seq": "ACAUCAAUCC",
+    "n": 10,
+    "vienna_db": "..........",
+    "vienna_mfe": 0.0,
+    "our_db": "..........",
+    "our_energy": 0.0,
+    "match": true
+  },
+  {
+    "seq": "UCUCGCAAGC",
+    "n": 10,
+    "vienna_db": "..........",
+    "vienna_mfe": 0.0,
+    "our_db": "..........",
+    "our_energy": 0.0,
+    "match": true
+  },
+  {
+    "seq": "AACUCUGGAA",
+    "n": 10,
+    "vienna_db": "..........",
+    "vienna_mfe": 0.0,
+    "our_db": "..........",
+    "our_energy": 0.0,
+    "match": true
+  },
+  {
+    "seq": "AUACUGUACC",
+    "n": 10,
+    "vienna_db": "..........",
+    "vienna_mfe": 0.0,
+    "our_db": "..........",
+    "our_energy": 0.0,
+    "match": true
+  },
+  {
+    "seq": "ACUUACGUUU",
+    "n": 10,
+    "vienna_db": "..........",
+    "vienna_mfe": 0.0,
+    "our_db": "..........",
+    "our_energy": 0.0,
+    "match": true
+  },
+  {
+    "seq": "UGAUCGUCUA",
+    "n": 10,
+    "vienna_db": "..........",
+    "vienna_mfe": 0.0,
+    "our_db": "..........",
+    "our_energy": 0.0,
+    "match": true
+  },
+  {
+    "seq": "GAGUUGCCUU",
+    "n": 10,
+    "vienna_db": "..........",
+    "vienna_mfe": 0.0,
+    "our_db": "..........",
+    "our_energy": 0.0,
+    "match": true
+  },
+  {
+    "seq": "AUGCCACCGC",
+    "n": 10,
+    "vienna_db": "..........",
+    "vienna_mfe": 0.0,
+    "our_db": "..........",
+    "our_energy": 0.0,
+    "match": true
+  },
+  {
+    "seq": "AACUCAAGCC",
+    "n": 10,
+    "vienna_db": "..........",
+    "vienna_mfe": 0.0,
+    "our_db": "..........",
+    "our_energy": 0.0,
+    "match": true
+  },
+  {
+    "seq": "GAGUCAGAUC",
+    "n": 10,
+    "vienna_db": "..........",
+    "vienna_mfe": 0.0,
+    "our_db": "..........",
+    "our_energy": 0.0,
+    "match": true
+  },
+  {
+    "seq": "GACCACCGCG",
+    "n": 10,
+    "vienna_db": "..........",
+    "vienna_mfe": 0.0,
+    "our_db": "..........",
+    "our_energy": 0.0,
+    "match": true
+  },
+  {
+    "seq": "CUUGGUCGAC",
+    "n": 10,
+    "vienna_db": "..........",
+    "vienna_mfe": 0.0,
+    "our_db": "..........",
+    "our_energy": 0.0,
+    "match": true
+  },
+  {
+    "seq": "CUGCGGGUGU",
+    "n": 10,
+    "vienna_db": "..........",
+    "vienna_mfe": 0.0,
+    "our_db": "..........",
+    "our_energy": 0.0,
+    "match": true
+  },
+  {
+    "seq": "ACCAUCUUUAAUGAG",
+    "n": 15,
+    "vienna_db": "...............",
+    "vienna_mfe": 0.0,
+    "our_db": "...............",
+    "our_energy": 0.0,
+    "match": true
+  },
+  {
+    "seq": "GUGGGUUAAGUUGAU",
+    "n": 15,
+    "vienna_db": "...............",
+    "vienna_mfe": 0.0,
+    "our_db": "...............",
+    "our_energy": 0.0,
+    "match": true
+  },
+  {
+    "seq": "AGUGCGGGUGGCUCG",
+    "n": 15,
+    "vienna_db": ".(.((.....)).).",
+    "vienna_mfe": -1.600000023841858,
+    "our_db": "....((((...))))",
+    "our_energy": -2.8999999999999995,
+    "match": false
+  },
+  {
+    "seq": "UCGACUCCCAUUUGU",
+    "n": 15,
+    "vienna_db": "...............",
+    "vienna_mfe": 0.0,
+    "our_db": "...............",
+    "our_energy": 0.0,
+    "match": true
+  },
+  {
+    "seq": "UAGGCGGAUGGAGGA",
+    "n": 15,
+    "vienna_db": "...............",
+    "vienna_mfe": 0.0,
+    "our_db": "...............",
+    "our_energy": 0.0,
+    "match": true
+  },
+  {
+    "seq": "CCGGUGUCGGAGCGU",
+    "n": 15,
+    "vienna_db": "(((....))).....",
+    "vienna_mfe": -2.700000047683716,
+    "our_db": "(((....))).....",
+    "our_energy": -1.6,
+    "match": true
+  },
+  {
+    "seq": "GUAGAAGUGUACGCU",
+    "n": 15,
+    "vienna_db": "(((......)))...",
+    "vienna_mfe": -0.8999999761581421,
+    "our_db": "...............",
+    "our_energy": 0.0,
+    "match": false
+  },
+  {
+    "seq": "GCCGCGCAGAACUAA",
+    "n": 15,
+    "vienna_db": "...............",
+    "vienna_mfe": 0.0,
+    "our_db": "...............",
+    "our_energy": 0.0,
+    "match": true
+  },
+  {
+    "seq": "AUUAUUUGAUGCCUA",
+    "n": 15,
+    "vienna_db": "...............",
+    "vienna_mfe": 0.0,
+    "our_db": "...............",
+    "our_energy": 0.0,
+    "match": true
+  },
+  {
+    "seq": "UCAACGGUAUACAAC",
+    "n": 15,
+    "vienna_db": "...............",
+    "vienna_mfe": 0.0,
+    "our_db": "...............",
+    "our_energy": 0.0,
+    "match": true
+  },
+  {
+    "seq": "GCACAGGAGCGUGUC",
+    "n": 15,
+    "vienna_db": "((((......)))).",
+    "vienna_mfe": -2.5,
+    "our_db": "((((......)))).",
+    "our_energy": -2.4000000000000004,
+    "match": true
+  },
+  {
+    "seq": "GGGCCUACGUGGCAG",
+    "n": 15,
+    "vienna_db": "..(((.....)))..",
+    "vienna_mfe": -4.5,
+    "our_db": "..(((.....)))..",
+    "our_energy": -2.0999999999999996,
+    "match": true
+  },
+  {
+    "seq": "CUGUCCCCCAUAUGG",
+    "n": 15,
+    "vienna_db": "...............",
+    "vienna_mfe": 0.0,
+    "our_db": "...............",
+    "our_energy": 0.0,
+    "match": true
+  },
+  {
+    "seq": "UGGGAACUGUCCGCG",
+    "n": 15,
+    "vienna_db": "..(((....)))...",
+    "vienna_mfe": -2.0,
+    "our_db": "((((.....))))..",
+    "our_energy": -1.9999999999999996,
+    "match": false
+  },
+  {
+    "seq": "CCGCCCUAUCAUUUG",
+    "n": 15,
+    "vienna_db": "...............",
+    "vienna_mfe": 0.0,
+    "our_db": "...............",
+    "our_energy": 0.0,
+    "match": true
+  },
+  {
+    "seq": "CCAUCUCUCAUCAAC",
+    "n": 15,
+    "vienna_db": "...............",
+    "vienna_mfe": 0.0,
+    "our_db": "...............",
+    "our_energy": 0.0,
+    "match": true
+  },
+  {
+    "seq": "UGAACGGGCUACGAA",
+    "n": 15,
+    "vienna_db": "....((.....))..",
+    "vienna_mfe": -0.30000001192092896,
+    "our_db": "....((.....))..",
+    "our_energy": -0.09999999999999964,
+    "match": true
+  },
+  {
+    "seq": "GGAAUUCAUAGUGGG",
+    "n": 15,
+    "vienna_db": "...............",
+    "vienna_mfe": 0.0,
+    "our_db": "...............",
+    "our_energy": 0.0,
+    "match": true
+  },
+  {
+    "seq": "CGCAAUUCAUUUAUA",
+    "n": 15,
+    "vienna_db": "...............",
+    "vienna_mfe": 0.0,
+    "our_db": "...............",
+    "our_energy": 0.0,
+    "match": true
+  },
+  {
+    "seq": "GGGCAUCCGAUCUGA",
+    "n": 15,
+    "vienna_db": "((....)).......",
+    "vienna_mfe": -0.8999999761581421,
+    "our_db": "...............",
+    "our_energy": 0.0,
+    "match": false
+  },
+  {
+    "seq": "UUCUAAUCCGAGCGC",
+    "n": 15,
+    "vienna_db": "...............",
+    "vienna_mfe": 0.0,
+    "our_db": "...............",
+    "our_energy": 0.0,
+    "match": true
+  },
+  {
+    "seq": "GGAAGCCAAUACAUG",
+    "n": 15,
+    "vienna_db": "...............",
+    "vienna_mfe": 0.0,
+    "our_db": "...............",
+    "our_energy": 0.0,
+    "match": true
+  },
+  {
+    "seq": "GCUGGAGCGCCAUCG",
+    "n": 15,
+    "vienna_db": "(.(((....))).).",
+    "vienna_mfe": -1.600000023841858,
+    "our_db": "..(((....)))...",
+    "our_energy": -1.5,
+    "match": false
+  },
+  {
+    "seq": "GCGAGACCCAGAGGA",
+    "n": 15,
+    "vienna_db": "...............",
+    "vienna_mfe": 0.0,
+    "our_db": "...............",
+    "our_energy": 0.0,
+    "match": true
+  },
+  {
+    "seq": "UCGGAUCUCGGAAUU",
+    "n": 15,
+    "vienna_db": "...............",
+    "vienna_mfe": 0.0,
+    "our_db": "((((...))))....",
+    "our_energy": -1.2999999999999994,
+    "match": false
+  },
+  {
+    "seq": "CAGAUAGAUGCCGGG",
+    "n": 15,
+    "vienna_db": "...............",
+    "vienna_mfe": 0.0,
+    "our_db": "...............",
+    "our_energy": 0.0,
+    "match": true
+  },
+  {
+    "seq": "UGUGUUACGCCACCG",
+    "n": 15,
+    "vienna_db": ".(((......)))..",
+    "vienna_mfe": -0.699999988079071,
+    "our_db": ".(((......)))..",
+    "our_energy": -0.39999999999999947,
+    "match": true
+  },
+  {
+    "seq": "UGGCCGGCUUGUGAC",
+    "n": 15,
+    "vienna_db": "...............",
+    "vienna_mfe": 0.0,
+    "our_db": "...............",
+    "our_energy": 0.0,
+    "match": true
+  },
+  {
+    "seq": "GGGUGAUCAGAGAUG",
+    "n": 15,
+    "vienna_db": "...............",
+    "vienna_mfe": 0.0,
+    "our_db": "...............",
+    "our_energy": 0.0,
+    "match": true
+  },
+  {
+    "seq": "UAGCCGACGCGAAUC",
+    "n": 15,
+    "vienna_db": "..((....)).....",
+    "vienna_mfe": -0.30000001192092896,
+    "our_db": "...............",
+    "our_energy": 0.0,
+    "match": false
+  },
+  {
+    "seq": "UAGAAGUCAACACCC",
+    "n": 15,
+    "vienna_db": "...............",
+    "vienna_mfe": 0.0,
+    "our_db": "...............",
+    "our_energy": 0.0,
+    "match": true
+  },
+  {
+    "seq": "GUUGUUUAGUGUUGC",
+    "n": 15,
+    "vienna_db": "...............",
+    "vienna_mfe": 0.0,
+    "our_db": "...............",
+    "our_energy": 0.0,
+    "match": true
+  },
+  {
+    "seq": "GCAGCUAGCCGCGCU",
+    "n": 15,
+    "vienna_db": "((.((.....)))).",
+    "vienna_mfe": -2.299999952316284,
+    "our_db": "..(((.......)))",
+    "our_energy": -0.9000000000000004,
+    "match": false
+  },
+  {
+    "seq": "GGAUGCCCAGCAAGC",
+    "n": 15,
+    "vienna_db": "((....)).......",
+    "vienna_mfe": -0.8999999761581421,
+    "our_db": "...(((...)))...",
+    "our_energy": -0.2999999999999994,
+    "match": false
+  },
+  {
+    "seq": "UCUUCUAACGACUAC",
+    "n": 15,
+    "vienna_db": "...............",
+    "vienna_mfe": 0.0,
+    "our_db": "...............",
+    "our_energy": 0.0,
+    "match": true
+  },
+  {
+    "seq": "CGUUUCCUCGCCAGA",
+    "n": 15,
+    "vienna_db": "...............",
+    "vienna_mfe": 0.0,
+    "our_db": "...............",
+    "our_energy": 0.0,
+    "match": true
+  },
+  {
+    "seq": "UUGCAGACAGCCGCA",
+    "n": 15,
+    "vienna_db": ".(((........)))",
+    "vienna_mfe": -1.2000000476837158,
+    "our_db": ".(((........)))",
+    "our_energy": -1.6999999999999997,
+    "match": true
+  },
+  {
+    "seq": "UGACUAGCGAUAACG",
+    "n": 15,
+    "vienna_db": "...............",
+    "vienna_mfe": 0.0,
+    "our_db": "...............",
+    "our_energy": 0.0,
+    "match": true
+  },
+  {
+    "seq": "AAUUGGCGUGAGGCA",
+    "n": 15,
+    "vienna_db": ".....((.....)).",
+    "vienna_mfe": -1.5,
+    "our_db": "...............",
+    "our_energy": 0.0,
+    "match": false
+  },
+  {
+    "seq": "CUGGUCACCAGCUAG",
+    "n": 15,
+    "vienna_db": "((((...))))....",
+    "vienna_mfe": -2.5,
+    "our_db": "((((...))))....",
+    "our_energy": -2.4999999999999996,
+    "match": true
+  },
+  {
+    "seq": "AUAACUUUAUUUCUACUUCU",
+    "n": 20,
+    "vienna_db": "....................",
+    "vienna_mfe": 0.0,
+    "our_db": "....................",
+    "our_energy": 0.0,
+    "match": true
+  },
+  {
+    "seq": "AAUACUCAUCAUGAAGGCAG",
+    "n": 20,
+    "vienna_db": "....................",
+    "vienna_mfe": 0.0,
+    "our_db": "....................",
+    "our_energy": 0.0,
+    "match": true
+  },
+  {
+    "seq": "UACGAAGGGAGGAACUAUCC",
+    "n": 20,
+    "vienna_db": ".......(((.......)))",
+    "vienna_mfe": -0.8999999761581421,
+    "our_db": ".......(((.......)))",
+    "our_energy": -0.8000000000000003,
+    "match": true
+  },
+  {
+    "seq": "GCGGAAUGGUGCGGGACGCC",
+    "n": 20,
+    "vienna_db": ".......((((.....))))",
+    "vienna_mfe": -2.5999999046325684,
+    "our_db": "(((.............))).",
+    "our_energy": -2.3,
+    "match": false
+  },
+  {
+    "seq": "CUGAAAAGACUACAGCGACC",
+    "n": 20,
+    "vienna_db": "....................",
+    "vienna_mfe": 0.0,
+    "our_db": "....................",
+    "our_energy": 0.0,
+    "match": true
+  },
+  {
+    "seq": "CAUUGUACCACUGACAUCCC",
+    "n": 20,
+    "vienna_db": "....................",
+    "vienna_mfe": 0.0,
+    "our_db": "....................",
+    "our_energy": 0.0,
+    "match": true
+  },
+  {
+    "seq": "CAUUGAUAAUGGGCUCCCAA",
+    "n": 20,
+    "vienna_db": ".........(((....))).",
+    "vienna_mfe": -1.600000023841858,
+    "our_db": ".........(((....))).",
+    "our_energy": -1.7000000000000002,
+    "match": true
+  },
+  {
+    "seq": "UUAACGGGGGCUACGACGCA",
+    "n": 20,
+    "vienna_db": "....((..(....)..))..",
+    "vienna_mfe": -1.2999999523162842,
+    "our_db": "....................",
+    "our_energy": 0.0,
+    "match": false
+  },
+  {
+    "seq": "UGAAUCUUCCCAAGGUUGUC",
+    "n": 20,
+    "vienna_db": "..((((((...))))))...",
+    "vienna_mfe": -1.600000023841858,
+    "our_db": "..((((((...))))))...",
+    "our_energy": -0.5999999999999995,
+    "match": true
+  },
+  {
+    "seq": "AGAGAGACGGGCAGACUGCA",
+    "n": 20,
+    "vienna_db": ".......(((.....)))..",
+    "vienna_mfe": -1.399999976158142,
+    "our_db": ".......(((.....)))..",
+    "our_energy": -1.4,
+    "match": true
+  },
+  {
+    "seq": "GAUGGAGCCUCUAAUCCUUA",
+    "n": 20,
+    "vienna_db": "...(((........)))...",
+    "vienna_mfe": -2.5999999046325684,
+    "our_db": "...(((........)))...",
+    "our_energy": -1.3000000000000003,
+    "match": true
+  },
+  {
+    "seq": "UCUUUAUGGGCCUGAGGCCA",
+    "n": 20,
+    "vienna_db": "........((((...)))).",
+    "vienna_mfe": -6.0,
+    "our_db": "........((((...)))).",
+    "our_energy": -3.6999999999999993,
+    "match": true
+  },
+  {
+    "seq": "CACGGAACCAAGGAGUCGUA",
+    "n": 20,
+    "vienna_db": ".((((..(....)..)))).",
+    "vienna_mfe": -1.100000023841858,
+    "our_db": ".((((..........)))).",
+    "our_energy": -1.6999999999999997,
+    "match": false
+  },
+  {
+    "seq": "GACAUAUGGUCCCGGCACAC",
+    "n": 20,
+    "vienna_db": "(((.....))).........",
+    "vienna_mfe": -1.100000023841858,
+    "our_db": "....................",
+    "our_energy": -4.440892098500626e-16,
+    "match": false
+  },
+  {
+    "seq": "AGCCUCAUCCGUACGCUAGC",
+    "n": 20,
+    "vienna_db": "(((...........)))...",
+    "vienna_mfe": -0.20000000298023224,
+    "our_db": "....................",
+    "our_energy": 0.0,
+    "match": false
+  },
+  {
+    "seq": "ACCUUCGUUUUACAACUGUU",
+    "n": 20,
+    "vienna_db": "....................",
+    "vienna_mfe": 0.0,
+    "our_db": "....................",
+    "our_energy": 0.0,
+    "match": true
+  },
+  {
+    "seq": "UUGAGCUGCGUUCGUCGGCG",
+    "n": 20,
+    "vienna_db": "....(((((....).)))).",
+    "vienna_mfe": -3.799999952316284,
+    "our_db": ".(((((...)))))......",
+    "our_energy": -1.7999999999999998,
+    "match": false
+  },
+  {
+    "seq": "GUUUCAGCAACAUCGUGAUG",
+    "n": 20,
+    "vienna_db": "....................",
+    "vienna_mfe": 0.0,
+    "our_db": "....................",
+    "our_energy": 0.0,
+    "match": true
+  },
+  {
+    "seq": "CAGAGCUGACUACACUUACG",
+    "n": 20,
+    "vienna_db": "....................",
+    "vienna_mfe": 0.0,
+    "our_db": "....................",
+    "our_energy": 0.0,
+    "match": true
+  },
+  {
+    "seq": "UGGAAACUUGACUCAAUGGA",
+    "n": 20,
+    "vienna_db": "....................",
+    "vienna_mfe": 0.0,
+    "our_db": "....................",
+    "our_energy": 0.0,
+    "match": true
+  },
+  {
+    "seq": "AGAUUCGACUGUACAAGGAG",
+    "n": 20,
+    "vienna_db": "....................",
+    "vienna_mfe": 0.0,
+    "our_db": "....................",
+    "our_energy": 0.0,
+    "match": true
+  },
+  {
+    "seq": "CCACACUACUACCUGGUUAG",
+    "n": 20,
+    "vienna_db": "....................",
+    "vienna_mfe": 0.0,
+    "our_db": "....................",
+    "our_energy": 0.0,
+    "match": true
+  },
+  {
+    "seq": "ACUAUACCGGCAUCCACCAC",
+    "n": 20,
+    "vienna_db": "........((......))..",
+    "vienna_mfe": -0.5,
+    "our_db": "....................",
+    "our_energy": 0.0,
+    "match": false
+  },
+  {
+    "seq": "GGGGCUGGCCAGAGUCCAAC",
+    "n": 20,
+    "vienna_db": ".(((((......)))))...",
+    "vienna_mfe": -6.900000095367432,
+    "our_db": ".(((((......)))))...",
+    "our_energy": -6.2,
+    "match": true
+  },
+  {
+    "seq": "CCGGUGCGACGCAAGCUAUG",
+    "n": 20,
+    "vienna_db": ".....((.......))....",
+    "vienna_mfe": -0.8999999761581421,
+    "our_db": ".((......)).........",
+    "our_energy": -0.3999999999999999,
+    "match": false
+  },
+  {
+    "seq": "AUAUCCGAUGCCGAUCGCCU",
+    "n": 20,
+    "vienna_db": ".....((((....))))...",
+    "vienna_mfe": -2.5,
+    "our_db": ".....((((....))))...",
+    "our_energy": -2.3000000000000003,
+    "match": true
+  },
+  {
+    "seq": "AAUGGACCGUCGUAUAGUGA",
+    "n": 20,
+    "vienna_db": "....................",
+    "vienna_mfe": 0.0,
+    "our_db": "....................",
+    "our_energy": 0.0,
+    "match": true
+  },
+  {
+    "seq": "CCACCUUCUAUUUGACCGUA",
+    "n": 20,
+    "vienna_db": "....................",
+    "vienna_mfe": 0.0,
+    "our_db": "....................",
+    "our_energy": 0.0,
+    "match": true
+  },
+  {
+    "seq": "ACGGGGAUCAGGCUUUGAAU",
+    "n": 20,
+    "vienna_db": ".(((((......)))))...",
+    "vienna_mfe": -1.5,
+    "our_db": "....................",
+    "our_energy": 0.0,
+    "match": false
+  },
+  {
+    "seq": "CUUCUCCACUCUCAUUUCAA",
+    "n": 20,
+    "vienna_db": "....................",
+    "vienna_mfe": 0.0,
+    "our_db": "....................",
+    "our_energy": 0.0,
+    "match": true
+  },
+  {
+    "seq": "AACUGAGCCGUGCGAAUGGG",
+    "n": 20,
+    "vienna_db": ".......((((....)))).",
+    "vienna_mfe": -3.4000000953674316,
+    "our_db": ".......((((....)))).",
+    "our_energy": -1.7000000000000002,
+    "match": true
+  },
+  {
+    "seq": "GUCUCCCGUCACUGACGUUA",
+    "n": 20,
+    "vienna_db": "......((((...))))...",
+    "vienna_mfe": -2.5999999046325684,
+    "our_db": "......((((...))))...",
+    "our_energy": -2.3999999999999995,
+    "match": true
+  },
+  {
+    "seq": "ACGGUUCCUUGGGCGAAGGU",
+    "n": 20,
+    "vienna_db": "......((((.....)))).",
+    "vienna_mfe": -2.799999952316284,
+    "our_db": "......((((.....)))).",
+    "our_energy": -1.5999999999999996,
+    "match": true
+  },
+  {
+    "seq": "UCAACGGCAAGUCCGCAGAU",
+    "n": 20,
+    "vienna_db": "((..(((.....)))..)).",
+    "vienna_mfe": -1.899999976158142,
+    "our_db": "....(((.....))).....",
+    "our_energy": -1.4999999999999996,
+    "match": false
+  },
+  {
+    "seq": "CCAGGCAUAGCCCUUGAAAU",
+    "n": 20,
+    "vienna_db": "...(((...)))........",
+    "vienna_mfe": -2.299999952316284,
+    "our_db": "...(((...)))........",
+    "our_energy": -1.2999999999999994,
+    "match": true
+  },
+  {
+    "seq": "CGGUUCCUGCCGCGACCAGC",
+    "n": 20,
+    "vienna_db": "((((....))))........",
+    "vienna_mfe": -3.9000000953674316,
+    "our_db": "((((....))))........",
+    "our_energy": -3.4999999999999996,
+    "match": true
+  },
+  {
+    "seq": "AGCUAGUGUUAAUAGCGUGU",
+    "n": 20,
+    "vienna_db": ".((((.......))))....",
+    "vienna_mfe": -3.4000000953674316,
+    "our_db": ".((((.......))))....",
+    "our_energy": -1.5,
+    "match": true
+  },
+  {
+    "seq": "GGAUUCGGCUGCCCGUUCCU",
+    "n": 20,
+    "vienna_db": "(((..(((....))).))).",
+    "vienna_mfe": -5.5,
+    "our_db": ".....(((....))).....",
+    "our_energy": -1.7999999999999994,
+    "match": false
+  },
+  {
+    "seq": "CCUGCGCCCAGGCUCACACG",
+    "n": 20,
+    "vienna_db": "((((....))))........",
+    "vienna_mfe": -3.0,
+    "our_db": "((((....))))........",
+    "our_energy": -1.9999999999999996,
+    "match": true
+  },
+  {
+    "seq": "CGUUCCUAUUAUUAAGCGAU",
+    "n": 20,
+    "vienna_db": "((((..........))))..",
+    "vienna_mfe": -0.30000001192092896,
+    "our_db": "....................",
+    "our_energy": 0.0,
+    "match": false
+  },
+  {
+    "seq": "AUGGGUCCCAAUAUGUAGGUCAACACCGGU",
+    "n": 30,
+    "vienna_db": "..((((.((........))...)).))...",
+    "vienna_mfe": -2.799999952316284,
+    "our_db": ".(((...))).......(((....)))...",
+    "our_energy": -0.6999999999999993,
+    "match": false
+  },
+  {
+    "seq": "GCUACUGCUACCUUGGCAGAUUGCUACGUG",
+    "n": 30,
+    "vienna_db": "((..((((((...))))))...))......",
+    "vienna_mfe": -7.099999904632568,
+    "our_db": "....((((((...))))))...........",
+    "our_energy": -3.899999999999999,
+    "match": false
+  },
+  {
+    "seq": "CCCACCUAAGCUGCACCUUUGUGCGGUUAG",
+    "n": 30,
+    "vienna_db": "........((((((((....))))))))..",
+    "vienna_mfe": -10.0,
+    "our_db": "........((((((((....))))))))..",
+    "our_energy": -9.1,
+    "match": true
+  },
+  {
+    "seq": "CAAAUUUCGAUGAGAGUGGAGCAGCAUAAG",
+    "n": 30,
+    "vienna_db": ".....(((.((....)).))).........",
+    "vienna_mfe": -1.2999999523162842,
+    "our_db": "...............(((......)))...",
+    "our_energy": -0.4999999999999998,
+    "match": false
+  },
+  {
+    "seq": "CAAAGACGUUGCGGGGAUCAUGUUAACGGG",
+    "n": 30,
+    "vienna_db": "......(((((((.......)).)))))..",
+    "vienna_mfe": -3.200000047683716,
+    "our_db": "......(((((............)))))..",
+    "our_energy": -1.7999999999999994,
+    "match": false
+  },
+  {
+    "seq": "UUGCUCUAAGAUUAAAGAUAGGUUAUCUCC",
+    "n": 30,
+    "vienna_db": "...............(((((...)))))..",
+    "vienna_mfe": -1.2000000476837158,
+    "our_db": "...............(((((...)))))..",
+    "our_energy": -0.3000000000000007,
+    "match": true
+  },
+  {
+    "seq": "UCUUGCCAUGGACGCGGUCGUGUUCUGAGG",
+    "n": 30,
+    "vienna_db": "......((.((((((....))))))))...",
+    "vienna_mfe": -6.699999809265137,
+    "our_db": ".........((((((....)))))).....",
+    "our_energy": -6.1000000000000005,
+    "match": false
+  },
+  {
+    "seq": "UGUCUCAGCAUACGAAUUGUCCAUUAGUUG",
+    "n": 30,
+    "vienna_db": "..............................",
+    "vienna_mfe": 0.0,
+    "our_db": "..............................",
+    "our_energy": -4.440892098500626e-16,
+    "match": true
+  },
+  {
+    "seq": "UCCGGCCCCGGAGCUCCGAUUACGCUUCUG",
+    "n": 30,
+    "vienna_db": ".........(((((.........)))))..",
+    "vienna_mfe": -4.699999809265137,
+    "our_db": ".........(((((.........)))))..",
+    "our_energy": -4.4,
+    "match": true
+  },
+  {
+    "seq": "UGCCGGGUCUUGUAAAAAGUUAUAUGCAGG",
+    "n": 30,
+    "vienna_db": "........((((((..........))))))",
+    "vienna_mfe": -2.200000047683716,
+    "our_db": "........((((((..........))))))",
+    "our_energy": -0.6999999999999993,
+    "match": true
+  },
+  {
+    "seq": "AAGAACCAGUAAUUUCCCGACGGUUCAAAG",
+    "n": 30,
+    "vienna_db": "..(((((.((.........)))))))....",
+    "vienna_mfe": -5.199999809265137,
+    "our_db": "..(((((..............)))))....",
+    "our_energy": -2.4,
+    "match": false
+  },
+  {
+    "seq": "GGGAAUAGGCAAUUGCAACAUCAUUGACUU",
+    "n": 30,
+    "vienna_db": "..((....((....))....))........",
+    "vienna_mfe": -0.8999999761581421,
+    "our_db": "..............................",
+    "our_energy": 0.0,
+    "match": false
+  },
+  {
+    "seq": "GCGUACAAGUACGCACGGUCGGUGACUAAC",
+    "n": 30,
+    "vienna_db": "(((((....)))))..((((...))))...",
+    "vienna_mfe": -7.099999904632568,
+    "our_db": "(((((....)))))..((((...))))...",
+    "our_energy": -6.0,
+    "match": true
+  },
+  {
+    "seq": "UGUGCCAAACGCCAUAUGGGAAACACGACG",
+    "n": 30,
+    "vienna_db": "((((.......((....))....))))...",
+    "vienna_mfe": -1.7999999523162842,
+    "our_db": "((((........))))..............",
+    "our_energy": -0.20000000000000018,
+    "match": false
+  },
+  {
+    "seq": "GAUUGUUCCCGUAUGCGCGACCUGUGAUCA",
+    "n": 30,
+    "vienna_db": "((((.....(((....)))......)))).",
+    "vienna_mfe": -2.200000047683716,
+    "our_db": "...............((((...))))....",
+    "our_energy": -0.3999999999999999,
+    "match": false
+  },
+  {
+    "seq": "GCGCGCGUCCUGCUGCCGUCGCGCAUUAGU",
+    "n": 30,
+    "vienna_db": "(((((((.........)).)))))......",
+    "vienna_mfe": -9.899999618530273,
+    "our_db": "..(((((............)))))......",
+    "our_energy": -8.1,
+    "match": false
+  },
+  {
+    "seq": "GCAGGUCUCUGGAGGGGACAAUCUAGCGAA",
+    "n": 30,
+    "vienna_db": "((((((((((...))))))...)).))...",
+    "vienna_mfe": -6.699999809265137,
+    "our_db": "........(((((........)))))....",
+    "our_energy": -3.8000000000000007,
+    "match": false
+  },
+  {
+    "seq": "ACUUGCGGUCAGACGAAUCCCGUGCGAGGC",
+    "n": 30,
+    "vienna_db": ".((((((....((....))...))))))..",
+    "vienna_mfe": -5.699999809265137,
+    "our_db": ".((((((...............))))))..",
+    "our_energy": -4.2,
+    "match": false
+  },
+  {
+    "seq": "ACAAACAUUUUCGGUGUUGGAUGGGAUUCA",
+    "n": 30,
+    "vienna_db": ".....(((((........))))).......",
+    "vienna_mfe": -2.0,
+    "our_db": ".................(((((...)))))",
+    "our_energy": -1.2999999999999998,
+    "match": false
+  },
+  {
+    "seq": "AUCCUGACGCGGACCGUCAUCAUCAUCUGG",
+    "n": 30,
+    "vienna_db": "....(((((.....)))))...........",
+    "vienna_mfe": -4.400000095367432,
+    "our_db": "....(((((.....)))))...........",
+    "our_energy": -5.0,
+    "match": true
+  },
+  {
+    "seq": "UGGUGUUGCUUCGACAGUUGGGGGGGUAAU",
+    "n": 30,
+    "vienna_db": "....((((((((..(....)..))))))))",
+    "vienna_mfe": -6.400000095367432,
+    "our_db": "....((((((((..........))))))))",
+    "our_energy": -4.4,
+    "match": false
+  },
+  {
+    "seq": "CACUCUGGAACCAGUGAUCAGCCAGAUUCG",
+    "n": 30,
+    "vienna_db": "...(((((.............)))))....",
+    "vienna_mfe": -4.699999809265137,
+    "our_db": "...(((((.............)))))....",
+    "our_energy": -4.5,
+    "match": true
+  },
+  {
+    "seq": "UUUUACCUCCCCAUGACUUUUCUGGUCGGG",
+    "n": 30,
+    "vienna_db": ".........(((..((((.....)))))))",
+    "vienna_mfe": -6.0,
+    "our_db": ".............(((((.....)))))..",
+    "our_energy": -2.4000000000000004,
+    "match": false
+  },
+  {
+    "seq": "AAGCCGGCAAGCAGUGUGCCCCUGCAAAGA",
+    "n": 30,
+    "vienna_db": "..((.((((.......))))...)).....",
+    "vienna_mfe": -5.699999809265137,
+    "our_db": ".....((((.......))))..........",
+    "our_energy": -3.0999999999999996,
+    "match": false
+  },
+  {
+    "seq": "AUGGAGUUCUCACCACUAGCUGAAAUGAUU",
+    "n": 30,
+    "vienna_db": ".(((........)))...............",
+    "vienna_mfe": -1.100000023841858,
+    "our_db": ".(((........)))...............",
+    "our_energy": -1.3999999999999995,
+    "match": true
+  },
+  {
+    "seq": "GAACAGUGAUGAAACCCUGUUAAUGCUUGG",
+    "n": 30,
+    "vienna_db": ".(((((.(......).))))).........",
+    "vienna_mfe": -3.0,
+    "our_db": ".(((((..........))))).........",
+    "our_energy": -2.0000000000000004,
+    "match": false
+  },
+  {
+    "seq": "UAAUAGCGCUUCAUCACUUGCAUGGAUGAA",
+    "n": 30,
+    "vienna_db": "..........(((((.(......)))))).",
+    "vienna_mfe": -4.699999809265137,
+    "our_db": ".........((((((.........))))))",
+    "our_energy": -3.5,
+    "match": false
+  },
+  {
+    "seq": "CCUGGCUGAAAACUAAGCGGGAUCACAUUC",
+    "n": 30,
+    "vienna_db": ".((.(((........))).)).........",
+    "vienna_mfe": -6.5,
+    "our_db": "....(((........)))............",
+    "our_energy": -1.4,
+    "match": false
+  },
+  {
+    "seq": "GACGUAUAGAGACUAAUAUGCCUCUCAACG",
+    "n": 30,
+    "vienna_db": "..(((..((((.(......).))))..)))",
+    "vienna_mfe": -5.400000095367432,
+    "our_db": ".......((((..........)))).....",
+    "our_energy": -1.6000000000000005,
+    "match": false
+  },
+  {
+    "seq": "CACAGGCAGUCUCAAUAAAUAGCGUUAGUC",
+    "n": 30,
+    "vienna_db": "..............................",
+    "vienna_mfe": 0.0,
+    "our_db": "..............................",
+    "our_energy": 0.0,
+    "match": true
+  },
+  {
+    "seq": "UGCCACAAUUAGAGCCCAGACUCCUGCGUU",
+    "n": 30,
+    "vienna_db": "............(((.(((....))).)))",
+    "vienna_mfe": -2.5999999046325684,
+    "our_db": "................(((....)))....",
+    "our_energy": -0.20000000000000062,
+    "match": false
+  },
+  {
+    "seq": "UAGAUCACAGCAUUGGAUCAAUGCGAAUGA",
+    "n": 30,
+    "vienna_db": "....(((..((((((...))))))...)))",
+    "vienna_mfe": -6.300000190734863,
+    "our_db": ".........((((((...))))))......",
+    "our_energy": -4.6,
+    "match": false
+  },
+  {
+    "seq": "AGUUCCCGCCGCUAUUAUAUGGCGACUGCG",
+    "n": 30,
+    "vienna_db": "......(((((((((...))))))...)))",
+    "vienna_mfe": -7.0,
+    "our_db": "......(((((........)))))......",
+    "our_energy": -5.699999999999999,
+    "match": false
+  },
+  {
+    "seq": "CAAUCAUCUAUCGACCUAGGUAGAUAAAUU",
+    "n": 30,
+    "vienna_db": ".....(((((((......))))))).....",
+    "vienna_mfe": -7.0,
+    "our_db": ".....(((((((......))))))).....",
+    "our_energy": -4.9,
+    "match": true
+  },
+  {
+    "seq": "UGCACAAAUGUACAAGAUGGGAGGUCUUCC",
+    "n": 30,
+    "vienna_db": "((((....)))).(((((.....)))))..",
+    "vienna_mfe": -2.4000000953674316,
+    "our_db": "..................((((....))))",
+    "our_energy": -2.2,
+    "match": false
+  },
+  {
+    "seq": "GUAUCGGGAACGUGUUAGCGGCCGCUACUA",
+    "n": 30,
+    "vienna_db": "(((.(((...(((....))).))).)))..",
+    "vienna_mfe": -7.099999904632568,
+    "our_db": "....((....))...((((....))))...",
+    "our_energy": -2.5,
+    "match": false
+  },
+  {
+    "seq": "CAGCUUAUUCAUGCUUUCCACUUGCUGAAA",
+    "n": 30,
+    "vienna_db": "((((...................))))...",
+    "vienna_mfe": -3.5999999046325684,
+    "our_db": "((((...................))))...",
+    "our_energy": -2.5000000000000004,
+    "match": true
+  },
+  {
+    "seq": "UUAGACUUCUCAAUUACACGACCCUUGGCU",
+    "n": 30,
+    "vienna_db": "..............................",
+    "vienna_mfe": 0.0,
+    "our_db": "..............................",
+    "our_energy": 0.0,
+    "match": true
+  },
+  {
+    "seq": "CUUGCCUUAGAUCUAGUCAUCCUACGACUU",
+    "n": 30,
+    "vienna_db": "..............((((.......)))).",
+    "vienna_mfe": -2.200000047683716,
+    "our_db": "..............((((.......)))).",
+    "our_energy": -2.2,
+    "match": true
+  },
+  {
+    "seq": "ACCAAAGGGUGGGCGAGUUGAACACCAACU",
+    "n": 30,
+    "vienna_db": ".......((((..(.....)..))))....",
+    "vienna_mfe": -6.699999809265137,
+    "our_db": "(((....))).....(((((.....)))))",
+    "our_energy": -4.3999999999999995,
+    "match": false
+  },
+  {
+    "seq": "GUAACGAGUGUAACUUGCCCUAAGGUACAGACGUAAUUCA",
+    "n": 40,
+    "vienna_db": "...(((..((((.(((......)))))))..)))......",
+    "vienna_mfe": -7.5,
+    "our_db": "....(((((...))))).......................",
+    "our_energy": -2.1999999999999997,
+    "match": false
+  },
+  {
+    "seq": "GACGGGCAGUCGCUGACGGCUCAUAACGUAGGGUGCAGAU",
+    "n": 40,
+    "vienna_db": "(((.....))).(((.((.(((........))))))))..",
+    "vienna_mfe": -7.699999809265137,
+    "our_db": "....(((....))).(((........)))...........",
+    "our_energy": -4.1,
+    "match": false
+  },
+  {
+    "seq": "AGUUUUUAGAGUUCCAAGGCCGAGAGUUAAACCGCGGGAU",
+    "n": 40,
+    "vienna_db": "..........(((((..((............))..)))))",
+    "vienna_mfe": -4.400000095367432,
+    "our_db": "..........(((((....................)))))",
+    "our_energy": -0.3999999999999997,
+    "match": false
+  },
+  {
+    "seq": "CGUGAGCUAGCCACCCCGAUUCGCCGAUGUGGCAUACGUA",
+    "n": 40,
+    "vienna_db": ".........(((((..((......))..))))).......",
+    "vienna_mfe": -9.899999618530273,
+    "our_db": ".........(((((..............))))).......",
+    "our_energy": -3.8000000000000003,
+    "match": false
+  },
+  {
+    "seq": "UUUAUAGACUCCGGAAUCGGUGCCUCACAGAUUUUUCGAA",
+    "n": 40,
+    "vienna_db": "...........(((((((.(((...))).)))..))))..",
+    "vienna_mfe": -4.800000190734863,
+    "our_db": "...........(((((.................)))))..",
+    "our_energy": -2.399999999999999,
+    "match": false
+  },
+  {
+    "seq": "GUUAUCCCGGCGCUGCGAACCCAGACCCCCCUUUAGCUAG",
+    "n": 40,
+    "vienna_db": "((((....((.((((......))).).))....))))...",
+    "vienna_mfe": -5.099999904632568,
+    "our_db": "........(((........................)))..",
+    "our_energy": -0.7000000000000002,
+    "match": false
+  },
+  {
+    "seq": "CCGGGAUCUGCCUUCAGUCUCAUCUCGCCCCGAGAAGUAG",
+    "n": 40,
+    "vienna_db": "..((((.(((....))))))).(((((...))))).....",
+    "vienna_mfe": -9.199999809265137,
+    "our_db": "..(((((.........))))).(((((...))))).....",
+    "our_energy": -5.799999999999999,
+    "match": false
+  },
+  {
+    "seq": "CGAUUUCGGUCUAGCUCAAGCUUUGAUGGGGGGAAUCACU",
+    "n": 40,
+    "vienna_db": ".((((((.(((.(((....)))..))).)...)))))...",
+    "vienna_mfe": -7.400000095367432,
+    "our_db": "............(((....))).((((.......))))..",
+    "our_energy": -1.9000000000000004,
+    "match": false
+  },
+  {
+    "seq": "AAUUCCUAGCUAACCGCGUCGCUUGAUUUUAUACAGCAAA",
+    "n": 40,
+    "vienna_db": "........(((......(((....))).......)))...",
+    "vienna_mfe": -1.899999976158142,
+    "our_db": ".......(((..........))).................",
+    "our_energy": -0.40000000000000036,
+    "match": false
+  },
+  {
+    "seq": "AAAGGGACGUUACGACUGAACAAGUUCUCGCUAGUGCUAA",
+    "n": 40,
+    "vienna_db": "...(((((...............))))).((....))...",
+    "vienna_mfe": -4.0,
+    "our_db": "...(((((...............)))))............",
+    "our_energy": -3.9000000000000004,
+    "match": false
+  },
+  {
+    "seq": "AAGUAAACUGCCGAAUACCCGAAAAUUCCGCACCUAGGGC",
+    "n": 40,
+    "vienna_db": "........(((.((((........)))).)))........",
+    "vienna_mfe": -4.599999904632568,
+    "our_db": ".........(((.........................)))",
+    "our_energy": -0.6000000000000001,
+    "match": false
+  },
+  {
+    "seq": "GGGUAUAUAGGGUGCAUGGAGGAACCAUCAGUGCGUAAUG",
+    "n": 40,
+    "vienna_db": ".........(.((((((((.....))))..)))).)....",
+    "vienna_mfe": -5.199999809265137,
+    "our_db": "...............((((.....))))............",
+    "our_energy": -2.1,
+    "match": false
+  },
+  {
+    "seq": "GUAGCUCCAUGGUAGGGAGGCAGAAGGAAACUGCCAUGCG",
+    "n": 40,
+    "vienna_db": ".......((((((((...............))))))))..",
+    "vienna_mfe": -10.5,
+    "our_db": ".......((((((((...............))))))))..",
+    "our_energy": -8.7,
+    "match": true
+  },
+  {
+    "seq": "CGAAUACCCCAAUGUGACUUAGUGUCAGAAGGUGAAGGUU",
+    "n": 40,
+    "vienna_db": ".....(((((..(.((((.....)))).).))....))).",
+    "vienna_mfe": -6.0,
+    "our_db": "..............((((.....)))).............",
+    "our_energy": -3.1,
+    "match": false
+  },
+  {
+    "seq": "UAGCGGUCGCCGUUGCCUUUCCUUCACGGCGAAAGUAAUC",
+    "n": 40,
+    "vienna_db": "..((..(((((((............)))))))..))....",
+    "vienna_mfe": -12.0,
+    "our_db": "......(((((((............)))))))........",
+    "our_energy": -10.200000000000001,
+    "match": false
+  },
+  {
+    "seq": "UCCUACUACGAUGUCAGGGCAACUGUCUUCGUAUUAGAGC",
+    "n": 40,
+    "vienna_db": "..(((.(((((.(.(((.....))).).))))).)))...",
+    "vienna_mfe": -12.100000381469727,
+    "our_db": "...............(((((....)))))...........",
+    "our_energy": -4.4,
+    "match": false
+  },
+  {
+    "seq": "CUUCACGUAUCACGCACUUAUGGACUUCCCCUGAACGUUA",
+    "n": 40,
+    "vienna_db": "....((((.(((.........((......)))))))))..",
+    "vienna_mfe": -2.5999999046325684,
+    "our_db": "....((((..........................))))..",
+    "our_energy": -0.8000000000000003,
+    "match": false
+  },
+  {
+    "seq": "CGAGCCACGGACUCAAUAAUUGAUGAUAGCAAAAUCAUCG",
+    "n": 40,
+    "vienna_db": ".((((....).))).......((((((......)))))).",
+    "vienna_mfe": -7.599999904632568,
+    "our_db": "....................(((((((......)))))))",
+    "our_energy": -5.2,
+    "match": false
+  },
+  {
+    "seq": "GGGGCAGAAAAACACCACGGGAGUUUGCUCCAUAAAGACU",
+    "n": 40,
+    "vienna_db": "((((((((....(.....)....)))))))).........",
+    "vienna_mfe": -10.600000381469727,
+    "our_db": "((((((((...............)))))))).........",
+    "our_energy": -10.0,
+    "match": false
+  },
+  {
+    "seq": "CUGUUUUCUAUAGACACAUGCCUUACAUCGGCCUCCGUAC",
+    "n": 40,
+    "vienna_db": ".(((((.....)))))...(((.......)))........",
+    "vienna_mfe": -4.5,
+    "our_db": ".(((((.....)))))............(((...)))...",
+    "our_energy": -3.2999999999999994,
+    "match": false
+  },
+  {
+    "seq": "UUGCCUCGGGCCGAUACUUCAAAAGUACGUCGUCUGAGCA",
+    "n": 40,
+    "vienna_db": ".(((.((((((((.(((((...)))))))..)))))))))",
+    "vienna_mfe": -12.0,
+    "our_db": "....(((((((....................)))))))..",
+    "our_energy": -7.300000000000001,
+    "match": false
+  },
+  {
+    "seq": "UUUGUUUGCAUGUACCUAUCGGGAACACCUGGCACGUGCC",
+    "n": 40,
+    "vienna_db": ".......((((((.((....(((....))))).)))))).",
+    "vienna_mfe": -10.199999809265137,
+    "our_db": "..................(((((....)))))........",
+    "our_energy": -4.9,
+    "match": false
+  },
+  {
+    "seq": "GGAUGUUACUUUUCAUGCAGGGUUGAUAUUUAUAUCUGAC",
+    "n": 40,
+    "vienna_db": "((((((......(((........))).....))))))...",
+    "vienna_mfe": -5.0,
+    "our_db": "((((((.........................))))))...",
+    "our_energy": -1.6,
+    "match": false
+  },
+  {
+    "seq": "AUGGGUUGUUCUCGAUGGUAAUGUAUGAAAGUAGGCAGUG",
+    "n": 40,
+    "vienna_db": ".....(((((..(..(.(((...))).)..)..)))))..",
+    "vienna_mfe": -1.2000000476837158,
+    "our_db": ".((((.....))))..........................",
+    "our_energy": -2.4000000000000004,
+    "match": false
+  },
+  {
+    "seq": "GCAGUCGUACGCUAAAAGUCGCAUGCCGCCGUGGUCGCCC",
+    "n": 40,
+    "vienna_db": "((.((.(((.((........)).))).)).))........",
+    "vienna_mfe": -4.599999904632568,
+    "our_db": ".................(((((........))))).....",
+    "our_energy": -2.1,
+    "match": false
+  },
+  {
+    "seq": "GUAUGUAUGCAUGAAUGGAACUCAAGGCAUGGAUCUAUUA",
+    "n": 40,
+    "vienna_db": "..((.(((((.(((.......)))..))))).))......",
+    "vienna_mfe": -6.5,
+    "our_db": ".....(((((................))))).........",
+    "our_energy": -1.6,
+    "match": false
+  },
+  {
+    "seq": "CUAUACGCGGUAAACCCCUUGGACUGAACCACCGGGUCGG",
+    "n": 40,
+    "vienna_db": ".............((((..(((......)))..))))...",
+    "vienna_mfe": -8.100000381469727,
+    "our_db": ".......((((...................))))......",
+    "our_energy": -2.1999999999999997,
+    "match": false
+  },
+  {
+    "seq": "AGACAGUUCGCACUCAGCAUGCCUCUUGUUUCUUUUCUAA",
+    "n": 40,
+    "vienna_db": ".(((((...(((.......)))...)))))..........",
+    "vienna_mfe": -3.299999952316284,
+    "our_db": "((((((...................)))))).........",
+    "our_energy": -1.5,
+    "match": false
+  },
+  {
+    "seq": "AGAAGCCGCGUCGUUAGGACGUGAGCAAUGACCCUCUCGC",
+    "n": 40,
+    "vienna_db": "....((((((((.....)))))).))..............",
+    "vienna_mfe": -12.0,
+    "our_db": "......((((((.....)))))).................",
+    "our_energy": -8.7,
+    "match": false
+  },
+  {
+    "seq": "CUGGUGCCGCGUUUACUGGUUUGAUGGUCGCCAGAUAUCG",
+    "n": 40,
+    "vienna_db": "(((((((((((..........)).))).))))))......",
+    "vienna_mfe": -11.399999618530273,
+    "our_db": "((((((......................))))))......",
+    "our_energy": -4.1,
+    "match": false
+  },
+  {
+    "seq": "AGCCCCCCAGACUUCCCGGAGCGUUCGGAAUCUCCCCGCG",
+    "n": 40,
+    "vienna_db": ".((.....(((.((((.(((...))))))))))....)).",
+    "vienna_mfe": -5.0,
+    "our_db": "...............(((((...)))))............",
+    "our_energy": -3.6999999999999997,
+    "match": false
+  },
+  {
+    "seq": "CGGUUAUUCAUUGAAAGAAGAACUAGCUUCGUUUAACCGG",
+    "n": 40,
+    "vienna_db": "((((((..(.......((((......)))))..)))))).",
+    "vienna_mfe": -8.100000381469727,
+    "our_db": "((((((...........................)))))).",
+    "our_energy": -5.0,
+    "match": false
+  },
+  {
+    "seq": "CGUUGGCCGUAGCCGCUCAAUCCGAGGCAGCUACUGGGUU",
+    "n": 40,
+    "vienna_db": "......(((((((.(((........))).))))).))...",
+    "vienna_mfe": -12.0,
+    "our_db": "...((((....))))...((((((..........))))))",
+    "our_energy": -5.2,
+    "match": false
+  },
+  {
+    "seq": "GGUCAGUCCCGUAUUCAGGCGUCAUAAUACCUGAUAUAGU",
+    "n": 40,
+    "vienna_db": "((......))....(((((.((....)).)))))......",
+    "vienna_mfe": -5.599999904632568,
+    "our_db": "..............(((((..........)))))......",
+    "our_energy": -4.4,
+    "match": false
+  },
+  {
+    "seq": "CGCGCGACAUACGAGUUCGAAUGGUAUGAUGGCCUAACGC",
+    "n": 40,
+    "vienna_db": "...((.((((((.(.......).))))).).)).......",
+    "vienna_mfe": -7.599999904632568,
+    "our_db": ".......(((((...........)))))............",
+    "our_energy": -1.7999999999999998,
+    "match": false
+  },
+  {
+    "seq": "UCAUAUGCAUCAGUAAGUCAUUGACAACUAUGUCCGUAGC",
+    "n": 40,
+    "vienna_db": "......((((.(((..(((...))).))))))).......",
+    "vienna_mfe": -3.700000047683716,
+    "our_db": ".........(((((.....)))))................",
+    "our_energy": -1.4999999999999996,
+    "match": false
+  },
+  {
+    "seq": "UCAGGCGUUCCGCUAUGCCCGAGUACUCAGUGUCCGCAAA",
+    "n": 40,
+    "vienna_db": "((.(((((......))))).))..................",
+    "vienna_mfe": -7.199999809265137,
+    "our_db": "...(((((......))))).....................",
+    "our_energy": -5.6,
+    "match": false
+  },
+  {
+    "seq": "AUUAUAGUAAGGCACUAAUGAGACGCACAACAUAAUGUUU",
+    "n": 40,
+    "vienna_db": "(((((.((...((...........))...)))))))....",
+    "vienna_mfe": -1.5,
+    "our_db": "....((((.....))))...(((((..........)))))",
+    "our_energy": -0.699999999999999,
+    "match": false
+  },
+  {
+    "seq": "UGACGGAUUGCUGCCCCGGCUUGCCGGGAACAUCACUUCA",
+    "n": 40,
+    "vienna_db": "....(((.((.((.(((((....)))))..)).)).))).",
+    "vienna_mfe": -10.899999618530273,
+    "our_db": "...(((....))).(((((....)))))............",
+    "our_energy": -7.300000000000001,
+    "match": false
+  },
+  {
+    "seq": "CUAAGCUUCCUUCCAGUACGUGACAGAACCGGAUAGACAC",
+    "n": 40,
+    "vienna_db": ".......((..(((.((.(......).)).)))..))...",
+    "vienna_mfe": -4.900000095367432,
+    "our_db": "........................................",
+    "our_energy": 0.0,
+    "match": false
+  },
+  {
+    "seq": "UCUUAGGAUGCGUUCAGAGCAGGUUGUGGUUUACGCAAGGCCUCCACUCGUGAUUCUAAA",
+    "n": 60,
+    "vienna_db": "..((((((((((....(((....(((((.....)))))...)))....))).))))))).",
+    "vienna_mfe": -14.899999618530273,
+    "our_db": "........(((.......)))..(((((.....)))))......................",
+    "our_energy": -5.5,
+    "match": false
+  },
+  {
+    "seq": "UUCACACGGACUUUCGUAGACUACUCAGAAGCCAACGUGACGAUUGAAUCCGGUACCCCU",
+    "n": 60,
+    "vienna_db": "...((.(((((..((((..((...............)).))))..)..))))))......",
+    "vienna_mfe": -7.800000190734863,
+    "our_db": ".....((((....))))...........................................",
+    "our_energy": -2.8000000000000003,
+    "match": false
+  },
+  {
+    "seq": "CACGACUUCGUAGUGUUGCCGUUUUUCUGUUCAAUCUACGGCGCUUAUUACUUUACAGUG",
+    "n": 60,
+    "vienna_db": "(((......((((((.((((((...............))))))..))))))......)))",
+    "vienna_mfe": -12.800000190734863,
+    "our_db": ".(((....))).....((((((...............)))))).................",
+    "our_energy": -8.2,
+    "match": false
+  },
+  {
+    "seq": "CUGGGUUUUAGACGUUUAUGGCGUGGAGCGAAGGAUGAGAUCGGCCGUGCAUGGAAUUGG",
+    "n": 60,
+    "vienna_db": "...((((.....(((((.(.((.....)).).))))).....))))..............",
+    "vienna_mfe": -8.800000190734863,
+    "our_db": "....................((((((..................))))))..........",
+    "our_energy": -5.0,
+    "match": false
+  },
+  {
+    "seq": "CGAUGUGACCUAAAGCAGUGGAUCUUUUAGCCGCUAUUACAGGGAGUUGGGGAAUCUAUU",
+    "n": 60,
+    "vienna_db": "...(((........)))((((((.((((((((.((.....)).).))))))).)))))).",
+    "vienna_mfe": -10.600000381469727,
+    "our_db": "................(((((.........)))))............((((...))))..",
+    "our_energy": -3.9000000000000004,
+    "match": false
+  },
+  {
+    "seq": "ACAUACCAAAGUUCUGCAACCCGAGACGUACCGUUAAAGCGCCCUGGGUUCUAAAGAUGG",
+    "n": 60,
+    "vienna_db": ".....(((....(((..((((((.(.(((.........))).).))))))....))))))",
+    "vienna_mfe": -10.600000381469727,
+    "our_db": ".................((((((.....................))))))..........",
+    "our_energy": -3.3000000000000007,
+    "match": false
+  },
+  {
+    "seq": "ACCUAUCCACCCAACCGAUUCCGGAUGUGCGGACCAUCCAUCACGUGUACCACGAGUCGC",
+    "n": 60,
+    "vienna_db": "...............((((((.(((((((.(((...)))..)))))...))..)))))).",
+    "vienna_mfe": -11.800000190734863,
+    "our_db": "...................((((......))))..........((((...))))......",
+    "our_energy": -7.299999999999999,
+    "match": false
+  },
+  {
+    "seq": "UCUACAUAGAGUUCGCCUAUUAGGAACAACGAACACUCUUCCCGACUUCAAAUCCCUCUU",
+    "n": 60,
+    "vienna_db": ".......(((((((((((...))).....)))..))))).....................",
+    "vienna_mfe": -5.300000190734863,
+    "our_db": "..........(((((..............)))))..........................",
+    "our_energy": -3.3,
+    "match": false
+  },
+  {
+    "seq": "ACCGAUAGAAGAAGGUGCCCUAGUAGAGCGGUUUCCGUCCGGAAGACGGUCCUAGACACG",
+    "n": 60,
+    "vienna_db": "..............(((..((((..((.((..((((....))))..)).)))))).))).",
+    "vienna_mfe": -15.0,
+    "our_db": "((((........................))))..(((((.....)))))...........",
+    "our_energy": -7.2,
+    "match": false
+  },
+  {
+    "seq": "GGUUUGGACUGGCUUAGAGCAGUCGAAGCGAAUUAUUGCGGUUCCCGCAAGUCACAACAC",
+    "n": 60,
+    "vienna_db": ".((((.(((((........))))).))))......((((((...))))))..........",
+    "vienna_mfe": -19.5,
+    "our_db": "......(((((........)))))...........((((((...))))))..........",
+    "our_energy": -13.8,
+    "match": false
+  },
+  {
+    "seq": "AUGGCGGGGUUGUUGCGUCUUAAAUGGUAUGGGUGGGGCUUGAGUCGCAAGCAGAUCGAA",
+    "n": 60,
+    "vienna_db": "....(((..((((((((.((((...(((.........))))))).))).))))).)))..",
+    "vienna_mfe": -12.100000381469727,
+    "our_db": "..((((.........))))..................(((((.....)))))........",
+    "our_energy": -8.399999999999999,
+    "match": false
+  },
+  {
+    "seq": "UGACACAGGGCGCCCUACCAGUACACGAUACCUCCCAAUUGCUCUGUACAUUGGGUGUUC",
+    "n": 60,
+    "vienna_db": ".......((((((((.....(((((((((........))))...)))))...))))))))",
+    "vienna_mfe": -15.199999809265137,
+    "our_db": "....((((((((...........................)))))))).............",
+    "our_energy": -9.5,
+    "match": false
+  },
+  {
+    "seq": "ACAAUGGGCGUGGGCUGACGGCAACGCCCCACGGUUCUCAAAAGAAGCUCCUAAAAUAAA",
+    "n": 60,
+    "vienna_db": ".....((((((..(((...))).))))))...(.((((....)))).)............",
+    "vienna_mfe": -15.899999618530273,
+    "our_db": ".....((((((............)))))).....((((....))))..............",
+    "our_energy": -10.7,
+    "match": false
+  },
+  {
+    "seq": "UGUAUCCGAGCGCCUACAGGCACCUGAGUGUGAUGUAGCAAAACGAGUAAGCUCGAGGGG",
+    "n": 60,
+    "vienna_db": "......(((((..(((((.((((....))))..)))))............))))).....",
+    "vienna_mfe": -14.199999809265137,
+    "our_db": "......(((((.......................................))))).....",
+    "our_energy": -5.32,
+    "match": false
+  },
+  {
+    "seq": "AUAGGACCCGAACCAGCUUAGUCGACGAGUUAUAUGGACGGAACACAGAUGUUAAUGAGA",
+    "n": 60,
+    "vienna_db": ".......(((..(((((((.......))))....))).)))((((....)))).......",
+    "vienna_mfe": -6.199999809265137,
+    "our_db": "..............(((((.......))))).....((((.........)))).......",
+    "our_energy": -1.0999999999999996,
+    "match": false
+  },
+  {
+    "seq": "UUAUACAGUAAAGUAUGCGCAUCUAUCAACUGUCUGUAUAGUAGAAAUACGGUUUCGGUU",
+    "n": 60,
+    "vienna_db": ".(((((......)))))..........(((((.((((((.......))))))...)))))",
+    "vienna_mfe": -8.600000381469727,
+    "our_db": "((((((((.........................))))))))...................",
+    "our_energy": -4.199999999999999,
+    "match": false
+  },
+  {
+    "seq": "AUGACCGAUUAACUGUCAUAUGGUUAACCUGCCGAAAUUAGAAUGCGUCUACUAUGUGUA",
+    "n": 60,
+    "vienna_db": "................((((((((..(((...............).))..))))))))..",
+    "vienna_mfe": -7.0,
+    "our_db": "(((((.........))))).((((......))))........((((((.....)))))).",
+    "our_energy": -4.8,
+    "match": false
+  },
+  {
+    "seq": "GGAGUUGUGCUGUCCUCUAACUAGGGUCUCUUUAGGUGGCAGUUCGUUAGAAGAGGGAGG",
+    "n": 60,
+    "vienna_db": ".........((.((.((((((....(((.((...)).))).....)))))).)).))...",
+    "vienna_mfe": -12.300000190734863,
+    "our_db": "((((..........))))........(((((((................)))))))....",
+    "our_energy": -4.9,
+    "match": false
+  },
+  {
+    "seq": "UAAGUUCCUAAGCUGAGGUGUCGAAGCACGCUACACAAGCGACCUAUUCUAGUUCCCGCA",
+    "n": 60,
+    "vienna_db": "...........((.(((.((....((..((((.....))))..))....)).)))..)).",
+    "vienna_mfe": -7.199999809265137,
+    "our_db": "...........(((..........))).((((.....))))...................",
+    "our_energy": -3.8999999999999995,
+    "match": false
+  },
+  {
+    "seq": "ACCGGAGCGCAUGAAGUCAAUCAUGUUACGUGCGGACUAAUCGCCGGGCUCUCUGCCAUC",
+    "n": 60,
+    "vienna_db": "...(((((((((((......))))))..((.((((.....)))))).)))))........",
+    "vienna_mfe": -15.199999809265137,
+    "our_db": "........((((((......)))))).....((((.....))))..(((.....)))...",
+    "our_energy": -10.899999999999999,
+    "match": false
+  },
+  {
+    "seq": "CGUUCUUUUUAACUGCCUUACCUCGUCAAGGUGCUACCGCUGCAGAUACAGUGCACAUUC",
+    "n": 60,
+    "vienna_db": "..............(((((........))))).....(((((......))))).......",
+    "vienna_mfe": -8.399999618530273,
+    "our_db": ".............((((((........))))))....(((((......))))).......",
+    "our_energy": -7.6,
+    "match": false
+  },
+  {
+    "seq": "UAAGAGUGCACGUGCGCACCCCGAUGGGCUGGUAUUCGCAGAAGCGUGUUUGCGACCGGU",
+    "n": 60,
+    "vienna_db": ".....((((....)))).(((....)))((((...(((((((......))))))))))).",
+    "vienna_mfe": -18.899999618530273,
+    "our_db": ".....((((......))))................(((((((......))))))).....",
+    "our_energy": -12.7,
+    "match": false
+  },
+  {
+    "seq": "AAUCCGACGUGUAACGACGGCGACACUAUCGUCUACCGCACCAUUAUCCCCCACUAUCCG",
+    "n": 60,
+    "vienna_db": "........((((...(((((........)))))....))))...................",
+    "vienna_mfe": -7.599999904632568,
+    "our_db": "...............(((((........)))))...........................",
+    "our_energy": -4.699999999999999,
+    "match": false
+  },
+  {
+    "seq": "GCUAUUUUAGGAAUAGCCCUGCUCAAUUUUCUUUAGAAAGGAUAAAGACAACAAAUUUCA",
+    "n": 60,
+    "vienna_db": "(((((((...)))))))............((((((.......))))))............",
+    "vienna_mfe": -8.0,
+    "our_db": "(((((((...)))))))............((((((.......))))))............",
+    "our_energy": -6.5,
+    "match": true
+  },
+  {
+    "seq": "AUCCCUUAAAUUCUAAUGCUGAUCGGUUGACAGAUGCCAACGAGCGCGUGCGUAGCUAGA",
+    "n": 60,
+    "vienna_db": ".................(((....(((........)))....)))((.......))....",
+    "vienna_mfe": -7.300000190734863,
+    "our_db": ".........................((((........)))).(((.........)))...",
+    "our_energy": -3.5,
+    "match": false
+  },
+  {
+    "seq": "GGAAUGGAUACUCUGAUGGCCGCGGGCUGAACGGUUAAAAGAUGCUCAAGGUCGGCCAAG",
+    "n": 60,
+    "vienna_db": "................(((((((((((................))))...).))))))..",
+    "vienna_mfe": -13.300000190734863,
+    "our_db": "................((((((..............................))))))..",
+    "our_energy": -7.6,
+    "match": false
+  },
+  {
+    "seq": "AGGCGGGAAUCUGGUCGGAGGGUAGCGGCCCAAAUCCACGAGCCGCAUUUCAACACUACA",
+    "n": 60,
+    "vienna_db": "..((((....((.((.(((((((....))))...))))).))))))..............",
+    "vienna_mfe": -17.0,
+    "our_db": "...(((........))).......(((((............)))))..............",
+    "our_energy": -8.999999999999998,
+    "match": false
+  },
+  {
+    "seq": "GGGCAGACGGCAGAUCGCUCCGUGAUCCACGUAACCAGGUCACCGCUGGCGUAUGUGCGA",
+    "n": 60,
+    "vienna_db": "(.(((.(((.(((..((....((((((..........))))))))))).))).))).)..",
+    "vienna_mfe": -17.0,
+    "our_db": "((((............)))).((((((..........))))))(((..........))).",
+    "our_energy": -8.799999999999999,
+    "match": false
+  },
+  {
+    "seq": "UCGUUUCGGCAUGCCUCUGUAUUAUCGGGGAUUCUACCUAGAAACCAGCAGUUAACGAUA",
+    "n": 60,
+    "vienna_db": "(((((..(((.((((((((......))))).((((....))))....)))))))))))..",
+    "vienna_mfe": -10.600000381469727,
+    "our_db": "..........................(((.......))).....................",
+    "our_energy": -2.4,
+    "match": false
+  },
+  {
+    "seq": "CCGUGUUAUUCGGCAGCACGGUCUCGCCAAAUCGCCAUGGAGCCAUCUUGCGACAGGGCG",
+    "n": 60,
+    "vienna_db": "(((((((.......)))))))...((((...((((...(((....))).))))...))))",
+    "vienna_mfe": -20.600000381469727,
+    "our_db": "(((((((.......)))))))...........((((....................))))",
+    "our_energy": -10.499999999999998,
+    "match": false
+  },
+  {
+    "seq": "AUCACGCGAAUGUAGUCCAAUUUGCGGUCUCCUAGCUGGUAAUAGUCUAGGCUACUAAGG",
+    "n": 60,
+    "vienna_db": "....(((((((........)))))))((..((((((((....))).)))))..)).....",
+    "vienna_mfe": -16.600000381469727,
+    "our_db": "....(((((((........)))))))......(((((............)))))......",
+    "our_energy": -10.1,
+    "match": false
+  },
+  {
+    "seq": "GAUUUCCGGUGUUCUGUGUACCUGUCGAAGUCGUGGCAAAACUGCAACGCGCUAUCUGCG",
+    "n": 60,
+    "vienna_db": "(((((((((.((.......)))))..))))))((.(((....))).)).(((.....)))",
+    "vienna_mfe": -12.0,
+    "our_db": ".......(((((.....)))))(((((......))))).........((((.....))))",
+    "our_energy": -8.299999999999999,
+    "match": false
+  },
+  {
+    "seq": "UACGUCACAUGCCGCCCCGUCGUGAUUAUUAGCUGGAGAGCGGGAUACAUCUUCUAUGAU",
+    "n": 60,
+    "vienna_db": "........((.((((((((.(..........).))).).)))).))..............",
+    "vienna_mfe": -10.199999809265137,
+    "our_db": "...(((((.............)))))........(((((..........)))))......",
+    "our_energy": -5.300000000000001,
+    "match": false
+  },
+  {
+    "seq": "GACACAGCACUAAGGGCACAGCUUACCAAGAGCUUGAAUUGGCUACGGCUCACUGGGGCG",
+    "n": 60,
+    "vienna_db": "......((.(((.((((..((((...(((....)))....))))...))))..))).)).",
+    "vienna_mfe": -11.300000190734863,
+    "our_db": "...................(((((.....)))))......(((....)))..........",
+    "our_energy": -6.4,
+    "match": false
+  },
+  {
+    "seq": "AGCUGGAACGUUGACGGAGCUUCUGCAAAAGGAGCCCAAAGUUGAAGCCGGCCUUUACAG",
+    "n": 60,
+    "vienna_db": ".(((((....(((((((.((((((.....))))))))...)))))..)))))........",
+    "vienna_mfe": -19.200000762939453,
+    "our_db": "..................((((((.....)))))).......(((((.....)))))...",
+    "our_energy": -6.699999999999999,
+    "match": false
+  },
+  {
+    "seq": "AAGAAUGGGGCCGCAUUAUAAUAUGUUGUACGUGGAAUUGGGAGUUCGACAAGGGCAGGG",
+    "n": 60,
+    "vienna_db": ".........(((((((......)))).....((.(((((...))))).))...)))....",
+    "vienna_mfe": -8.899999618530273,
+    "our_db": "...((((......))))......(((((..................))))).........",
+    "our_energy": -2.9999999999999996,
+    "match": false
+  },
+  {
+    "seq": "GUAAGCACGGAGCGGAUCUGCGUUCGUCGGCGUUCAGUUUUGAGGCUUAACCCUUAACGA",
+    "n": 60,
+    "vienna_db": ".(((((.((((((.((..(((........))).)).))))))..)))))...........",
+    "vienna_mfe": -13.800000190734863,
+    "our_db": ".........(((((......)))))..............((((((......))))))...",
+    "our_energy": -10.7,
+    "match": false
+  },
+  {
+    "seq": "UAUGCCCACUAAGGAAAAAUAUCUCGGAUCCUAUGGAUGCCUACCGCUUGUUGGGGCAGU",
+    "n": 60,
+    "vienna_db": "..(((((..((((((........))((((((...)))).)).....))))...)))))..",
+    "vienna_mfe": -12.100000381469727,
+    "our_db": "...........((((.............)))).....(((((...........)))))..",
+    "our_energy": -4.800000000000001,
+    "match": false
+  },
+  {
+    "seq": "AAACCGUGAGAUACGGCCCACUGGUGCGUCAACGUCUACCUAACUCGAACCCAAAGCAGC",
+    "n": 60,
+    "vienna_db": "...(((((...)))))......((((((....)))..)))....................",
+    "vienna_mfe": -7.400000095367432,
+    "our_db": "...(((((...))))).........(((....))).........................",
+    "our_energy": -4.399999999999999,
+    "match": false
+  },
+  {
+    "seq": "UUCCCUGUACUCGAUGGAAAGUGUGACGGCGGGGGUUUGGUAUGGAUCAGAACCAUACCC",
+    "n": 60,
+    "vienna_db": ".(((((((((.(........).))....)))))))...(((((((.......))))))).",
+    "vienna_mfe": -17.899999618530273,
+    "our_db": ".(((((((....................)))))))...(((((((.......))))))).",
+    "our_energy": -12.5,
+    "match": false
+  },
+  {
+    "seq": "CCGAUUGACCUUGAACAAGGCGCGGUUGGGUCAGGUGCAGCAUACAAUAUGAAUACUUGACGAGACGUGACGCAAAUCUU",
+    "n": 80,
+    "vienna_db": "(((((((.((((....))))..)))))))((((((((...((((...))))..))))))))((((..((...))..))))",
+    "vienna_mfe": -19.100000381469727,
+    "our_db": "(((((((...............)))))))((((((((................))))))))...................",
+    "our_energy": -9.399999999999999,
+    "match": false
+  },
+  {
+    "seq": "CAUCGUACUAACGACUGCCGAAUUUGGACACGGAGAGUACAUUCGGAUUCUUGGAAGCUAAGCCGCUCAUACAGAUCGUC",
+    "n": 80,
+    "vienna_db": "..........((((((((((((((((((.((.....))...)))))))))..)).(((......)))....))).)))).",
+    "vienna_mfe": -13.300000190734863,
+    "our_db": "..((((....)))).....(((((((((.............))))))))).....(((......))).............",
+    "our_energy": -7.8,
+    "match": false
+  },
+  {
+    "seq": "CCGCUCCUGCAUAGAAUGGGAAAGACGCGUAAGCUGAUACCUACUUGCACGUAUGACGUUUAUAUCUCUACGAGACGGCA",
+    "n": 80,
+    "vienna_db": "((((((.((.((((((((......(((.(((((..(....)..))))).)))....))))).)))...)).))).)))..",
+    "vienna_mfe": -15.0,
+    "our_db": "................((((...................)))).....((((...)))).....((((...)))).....",
+    "our_energy": -3.9,
+    "match": false
+  },
+  {
+    "seq": "GGCAUACGGCAGUCAAUGAUUUCCAAAGGACCUAGUCACUAGAGAAAAGCAUAGACGAAAACGGAGUAGGGGACAGCUAA",
+    "n": 80,
+    "vienna_db": ".......(((.(((.......(((...)))((((.((..........................)).)))).))).)))..",
+    "vienna_mfe": -10.100000381469727,
+    "our_db": "(((........)))..(((((............)))))..........................................",
+    "our_energy": -1.0,
+    "match": false
+  },
+  {
+    "seq": "AAUUCCGGGUUUAAUCGCCUUGCCCCAUAUAGCUUUACUGGCCCGCUAGAGUAUUGUUGCGUGUACAACAAUCGUCAAUU",
+    "n": 80,
+    "vienna_db": ".....((((((.....((..((.....))..))......))))))...((..(((((((......)))))))..))....",
+    "vienna_mfe": -15.600000381469727,
+    "our_db": ".....((((((............................)))))).......(((((((......)))))))........",
+    "our_energy": -11.0,
+    "match": false
+  },
+  {
+    "seq": "CUUCUCUUUAUCAAUGACUCGUCCUGAAUUUUGCCGUAUCUCUACUGUAGAUGCGGUCCGGGCGAUUUGUGUCGGUCCAU",
+    "n": 80,
+    "vienna_db": "...............(((((((((.(......((((((((((....).)))))))))).)))))).....))).......",
+    "vienna_mfe": -20.700000762939453,
+    "our_db": "................................(((((((((.......)))))))))..((((...........))))..",
+    "our_energy": -12.8,
+    "match": false
+  },
+  {
+    "seq": "ACGCUAGCGGGGGCGCCGAUGUCACACACUAAACAUCUCCCCUUCACCCGGAGUGUUUGUGGCACUGGUGGACUUCAGCC",
+    "n": 80,
+    "vienna_db": "..(((...(((..(((((.(((((((.....((((.((((.........))))))))))))))).)))))..))).))).",
+    "vienna_mfe": -26.700000762939453,
+    "our_db": ".......(((.....))).(((((((...............................)))))))((((......))))..",
+    "our_energy": -9.87,
+    "match": false
+  },
+  {
+    "seq": "UGGGCCAAUUCGGUGAGUGACGCAUAUAGAUUAGCUUCAGACAUCGGUAUGGAGUUUCGGUCUGCUAUGAGUCGGGAACG",
+    "n": 80,
+    "vienna_db": "....(((..((((((..(((.((.((.....)))).)))..))))))..))).(((((.(.((......)).).))))).",
+    "vienna_mfe": -20.799999237060547,
+    "our_db": ".........((((((..........................)))))).......(((((((.........)))))))...",
+    "our_energy": -6.699999999999999,
+    "match": false
+  },
+  {
+    "seq": "CCGUGUUGGGUAGAUUCCAUGGACAACGGUCUAGAAGGCGUGAACAUCGGGAAUGUGCUUAAUCAGUAACUGCUUAUGAA",
+    "n": 80,
+    "vienna_db": "....((((((((.((((((((..((.((.(((...)))))))..)))..))))).)))))))).................",
+    "vienna_mfe": -17.5,
+    "our_db": "......((((.....))))(((((....)))))..(((((((...........)))))))....................",
+    "our_energy": -9.7,
+    "match": false
+  },
+  {
+    "seq": "GCGAAAGUUCUUAAGAACUAUAUUAGACCUUGGAUUACCUAGCAGUGUACCAAUGCGAUCACGUCUCGACAGGUAUAACU",
+    "n": 80,
+    "vienna_db": ".....(((((....))))).........((.((....)).))...((((((..(((((.......))).))))))))...",
+    "vienna_mfe": -10.899999618530273,
+    "our_db": ".....(((((....)))))..........((((.....))))...((((((....................))))))...",
+    "our_energy": -6.3,
+    "match": false
+  },
+  {
+    "seq": "GUAAUCGCUUGUAUGCUCCAGCAUCCUUAUUGCUGAAGAUAUUUAUUUAGGCUUUGUUCCGUCGACGGUGGGGUGAGGAC",
+    "n": 80,
+    "vienna_db": "......(((((.(((((.(((((.......))))).)).....))).))))).....(((.((.((......))))))).",
+    "vienna_mfe": -14.399999618530273,
+    "our_db": "..................(((((.......)))))................((((((((((((...))))))))))))..",
+    "our_energy": -11.4,
+    "match": false
+  },
+  {
+    "seq": "UUCGGCGCGGACUGUUUAACGGGGCGGCAGAAGUUGCCGCAGGUUGACAUCGUCUUAAAGGAUGUGCCGCGAACUCUGCA",
+    "n": 80,
+    "vienna_db": "..((.(.((..........)).).))(((((.(((..(((.(((..(((((.........))))))))))))))))))).",
+    "vienna_mfe": -26.5,
+    "our_db": "..(((......))).........(((((((...)))))))......(((((.........)))))...(((.....))).",
+    "our_energy": -14.599999999999998,
+    "match": false
+  },
+  {
+    "seq": "UGAAAGGCGUUCUUUGUAGUUUAUUCGGAUACAGACACAUGGAAACAAAUAGCGGCGCCCCUCGGACCAAGGUAACUCGG",
+    "n": 80,
+    "vienna_db": "(((..((((((((.(((.((((..........))))))).)))...........)))))..)))..((.((....)).))",
+    "vienna_mfe": -12.899999618530273,
+    "our_db": ".....(((((............................................)))))..((((...........))))",
+    "our_energy": -4.6899999999999995,
+    "match": false
+  },
+  {
+    "seq": "GUACACACGUGGACGGAGCUUAUGACGUGAGUUUUAAGAUCGCUCGAUGACUACGGGUUCACAAACUACUCGACAUGGCC",
+    "n": 80,
+    "vienna_db": ".......(((.((..((.((((.(((....))).)))).))..)).)))....(((((.........)))))........",
+    "vienna_mfe": -15.300000190734863,
+    "our_db": ".....(((((..............)))))........................(((((.........)))))........",
+    "our_energy": -9.7,
+    "match": false
+  },
+  {
+    "seq": "UUAGAGCUCUGGUCUACCACGUGCGACUUUAUGGCUAGCGGCGGACCUGAUCACGUUGGCUUUUACAUGGUAACGUAACG",
+    "n": 80,
+    "vienna_db": ".......((.(((((.((.(..((.........))..).)).))))).))..((((((.(........).))))))....",
+    "vienna_mfe": -21.700000762939453,
+    "our_db": "..........((((..........))))....((((((((.............)))))))).((((........))))..",
+    "our_energy": -12.500000000000002,
+    "match": false
+  },
+  {
+    "seq": "UGUAAUGGCUGAGGCGCAAAAAGUAGCAUGGGCUACAUGAGGAAUAUUAGCAAUUUACAAACCUGAUCACGUGCCUAAUA",
+    "n": 80,
+    "vienna_db": "...........((((((.....(((((....)))))((.(((...................))).))...))))))....",
+    "vienna_mfe": -15.699999809265137,
+    "our_db": "...........((((((.....................................................))))))....",
+    "our_energy": -6.290000000000001,
+    "match": false
+  },
+  {
+    "seq": "UUCUUUCCUGACCGUGGACGUUACUCUGUCGGAUACAAGACACCCUUCAAGUGAAUCGACCCAAUCGUCGGUCAUUUGCA",
+    "n": 80,
+    "vienna_db": ".(((((((.(((.(.(.......).).))))))...)))).......(((((((.(((((......))))))))))))..",
+    "vienna_mfe": -18.200000762939453,
+    "our_db": ".....(((.......)))........((((........))))............((((((......))))))........",
+    "our_energy": -9.6,
+    "match": false
+  },
+  {
+    "seq": "CUGGUGCGCCGUCACGCAAAUAUAACGAGUGGAGAUAGCUAGUUUACUCAGGGUCACUACCGCCUAGUCAGGACAGCCCA",
+    "n": 80,
+    "vienna_db": "....((((......))))........(((((((.........))))))).((((.....((.........))...)))).",
+    "vienna_mfe": -15.199999809265137,
+    "our_db": "....((((......))))........(((((((.........))))))).((((.......))))...............",
+    "our_energy": -9.1,
+    "match": false
+  },
+  {
+    "seq": "ACUGCAAGGUAUGAGAUCUGGCCCGUCAGGUUCGACUAUCAUGGCAUUGCAGGGUCGGUAAAUUCAUACGAGGCCGAGUU",
+    "n": 80,
+    "vienna_db": ".(((((((.(((((..((.((((.....)))).))...))))).).))))))((((.(((......)))..)))).....",
+    "vienna_mfe": -24.600000381469727,
+    "our_db": "..............(((((((....)))))))......................(((((.............)))))...",
+    "our_energy": -9.0,
+    "match": false
+  },
+  {
+    "seq": "UUCACUGUGAUUUUAUGACUUGAUAAGGCUUCGGAGACACCCCGUCAUAAACUCGCAGUCGCCCAAAUCCCCUCUGAAUA",
+    "n": 80,
+    "vienna_db": "...(((((((.((((((((..((.......))((......)).)))))))).))))))).....................",
+    "vienna_mfe": -16.200000762939453,
+    "our_db": "...........(((((......)))))..(((((((...................................)))))))..",
+    "our_energy": -6.24,
+    "match": false
+  },
+  {
+    "seq": "AUUGAACCGUUAUUGCCCGAGAGGAUCUCAAUGGAUGGGGCUUAUUAGCCUCCAUUAUCAUCUCAUUAACCCACUGCCAA",
+    "n": 80,
+    "vienna_db": "..................((((.(((...((((((...((((....))))))))))))).))))................",
+    "vienna_mfe": -16.700000762939453,
+    "our_db": "..................((((...)))).......((((((....))))))............................",
+    "our_energy": -9.8,
+    "match": false
+  },
+  {
+    "seq": "CUCUCAAGCUGUCCUGUGUGCUGAGUGUUUGUCACUUGUAUAGUGGAUAAGGAAAAUUACUAAACAUUGGUCCGUUACAA",
+    "n": 80,
+    "vienna_db": ".........(((((..(((((.(((((.....))))))))))..))))).(((.(((........)))..))).......",
+    "vienna_mfe": -16.100000381469727,
+    "our_db": "......(((..........)))(((((.....)))))...((((((((.....................))))))))...",
+    "our_energy": -9.2,
+    "match": false
+  },
+  {
+    "seq": "AACAGUAUAUGGUCCUGAGUAUACCACACAAUUGCUGUCCCACGCCAAUUCUGGGAAGCUACUUGCCGGGGCUUGGGGUG",
+    "n": 80,
+    "vienna_db": ".((((((..((((.........))))......))))))..(((.((((((((((.(((...))).)))))).)))).)))",
+    "vienna_mfe": -24.299999237060547,
+    "our_db": ".........((((.........))))...........(((((.........)))))((((.........)))).......",
+    "our_energy": -5.699999999999999,
+    "match": false
+  },
+  {
+    "seq": "AGUAUCAUACGUAACCUCGUGUUUAUAUGAGCAAAGUAUCUAUAAGUUGUCGGCGACAUAAUUAGGGCCUGUCAGUUGAU",
+    "n": 80,
+    "vienna_db": "......((((.....((((((....))))))....)))).........((((((((((...........)))).))))))",
+    "vienna_mfe": -12.399999618530273,
+    "our_db": "...............((((((....))))))....................(((............)))...........",
+    "our_energy": -5.8,
+    "match": false
+  },
+  {
+    "seq": "GUAGGCGGUACGUCAAACCAUCUAAUACUUAUCAAGAACACACCGUCGCUACGAUAGGACUUGAAUUUUCGUCCCGAGUU",
+    "n": 80,
+    "vienna_db": "...((((((...((.....................))....))))))(((.((...((((..........))))))))).",
+    "vienna_mfe": -11.899999618530273,
+    "our_db": "...((((((................................))))))..........((((((...........))))))",
+    "our_energy": -9.24,
+    "match": false
+  },
+  {
+    "seq": "AUGAAUCAGAGCUCUACCCAAUGCGCGUAGACCGGUGCCCAGGCAAUAUACGUGAUGGACGGGAAUAGGUGCACCGUGAC",
+    "n": 80,
+    "vienna_db": ".....(((..(((((((((....((((((......(((....)))...))))))......)))..)))).))....))).",
+    "vienna_mfe": -16.799999237060547,
+    "our_db": "............(((((.........))))).((((((................................))))))....",
+    "our_energy": -9.739999999999998,
+    "match": false
+  },
+  {
+    "seq": "GAUGUUCAGACGGUAUAGCCUAUACGACGGUCUAAGCCUUCGGGUGCGAUAUCCAUGUGCAGCAGUGAAUUGUGUCUUAC",
+    "n": 80,
+    "vienna_db": "..((((((.(.(((((.((((...(((.(((....))).))))).)).))).)).).)).))))................",
+    "vienna_mfe": -13.899999618530273,
+    "our_db": ".......((((..................))))........(((((((((..................)))))))))...",
+    "our_energy": -7.700000000000001,
+    "match": false
+  },
+  {
+    "seq": "CACCAGGGGCCGCAUGGCUUGGCGCAAAAAGAGAGACGUUGGAUGACGGGACUCCCCGUAGAAAUCCCUGUGUGAGUGUG",
+    "n": 80,
+    "vienna_db": "(((((((((((....)))(((((((.........).))))))...(((((....)))))......))))).)))......",
+    "vienna_mfe": -23.600000381469727,
+    "our_db": ".......((((....))))..........................(((((....))))).....................",
+    "our_energy": -12.2,
+    "match": false
+  },
+  {
+    "seq": "CUGUAUAGCUCUAAAGAUAAGAUGCUUUCUUGCACAUAAAGAAUCCUAAGCUGAGAGAGAUGGCGUUCAUAACCGAUCAU",
+    "n": 80,
+    "vienna_db": "((.(.(((((............(((......)))..............)))))).)).(((.(.(((...)))).)))..",
+    "vienna_mfe": -9.199999809265137,
+    "our_db": "......(((..............)))(((((.......))))).....................................",
+    "our_energy": -3.0,
+    "match": false
+  },
+  {
+    "seq": "AAUUCAUACUUAUCCGUACCGGGGUCUUCGACUUGGGGCCAGGUCCAGUACGCCGAAUCGUCUAUCCUCAACACUGCUAG",
+    "n": 80,
+    "vienna_db": "..............((...(((.((((..((((((....)))))).)).)).)))...))....................",
+    "vienna_mfe": -15.100000381469727,
+    "our_db": "............((((...))))......((((((....))))))....(((......)))...................",
+    "our_energy": -7.199999999999999,
+    "match": false
+  },
+  {
+    "seq": "CUUACAGGCCUUAGGACGAAGUCGUACAAGCUGAACAAGAGCCCCGACGAGCGGACAAUAAUACGUUAUCAACAAACACC",
+    "n": 80,
+    "vienna_db": ".............(..((...((((....(((.......)))....)))).))..)........................",
+    "vienna_mfe": -9.300000190734863,
+    "our_db": "...............(((....)))....(((.......))).......((((..........)))).............",
+    "our_energy": -5.0,
+    "match": false
+  },
+  {
+    "seq": "GCUUGAUCUGGAUGGCCGUACCACUUAAGAUAUGGUGACUCCGUAUUCGGUGUACGUCAUGAAUAGUCAGGCCAACGUUG",
+    "n": 80,
+    "vienna_db": "(((((((....(((((.((((.(((...(((((((.....))))))).)))))))))))).....)))))))........",
+    "vienna_mfe": -25.5,
+    "our_db": "............(((.....))).....(((((((.....)))))))......((((.................))))..",
+    "our_energy": -6.699999999999999,
+    "match": false
+  },
+  {
+    "seq": "GCAGCCAAGGUCUGUCGGAAUAUAAACUAACUGGGAUCGUUUCCCAAUGCUUCAUUCGUAGGCAUCAUACGAGUGAAACU",
+    "n": 80,
+    "vienna_db": "(((((....).))))................(((((.....)))))....((((((((((.......))))))))))...",
+    "vienna_mfe": -21.100000381469727,
+    "our_db": "((((.......))))................(((((.....)))))....((((((((((.......))))))))))...",
+    "our_energy": -18.8,
+    "match": false
+  },
+  {
+    "seq": "UUAACCGGCCGCCGACCCGACAUGUUCGAUGCUAUGACGUCCCGGCCUACAGGCCAAGUGUCUCGCACAGAUCAAGCAGC",
+    "n": 80,
+    "vienna_db": "......((((((((...((.(((((.....)).))).))...)))).....))))..((((...))))............",
+    "vienna_mfe": -17.799999237060547,
+    "our_db": "......(((((...............................)))))...((((.....)))).................",
+    "our_energy": -7.27,
+    "match": false
+  },
+  {
+    "seq": "AACUCCUACUUGACUAGCUGGGACCCUGCUUCUGUCCACGUGGAUGCCGCGGGGGAAGAUCUCUCAGUGAGGAAACACAC",
+    "n": 80,
+    "vienna_db": ".........((..((.(((((((((((((....((((....))))...)))))).......))))))).))..)).....",
+    "vienna_mfe": -22.899999618530273,
+    "our_db": "....................((((.........)))).(((((...)))))(((((...)))))..(((......)))..",
+    "our_energy": -10.7,
+    "match": false
+  },
+  {
+    "seq": "GCAAAUUGUUUCCAGUAAAUAAUUAGAGGAACGGUUCGAGUAUUUUUGGCCAGCCGGAGGGUACGAGACAGACUGGCAUC",
+    "n": 80,
+    "vienna_db": ".........((((..(((....)))..)))).(((.((((....))))))).(((((...((.....))...)))))...",
+    "vienna_mfe": -14.699999809265137,
+    "our_db": "...((((((((.....))))))))...........(((((....)))))...(((((...............)))))...",
+    "our_energy": -9.0,
+    "match": false
+  },
+  {
+    "seq": "UCGAUUCCGUCCGAGGGUCUCCGAAAUUAAGGCUUAUGGAACAAAGCAUCAGGUUUCGGCUUUGUAAAUAUACGACUGUU",
+    "n": 80,
+    "vienna_db": "..(((.((......))))).((((((((...((((........))))....))))))))..(((((....))))).....",
+    "vienna_mfe": -15.300000190734863,
+    "our_db": "(((........))).(((((.........)))))......(((((((...........)))))))...............",
+    "our_energy": -9.399999999999999,
+    "match": false
+  },
+  {
+    "seq": "GCCUAGGGAAUCAAGUACAUCCGCAUCAUCGAAGCAACGCUCAUUCAUGAACAGAGUCAAAGUCGGCUAAAUGAGAGGUG",
+    "n": 80,
+    "vienna_db": "((((..(((..........)))((.((...)).))....((((((.........((((......)))).)))))))))).",
+    "vienna_mfe": -10.0,
+    "our_db": ".......................................((((((........................)))))).....",
+    "our_energy": -1.3000000000000003,
+    "match": false
+  },
+  {
+    "seq": "GUAGACCUCGAUUAAUGAAUAAAUGUCACCUCUGGAAACUGCUGCCCUCCAACGGCAUUUCUACUAUGGAAGACCGCAAC",
+    "n": 80,
+    "vienna_db": "........................(((.((..((((((.(((((........)))))))))))....))..)))......",
+    "vienna_mfe": -12.100000381469727,
+    "our_db": ".......................................(((((........)))))((((((...))))))........",
+    "our_energy": -4.699999999999998,
+    "match": false
+  },
+  {
+    "seq": "GGAGGGAUUGUGACACACCUACGGAAGCGGCUGGUUACCAUCCGACCCCAACCCUGGAGAGACGUGAACCAGUCCCGUUU",
+    "n": 80,
+    "vienna_db": "...(((((((...(((..((.(...((.((.(((.............))).))))...)))..)))...)))))))....",
+    "vienna_mfe": -19.600000381469727,
+    "our_db": "..(((............)))........((((((((..............................))))))))......",
+    "our_energy": -10.4,
+    "match": false
+  },
+  {
+    "seq": "UAUAAUGCAUACCACAUCAAGAAUUCCGAGCUACCCGCGCAUCACUAAUCCUGAUGAAUGAAGGCCUCUCUCUGCAUGGCACACGUGGUUUGUCCCCAAG",
+    "n": 100,
+    "vienna_db": "......(((.(((((..............((.....)).(((((.......))))).......(((...........)))....))))).))).......",
+    "vienna_mfe": -16.0,
+    "our_db": "..........................((((((((..................................................))))))))........",
+    "our_energy": -3.949999999999999,
+    "match": false
+  },
+  {
+    "seq": "GUGUUGAUAGCGAUAGAUAUGGCUGUCACCAAACGGGGCGUUAUACGGCGUCAUCGCAGCCGCUUAUGCCACCUACCGGUUCCAUCUAUUAAUAGACUCG",
+    "n": 100,
+    "vienna_db": ".....((((((.((....)).))))))(((....(((((((....((((.........))))...))))).))....)))....((((....))))....",
+    "vienna_mfe": -27.200000762939453,
+    "our_db": "....(((((((..........)))))))...((((...))))...((((.........))))........(((....)))....................",
+    "our_energy": -14.5,
+    "match": false
+  },
+  {
+    "seq": "GUGCAAGGGCAUCACAUACUCCGACAGACUAAUUGUUCGUGUGCUUAUAGAGUUAGCGUCGUCUCGGGCGCAUACGGCUGAUGCACGUGGGUACCUGACC",
+    "n": 100,
+    "vienna_db": "(((((..(((....(((((...(((((.....))))).)))))........((..(((((......)))))..)).)))..)))))((.((...)).)).",
+    "vienna_mfe": -24.799999237060547,
+    "our_db": "((((....))))..........(((((.....)))))..................(((((......))))).((((.........))))(((.....)))",
+    "our_energy": -13.1,
+    "match": false
+  },
+  {
+    "seq": "CGGGGGCACGUCACGGUUUACUAAGACCAAUCUUGUCUCCGUUAAAAGGAUCCAUUACAGGUCAAAGAAUAGUCCGACCGUACGGCGAUGCGCUGAGGCA",
+    "n": 100,
+    "vienna_db": "..((.(((((((((((((.((((.((((.....((..(((.......)))..)).....))))......))))..))))))..)))).))).))......",
+    "vienna_mfe": -26.799999237060547,
+    "our_db": "((((((((.........................))))))))..................((((............))))...(((((...))))).....",
+    "our_energy": -19.6,
+    "match": false
+  },
+  {
+    "seq": "GUAGUGCGACCUAAUUGUAUGGUAGCGCCUACGACUGGCUCGGAAGAGUAUAUUGAAGGUGUGGACAGCCCCUUCUCCGGUCUUGACGUUGAACUUAGCA",
+    "n": 100,
+    "vienna_db": "(((((((.(((.........))).))).))))(((((((((....)))......(((((.((.....)).))))).)))))).....((((....)))).",
+    "vienna_mfe": -27.299999237060547,
+    "our_db": "...((((((.....)))))).((((...)))).....((((....)))).....(((((...........))))).........................",
+    "our_energy": -9.000000000000002,
+    "match": false
+  },
+  {
+    "seq": "AGUACUCAUCCGCCGCUAUAUCUCAUGCCGUUAUUAUUUGACAAUGGGCCAUGGGGCCCAUUCUGGGCAGCUACGCGUUGCUAUGCUACCACCACACGGA",
+    "n": 100,
+    "vienna_db": "........((((..((..........)).((((.....))))((((((((....))))))))...((((((.....))))))..............))))",
+    "vienna_mfe": -26.100000381469727,
+    "our_db": "..........................................((((((((....))))))))...((((((.....))))))..................",
+    "our_energy": -19.799999999999997,
+    "match": false
+  },
+  {
+    "seq": "CCAAGGGUGAACAUUUAGAAGACACUACCUCAGGAAUUCAUGACUGUACCCACGAGAAAUAUCAUAUCGAUCUUCAGCUCUCGUUCUUCCGCAGCCCGUA",
+    "n": 100,
+    "vienna_db": "....((((..(((.((((((..(.((.....)))..))).))).)))))))((((((((.(((.....))).))....))))))................",
+    "vienna_mfe": -13.399999618530273,
+    "our_db": "....(((((................)))))(((..........))).....((((((.....................))))))................",
+    "our_energy": -8.600000000000001,
+    "match": false
+  },
+  {
+    "seq": "GUUGCCUCCAUCUGCAAUGUGCCGACACAUGGCCAUCCUGUAGGGGGUCCCGGCAUAGGCGAUUCUUUCAACUCGGUGAUUUCCAUUUGAUUCAGUCAGG",
+    "n": 100,
+    "vienna_db": "((((.....(((.((..(((((((......((((.(((....))))))).))))))).))))).....))))..((......))..(((((...))))).",
+    "vienna_mfe": -23.200000762939453,
+    "our_db": ".((((........))))(((((((..........................))))))).............................(((((...))))).",
+    "our_energy": -10.599999999999998,
+    "match": false
+  },
+  {
+    "seq": "UGGGUAGUCUGCCGGACGAUUUCCCAGAUUGUAUCGACGUGUCCGGACGUUGAGACAGAUCUGGAGGGACGCAGCGCCAUGGAUACCUGGAGCAAGGCAC",
+    "n": 100,
+    "vienna_db": ".........((((...((.(((((((((((((.(((((((......))))))).))).)))))).))))))..((.(((.((...))))).))..)))).",
+    "vienna_mfe": -33.599998474121094,
+    "our_db": "...((((((((.............)))))))).(((((((......))))))).......(((........)))...........(((......)))...",
+    "our_energy": -15.6,
+    "match": false
+  },
+  {
+    "seq": "CGCCACUCCGAGCCAACAGUUAAUUGGCCGUGAACCAUAGACCGGAUCAGAUCCUACGUGCUCAGUCCAGUAGUCCGCAUUACUACGGCGGACCCCGUGG",
+    "n": 100,
+    "vienna_db": "..((((((((.(((((.......))))))).)).......((.((((.((..(....)..))..)))).)).((((((.........))))))...))))",
+    "vienna_mfe": -25.5,
+    "our_db": "...........(((((.......)))))...............((((...))))....((((......))))((((((.........)))))).......",
+    "our_energy": -12.3,
+    "match": false
+  },
+  {
+    "seq": "UUGCGAAGCAUCCCCGGAUUCGGACGUGUGAAGUUACUUGGCUGCCCACGUGGGCGUUGCACGUAGGGGUAUUAGACUUGACAGUUGCUUGUCUCAAUGG",
+    "n": 100,
+    "vienna_db": "..((.(((((...(((....)))((.(((.(((((...(((.((((((((((.......)))))..))))))))))))).))))))))))))........",
+    "vienna_mfe": -25.100000381469727,
+    "our_db": ".(((...)))...(((....)))((((((((.........................)))))))).((((((..................)))))).....",
+    "our_energy": -11.0,
+    "match": false
+  },
+  {
+    "seq": "UGUUGACUUGAAAGGGAGCAAGGACGACGGGAAUCAUCGCUUGUCACAGGUCCCGCGCCAUUCAUCCCCUCGGCUUUCGCUAUCUACCGGUCUCCGGUGU",
+    "n": 100,
+    "vienna_db": ".(((((..((((..((.((..((((((((((........))))))....)))).)).)).)))).....)))))..........((((((...)))))).",
+    "vienna_mfe": -27.100000381469727,
+    "our_db": "......((((........)))).....(((((..................)))))................(((....)))...((((((...)))))).",
+    "our_energy": -15.099999999999998,
+    "match": false
+  },
+  {
+    "seq": "GGAACUCUUUCAUCGGAUUCAGACACAAGUUCUUUGUACCAUAUCAUUUGGAACAUGAGAGUAUGCAGAGUGACGCGUCGCCCUCCCGAUGACGGUUAGC",
+    "n": 100,
+    "vienna_db": "..((((...(((((((.....(((....((((((((((.....((((.......)))).....))))))).)))..)))......))))))).))))...",
+    "vienna_mfe": -23.600000381469727,
+    "our_db": "((((((.....................))))))..........((((((..................))))))..(((((......))))).........",
+    "our_energy": -7.6,
+    "match": false
+  },
+  {
+    "seq": "AGCUUAUUCCCGACUUCUUGUUUCGGCUCGCCUCCCCGCGGGAGAGCUGCAUUCCCACGGCUUGCAAUUCGGAGGUCGAAACCCGCAGUACGUUCUAGUC",
+    "n": 100,
+    "vienna_db": "..........(((((.(..(((((((((.(((((((...))))).))((((..((...))..)))).......)))))))))..).))).))........",
+    "vienna_mfe": -27.399999618530273,
+    "our_db": ".........((((.........))))(((((......))))).((((((........))))))....(((((...)))))....................",
+    "our_energy": -15.5,
+    "match": false
+  },
+  {
+    "seq": "CCAUACCGUUCGUGCCUCCAUAGGGGAACAGACGCCAAAAUAGUAGCGGUCAUCGGAGCAGAAUCGUCUCGUCUUUUCUAAAUCACCUUUCUGCUUCAUG",
+    "n": 100,
+    "vienna_db": "((.(((((((.((.((((....)))).)).))))........)))..)).(((.(((((((((..((.................))..))))))))))))",
+    "vienna_mfe": -20.200000762939453,
+    "our_db": "....((((((..................................))))))....(((((((((.........................)))))))))...",
+    "our_energy": -13.170000000000002,
+    "match": false
+  },
+  {
+    "seq": "AGAGUGAGGGUUGAAUAUUAGCCGUUACGCAGAAGGGACCCAGCUAGGACCAUUUAUUUGAAUCCGUGUUUUCAUAGUCGCCCAACAGAUGAGUUAACUA",
+    "n": 100,
+    "vienna_db": ".(.((((.((((((...)))))).)))).).....((.((......)).))(((((((((.....(((..........)))....)))))))))......",
+    "vienna_mfe": -18.600000381469727,
+    "our_db": ".......(((((........................)))))..........(((((((((.........................)))))))))......",
+    "our_energy": -6.0,
+    "match": false
+  },
+  {
+    "seq": "GAAGGGGUACGGCUCCAGGUUUUUUAAGCAUUCUCCGCUCGCUAGAUUAUAUUGCAGGCUGGUGCGACCCUCCGGACCACGAUAUGAACUCCGGAUGUUU",
+    "n": 100,
+    "vienna_db": "...(((((.((.(.((((.((.....(((.......))).((...........)))).)))).))))))))(((((.((.....))...)))))......",
+    "vienna_mfe": -22.799999237060547,
+    "our_db": "...(((((...)))))..........(((.......)))............(((((......)))))...((((((.............)))))).....",
+    "our_energy": -15.4,
+    "match": false
+  },
+  {
+    "seq": "AUCUACUUCUAUUUGUCAGCGGGGCUCAACCUAAGUUGUUGUGGUUCAUCUGAUUGUCCAACAGUGCAGUACCAGCAGGUGCUAACUGGGAACCCCGCCA",
+    "n": 100,
+    "vienna_db": "..................((((((..((((....))))...(((..((......)).))).((((..((((((....)))))).))))....))))))..",
+    "vienna_mfe": -27.899999618530273,
+    "our_db": "....................(((......)))..(((((((.................)))))))..((((((....))))))...((((...))))...",
+    "our_energy": -14.5,
+    "match": false
+  },
+  {
+    "seq": "AAGUGUGCAGGGAAAAAUCGGACGGAGGAUUACACGAGCCCCUCGACGCUUCGCUGACCUCCAAGCGUGUCGCCGCUUCAAUCCUGAUAAGCUCCGUGAC",
+    "n": 100,
+    "vienna_db": ".......((.(((...(((((..(((((.(((..(((((........)).))).))))))))(((((......))))).....)))))....))).))..",
+    "vienna_mfe": -25.200000762939453,
+    "our_db": "...............((((........))))...((((...))))((((((...........))))))(((((......................)))))",
+    "our_energy": -11.399999999999999,
+    "match": false
+  },
+  {
+    "seq": "ACUGAUUCAGUUUUGUUACUAGGGUGUGGCCCGCCUCCAUCUUAGCAUCUGCAGGGGAUAGACGUACACCAGGUGUGCCCUGUCAACAAAGUUUUUAGAC",
+    "n": 100,
+    "vienna_db": ".((((.....(((((((.((((((((.((....))..)))))))).....((((((.(((..(........).))).)))))).)))))))...))))..",
+    "vienna_mfe": -24.0,
+    "our_db": "((((...)))).......((((((((...........)))))))).....((((((.....................)))))).................",
+    "our_energy": -16.799999999999997,
+    "match": false
+  },
+  {
+    "seq": "AAGGGGGUCUACCUGCGAUCGUUCACGACAAACAUAAACGCACAUUGUUCAUCUGUUGAAACCACUUAGUUCGGGAACUCUUGUGACAGAACGUCCUGUC",
+    "n": 100,
+    "vienna_db": ".((((.((((....((((..((((.(((.........((........((((.....))))........))))).))))..))))...)).)).))))...",
+    "vienna_mfe": -16.200000762939453,
+    "our_db": "..(((......)))....(((....)))...................((((.....)))).......((((....)))).....(((((......)))))",
+    "our_energy": -10.100000000000001,
+    "match": false
+  },
+  {
+    "seq": "GGGGAGAGACGGCGCAAUACUCAAACGUCAGUCAUAGUUCAUGUAAGUACAUCUGUCGAUUUCGCUCGAGGGCUGCAGAGUUAAAUGAUCUCGCCCCAAG",
+    "n": 100,
+    "vienna_db": "((((.((((.((((...........)))).........((((.(((.(.((.((.((((......)))).)).))...).))).)))))))).))))...",
+    "vienna_mfe": -24.200000762939453,
+    "our_db": ".......((((..............))))...........((((....))))...((((......))))((((...................))))....",
+    "our_energy": -10.399999999999999,
+    "match": false
+  },
+  {
+    "seq": "UAGUUAGGAAUAGUAAUGCGUGAUUCAAUCCUCGUAGGUCAUUUCGAGAUCUUCAAAGAUCCAUAUAGAAGAUAAAGGCGGUGCCGGUGCUUCUGCUCAG",
+    "n": 100,
+    "vienna_db": "......(((((.(...((((.(........).))))...))))))..(((((....)))))....((((((.((..(((...)))..)))))))).....",
+    "vienna_mfe": -18.100000381469727,
+    "our_db": "..............................((((..........))))((((((.............))))))...(((((...........)))))...",
+    "our_energy": -11.200000000000001,
+    "match": false
+  },
+  {
+    "seq": "CUAGGUGUCUGGGGGGGGCCCGUUUUUUCGGCCUGUGAGCGAUUCUGGUGAUGUCUGUUGCGUUGCAAAAAAACACCUUUCACCGGCUCCAUUUGAGUGC",
+    "n": 100,
+    "vienna_db": "...((.(.((((((((((...(((((((..((.(((((..(((((....)).)))..)))))..)).))))))).)))))).))))).))..........",
+    "vienna_mfe": -25.700000762939453,
+    "our_db": "((((....))))...(((((.........)))))..........(((((((............................)))))))..............",
+    "our_energy": -13.3,
+    "match": false
+  },
+  {
+    "seq": "UAUGAAUGGGGUACGUGAGCCACAUUCGUAUCCACGAGUCCUCAGCUAUCCGGCACGACAUAACGUGGGACGCCGGCUCCUGCCAGACAAUAUAUCAUUA",
+    "n": 100,
+    "vienna_db": "((((((((.(((......))).)))))))).......(((..(((....(((((.(.((.....)).)...)))))...)))...)))............",
+    "vienna_mfe": -25.600000381469727,
+    "our_db": "........(((((((...........)))))))................(((((.................)))))........................",
+    "our_energy": -15.3,
+    "match": false
+  },
+  {
+    "seq": "AAACAUGCAAAUUAUAAAGUUAAGCUGUGUGCAGUAAUUCUUAAUUCUUGCGCUGCCUACCUAAAGCAGAGAACCACCGCGCGCGCUUUACGGGCGGGGU",
+    "n": 100,
+    "vienna_db": "...((((((..(((......)))..)))))).............(((((..(((..........))).)))))..(((.(((.((.....)).))).)))",
+    "vienna_mfe": -24.200000762939453,
+    "our_db": ".......................((((....)))).............(((((.........................)))))((((.....))))....",
+    "our_energy": -9.9,
+    "match": false
+  },
+  {
+    "seq": "UGGAUCGUGCAGUUUUAAGGUCCUAGGUCCUUGGGGUGACAACGCUUGUGGACUCCGAUCCCUCGAAGCGUUCUCGCCCUUCUUUGGACAGUCAGGCAGG",
+    "n": 100,
+    "vienna_db": ".(((((............)))))...((((..(((((((.(((((((..(((......)))....))))))).))))))).....))))...........",
+    "vienna_mfe": -33.79999923706055,
+    "our_db": ".(((((............))))).......(((((((..............))))))).........(((....)))......((((....)))).....",
+    "our_energy": -14.299999999999999,
+    "match": false
+  },
+  {
+    "seq": "UCUCAGUUACCGUCCGCUUACAUCUGGACCUUCAAGACGUGGUGCACGCUGCUUCAAACGCUCGAGCGUCACCAAUGAAUUAUUACCCAGCAGGAGGUAU",
+    "n": 100,
+    "vienna_db": ".......((((.(((........((((............(((((.(((((((.......))...))))))))))............))))..))))))).",
+    "vienna_mfe": -24.200000762939453,
+    "our_db": "...........(((((........))))).........(((((((....................)))))))...........((((........)))).",
+    "our_energy": -11.500000000000002,
+    "match": false
+  },
+  {
+    "seq": "GUACUUAAAUGAAUUUUCCGGACGAGAAUAUUGACACUGUUACCCGUUCCUCCGACGAGGUUAAGAUUCUCCGAUCUACAUUCUGGCGGUGGCUAAAAAA",
+    "n": 100,
+    "vienna_db": "............((((((.....)))))).....((((((((((((((.....)))).)))..(((((....))))).......))))))).........",
+    "vienna_mfe": -15.5,
+    "our_db": "...................(((((....................))))).......((((.......))))............((((....)))).....",
+    "our_energy": -9.399999999999999,
+    "match": false
+  },
+  {
+    "seq": "CACGGUAACUUGCACGACAACUCGUAAGUAAAUGCCAGAUUAGGAAGGGGUAAACCGUCACUUGAAGGUACCACGGUCCUCCGUGCGCCUGGCGACUCCG",
+    "n": 100,
+    "vienna_db": "...((((((((((..........))))))...))))..........(((((....(((((......(((..(((((....))))).))))))))))))).",
+    "vienna_mfe": -26.600000381469727,
+    "our_db": ".......((((((..........))))))...((((............)))).(((..........)))..(((((....)))))(((...)))......",
+    "our_energy": -12.8,
+    "match": false
+  },
+  {
+    "seq": "GUACUCUUUGAGAAAACUUCGACCGGUCGAUGUUAAGUACUGCUAUAAACAUUAACGAGCGACCGCUCGGAGAGCCACGGAGCGAGAGAGCAAUAGGCUG",
+    "n": 100,
+    "vienna_db": "...(((...)))....((((((.((((((.((((((((..........)).))))))..)))))).))))))((((.....((......))....)))).",
+    "vienna_mfe": -27.5,
+    "our_db": ".......(((((.....))))).((((((..............................))))))((((.............))))..(((.....))).",
+    "our_energy": -13.099999999999998,
+    "match": false
+  },
+  {
+    "seq": "ACCGUGAAUAGAUGCGACAGUGCUACCGAUAUGGUAGUGACUUCGUGAAUUUAGGCGACAGGACGGAAACCGGUUAAUAUUGCCGAUGAAUUUCUGACAA",
+    "n": 100,
+    "vienna_db": ".(((((..(((((((((.(((((((((.....)))))).)))))))..)))))..).)).)).((((((.((((.......)))).....))))))....",
+    "vienna_mfe": -24.399999618530273,
+    "our_db": "....................((((((((...))))))))..(((((................)))))...((((.......))))...............",
+    "our_energy": -11.999999999999998,
+    "match": false
+  },
+  {
+    "seq": "ACACUCUGUUGGGUAUGAUUUAGAUUGCUCGAGACGAUCGGUUGGUUCGAGAGAAUACCGCGCCCCGGGUGCAGCACCCCUCCUUCCUCGCCGUUCUCCU",
+    "n": 100,
+    "vienna_db": "......(.(((((((..........))))))).).((.((((.((...(((.(......(((((...)))))......))))...))..)))).))....",
+    "vienna_mfe": -22.799999237060547,
+    "our_db": "........(((((((..........))))))).....((((.....))))................(((((...))))).....................",
+    "our_energy": -13.7,
+    "match": false
+  },
+  {
+    "seq": "GUACUUCUGCUGGCGCUCACAGGAAUCGGCGUCAGGAGGGCAUUACAAACACUAGUAAAACCCGUUUCCUUACUUGUAUACGAAUGUUGUUUCAAUCGGG",
+    "n": 100,
+    "vienna_db": "(((.((((.((((((((..........)))))))).))))...)))....((.(((((...........))))).))...(((.((......)).)))..",
+    "vienna_mfe": -21.200000762939453,
+    "our_db": ".........((((((((..........)))))))).......((((........))))..((((................................))))",
+    "our_energy": -12.94,
+    "match": false
+  },
+  {
+    "seq": "UUAAGGGUGGACUGGCCAGGGUCUAGUGUUCCGCUCUGGAUAGAGCCGAGGGGAGCCUCCCGUUUUAGCAUAUAACACGUCUGCUUGCUAUAAUCGGUUA",
+    "n": 100,
+    "vienna_db": ".....(.((((((......)))))).)(((((.(((.((......))))).)))))...(((((.(((((...............))))).)).)))...",
+    "vienna_mfe": -28.299999237060547,
+    "our_db": ".......((((((......)))))).......(((((....))))).((((....))))......(((((...............)))))..........",
+    "our_energy": -16.7,
+    "match": false
+  },
+  {
+    "seq": "UAAACUAGCUUUUACUCAAGUUAGUUUCCGUGUAUUAAGUACGGGGGCGCGUGUAUACCAGGGCCACGUAUGUGUCGUUAUGCGGGGCUGUGAUUACCAC",
+    "n": 100,
+    "vienna_db": ".((((((((((......))))))))))((.(((((...))))).))....(((.....((.((((.((((((......)))))).)))).)).....)))",
+    "vienna_mfe": -31.600000381469727,
+    "our_db": "..(((((((((......)))))))))(((((((.....)))))))(((((((((.............))))))))).............(((.....)))",
+    "our_energy": -22.0,
+    "match": false
+  },
+  {
+    "seq": "GGGACCGAGACCUCUAAUCAAUCAGGCGCCCCAAGGGAAUGCGCUUUAGCGUAACAUUGUGUGCUAAUACGAUGUGAAGCCGCCCUCUUAGGCCCGGACC",
+    "n": 100,
+    "vienna_db": "(((.((((((.............((((((((....))...))))))..((...(((((((((....)))))))))...)).....)))).))))).....",
+    "vienna_mfe": -29.299999237060547,
+    "our_db": "(((.......)))..........((((((...........)))))).......(((((((((....)))))))))...(((.........))).......",
+    "our_energy": -19.1,
+    "match": false
+  },
+  {
+    "seq": "AUUUUGUACGGGCCAUUGACAGGGUGGACCACUGGGUGGUCUUCUCGAAAAAUGGAUAAGUAUCCCAAUCCAAAAAUUGGACCACUAGCUAGUCAGCUGG",
+    "n": 100,
+    "vienna_db": ".....((((...(((((....(((.(((((((...))))))).)))....)))))....)))).(((((......)))))....((((((....))))))",
+    "vienna_mfe": -31.799999237060547,
+    "our_db": "...........(((........)))(((((((...)))))))...........((((....))))...(((((...)))))...((((((....))))))",
+    "our_energy": -15.700000000000001,
+    "match": false
+  },
+  {
+    "seq": "CCCGGUCCUUGUUAAAAUAGUUACCCUGGGACUGACUGUCAAACGUGGGCGUCGCUAUCGAGCUAUUGCUUGAACCCCAAGUUUCCGUGAGCGACCAGAG",
+    "n": 100,
+    "vienna_db": "....((((.((((...(((((((((...))..)))))))..)))).))))((((((..((.(.....(((((.....)))))..)))..)))))).....",
+    "vienna_mfe": -26.600000381469727,
+    "our_db": "..(((((((..................)))))))........(((....))).....((((((....))))))...........................",
+    "our_energy": -15.2,
+    "match": false
+  },
+  {
+    "seq": "GGUCUGCCAUCGCAUAUGUGAGAACGACAGUCAUGCUUAGACUGAAUCUCCGUGUUCACCAAUAAUACUAGCAGAGCACACUGUCAAAUUCUUGCACGGA",
+    "n": 100,
+    "vienna_db": "(.(((((..........(((((.(((.(((((.......)))))......))).)))))...........))))).)...(((((((....))).)))).",
+    "vienna_mfe": -21.700000762939453,
+    "our_db": ".........((((....))))......(((((.......)))))....(((((((......................................)))))))",
+    "our_energy": -13.55,
+    "match": false
+  }
+]

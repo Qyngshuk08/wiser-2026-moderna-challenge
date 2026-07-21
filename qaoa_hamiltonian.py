@@ -41,6 +41,7 @@ def build_qaoa_hamiltonian(seq, min_loop=3, penalty=None):
 
     return {
         "quartets": quartets,
+        "bqm": bqm,
         "var_list": var_list,
         "quadratic_program": qp,
         "qubo": qubo,

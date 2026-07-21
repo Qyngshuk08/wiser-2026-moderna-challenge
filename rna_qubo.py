@@ -87,6 +87,22 @@ def quartets_crossing(q1, q2):
     return crosses(i1, j1, i2, j2)
 
 
+def get_hairpin_energy(seq, i, j):
+    """Real hairpin-loop closing energy for pair (i,j), 0-indexed, via
+    ViennaRNA's own evaluator (not hand-indexed tables) -- same validated
+    approach as dp_full_energy.py / dp_stack_hairpin.py. i,j must be a
+    valid canonical pair with a legal loop length."""
+    fc = get_hairpin_energy._fc_cache.get(seq)
+    if fc is None:
+        RNA.params_load_RNA_Turner2004()
+        fc = RNA.fold_compound(seq)
+        get_hairpin_energy._fc_cache = {seq: fc}  # single-entry cache, one seq at a time
+    return fc.eval_hp_loop(i + 1, j + 1) / 100.0
+
+
+get_hairpin_energy._fc_cache = {}
+
+
 if __name__ == "__main__":
     seq = "GGGAAACCC"
     q = build_quartets(seq)

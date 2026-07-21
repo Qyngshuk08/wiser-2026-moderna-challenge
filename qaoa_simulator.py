@@ -31,12 +31,22 @@ def run_qaoa_simulator(seq, min_loop=3, reps=2, maxiter=100, seed=42, restarts=1
     # shallow QAOA at the trivial "violate nothing, gain nothing" all-zero
     # solution (confirmed empirically: default penalty -> 0% match across
     # 8 restarts on two test sequences; a tight penalty -> exact match on
-    # both). Default here to just above the largest single quartet energy,
-    # which is provably sufficient to forbid any single pairwise violation
-    # while keeping the landscape far less rugged.
+    # both). Default here to just above the largest single-variable energy
+    # magnitude, which is provably sufficient to forbid any single pairwise
+    # violation while keeping the landscape far less rugged.
+    #
+    # IMPORTANT: this must be calibrated against the BQM's actual linear
+    # biases (bqm.linear), NOT the raw stacking-only quartets dict. Once
+    # build_bqm() started porting real hairpin energy in as an additional
+    # linear term per quartet, the old quartets-only calibration went
+    # stale and undersized -- confirmed empirically: it silently
+    # regressed QAOA back to the trivial all-zero attractor on
+    # GCGCUUCGGCGC after the hairpin port, the exact failure mode this
+    # tight-penalty fix was built to prevent in the first place.
     if penalty is None:
-        quartets_preview = build_qaoa_hamiltonian(seq, min_loop, penalty=1.0)["quartets"]
-        max_single = max(abs(e) for e in quartets_preview.values()) if quartets_preview else 1.0
+        from build_bqm import build_bqm as _build_bqm_preview
+        preview_bqm, _ = _build_bqm_preview(seq, min_loop, penalty=1.0)
+        max_single = max((abs(v) for v in preview_bqm.linear.values()), default=1.0)
         penalty = 1.5 * max_single + 1.0
 
     result = build_qaoa_hamiltonian(seq, min_loop, penalty=penalty)
@@ -89,7 +99,7 @@ def run_qaoa_simulator(seq, min_loop=3, reps=2, maxiter=100, seed=42, restarts=1
 
     best_bitstring, best_shots, selected = chosen
 
-    raw_energy = sum(quartets[q] for q in selected)
+    raw_energy = result["bqm"].energy({v: (1 if v in selected else 0) for v in var_list})
     db = to_dot_bracket(len(seq), pairs_used(selected))
     qaoa_energy = opt.fun + offset
 
@@ -106,7 +116,7 @@ def run_qaoa_simulator(seq, min_loop=3, reps=2, maxiter=100, seed=42, restarts=1
 
     return {
         "seq": seq, "n": len(seq), "num_qubits": result["num_qubits"],
-        "qaoa_energy": qaoa_energy, "raw_stacking_energy": raw_energy,
+        "qaoa_energy": qaoa_energy, "raw_model_energy": raw_energy,
         "structure": db, "shots_for_best_bitstring": best_shots,
         "total_shots": sum(counts.values()),
         "feasible": is_feasible, "penalty_used": penalty,
@@ -124,7 +134,7 @@ if __name__ == "__main__":
         print(f"seq={seq}  qubits={qaoa_out['num_qubits']}")
         print(f"  exact : energy={exact_energy:.2f}  structure={exact_db}")
         print(f"  QAOA  : energy={qaoa_out['qaoa_energy']:.2f}  "
-              f"raw_stacking={qaoa_out['raw_stacking_energy']:.2f}  "
+              f"raw_model_energy={qaoa_out['raw_model_energy']:.2f}  "
               f"structure={qaoa_out['structure']}  "
               f"best_bitstring_shots={qaoa_out['shots_for_best_bitstring']}/{qaoa_out['total_shots']}  "
               f"feasible={qaoa_out['feasible']}")
