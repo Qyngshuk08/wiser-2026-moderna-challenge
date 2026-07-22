@@ -203,8 +203,9 @@ independent runs total of the same problem, plus the original from
 Finding 6 = **4 runs total**), and 1 run of a newly validated 5-qubit
 intermediate case (`GGGUUCCCC`, exact classical match confirmed before
 submission) to fill the gap between the existing 4- and 6-qubit points.
-**IBM's free-plan QPU-time budget was exhausted collecting this data —
-no further hardware runs are possible until it resets.**
+**IBM's free-plan QPU-time budget was fully exhausted collecting this
+data, with no further access available going forward — this dataset is
+final, not a snapshot pending a rerun.**
 
 | seq | qubits | backend | confidence | correct? |
 |---|---|---|---|---|
@@ -239,9 +240,11 @@ between them. `run_ibm.py` has since been corrected (uses the same
 `bqm.linear`-based calibration as `qaoa_simulator.py`) for whenever
 hardware access resumes.
 
-**What would make this a complete study:** rerunning all 6 rows with the
-corrected penalty calibration, once QPU budget resets, to separate the
-noise effect from the now-fixed calibration confound.
+**What would have made this a complete study:** rerunning all 6 rows with
+the corrected penalty calibration to separate the noise effect from the
+calibration confound. This is no longer possible — hardware access is
+permanently exhausted, not renewable — and is recorded here as a known,
+final limitation of this dataset rather than pending future work.
 
 Two different penalty regimes exist in this project, for good reasons:
 the **classical-exactness penalty** (`build_bqm.py`'s default, sized to
@@ -389,11 +392,12 @@ yet solved, honestly flagged rather than hidden.
 
 ## Future Work
 
-1. Rerun D-Wave/IBM hardware results against the hairpin-aware QUBO with
-   the now-corrected penalty calibration — blocked until IBM's free-plan
-   QPU-time budget resets (exhausted collecting the noise study data
-   above); biggest expected impact at the short sequence lengths used in
-   the IBM QAOA runs.
+1. ~~Rerun D-Wave/IBM hardware results against the hairpin-aware QUBO with
+   the corrected penalty calibration~~ — **not achievable.** IBM QPU-time
+   access is permanently exhausted, not renewable. `run_ibm.py` has been
+   corrected for calibration and job-efficiency regardless, in case
+   hardware access becomes available through another source in the
+   future, but no further runs are possible under this project's access.
 2. Diagnose and fix QAOA's difficulty with the hairpin-aware Hamiltonian's
    correlated landscape (deeper circuits, better initialization, or a
    reformulation).
