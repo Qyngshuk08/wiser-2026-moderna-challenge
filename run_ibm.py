@@ -25,6 +25,16 @@ fix from qaoa_simulator.py (penalty ~1.5x max single quartet energy, NOT
 the classical-exactness penalty from build_bqm.py) or QAOA will very likely
 collapse to the trivial all-zero solution on real hardware too, same as it
 did on the simulator before the penalty was fixed.
+
+NOTE on timing: job.metrics()['usage']['quantum_seconds'] is captured on
+the FINAL 2000-shot sampling job only, not on each of the ~50 COBYLA
+optimizer iterations beforehand (each of those also submits a real,
+separate job -- adding per-iteration metrics capture would add overhead
+for a number that's largely redundant with the final job's). This is the
+real QPU execution time for one representative job at this problem size,
+not the total across every job the run submits. Neither prior hardware
+run (run1, run2) captured this at all -- don't assume or estimate a
+number for those; they simply don't have one.
 """
 
 import argparse
@@ -99,6 +109,20 @@ def run(seq, backend_name=None, reps=2, maxiter=50, penalty=None):
     job = sampler.run([bound], shots=2000)
     counts = job.result()[0].data.meas.get_counts()
 
+    # Real QPU execution time -- neither prior hardware run captured this,
+    # and it should not be estimated or guessed. job.metrics() exposes the
+    # actual usage.quantum_seconds IBM bills/reports for this job.
+    try:
+        metrics = job.metrics()
+        quantum_seconds = metrics.get("usage", {}).get("quantum_seconds")
+    except Exception as e:
+        metrics = None
+        quantum_seconds = None
+        print(f"WARNING: could not retrieve job.metrics(): {e}")
+
+    print(f"job id: {job.job_id()}")
+    print(f"real QPU execution time (quantum_seconds): {quantum_seconds}")
+
     # Post-select on feasibility instead of blindly taking the plurality
     # bitstring. Real hardware noise can make the top-shot answer
     # infeasible even with a tight penalty (confirmed empirically:
@@ -150,6 +174,7 @@ def run(seq, backend_name=None, reps=2, maxiter=50, penalty=None):
         "raw_energy": raw_energy, "feasible": is_feasible,
         "shots": best_shots, "total_shots": sum(counts.values()),
         "rank_by_shot_count": rank_of_chosen,
+        "quantum_seconds": quantum_seconds, "job_id": job.job_id(),
     }
 
 
