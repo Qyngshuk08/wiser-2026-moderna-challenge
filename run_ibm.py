@@ -53,10 +53,26 @@ from build_bqm import conflicting
 from itertools import combinations
 
 
-def run(seq, backend_name=None, reps=2, maxiter=50, penalty=None):
+def run(seq, backend_name=None, reps=2, maxiter=100, penalty=None, sim_restarts=5):
+    """
+    IMPORTANT CHANGE: parameters are now optimized on the free Aer
+    simulator first (reusing qaoa_simulator.py's already-validated
+    approach), and real hardware is used for exactly ONE sampling job
+    with those fixed parameters -- not for the optimization loop itself.
+
+    This matters a lot on IBM's free plan, which has a hard 10-minute
+    total QPU-time budget. The previous version of this script ran COBYLA
+    directly against hardware, submitting one real job PER OPTIMIZER
+    ITERATION (default maxiter=50 -- roughly 50 hardware jobs per call to
+    this script). That risks exhausting the entire 10-minute budget on
+    ONE run. Optimizing on the simulator instead is free, already
+    validated (qaoa_simulator.py), and turns every hardware run into a
+    single job.
+    """
     if penalty is None:
         preview = build_qaoa_hamiltonian(seq, penalty=1.0)["quartets"]
-        max_single = max(abs(e) for e in preview.values()) if preview else 1.0
+        max_single = max((abs(v) for v in
+                          build_qaoa_hamiltonian(seq, penalty=1.0)["bqm"].linear.values()), default=1.0)
         penalty = 1.5 * max_single + 1.0
         print(f"using tight penalty={penalty:.2f} (NOT the classical-exactness "
               f"penalty -- see qaoa_simulator.py notes on why)")
@@ -68,6 +84,42 @@ def run(seq, backend_name=None, reps=2, maxiter=50, penalty=None):
     quartets = result["quartets"]
 
     print(f"seq length: {len(seq)}   qubits needed: {result['num_qubits']}")
+    print("optimizing QAOA parameters on the free Aer simulator first "
+          "(no QPU time used for this step)...")
+
+    from qaoa_simulator import run_qaoa_simulator
+    sim_result = run_qaoa_simulator(seq, reps=reps, maxiter=maxiter,
+                                     restarts=sim_restarts, penalty=penalty)
+    print(f"simulator result: structure={sim_result['structure']}  "
+          f"feasible={sim_result['feasible']}  "
+          f"confidence={sim_result['shots_for_best_bitstring']}/{sim_result['total_shots']}")
+
+    # Re-run the same optimization to recover the actual optimal parameter
+    # vector (qaoa_simulator.py's public function returns results, not the
+    # raw parameters) -- this re-optimization is still on the free
+    # simulator, not hardware, so it costs no QPU budget.
+    from qiskit.circuit.library import QAOAAnsatz as _QAOAAnsatz
+    from qiskit_aer.primitives import EstimatorV2 as _EstimatorV2
+    from scipy.optimize import minimize as _minimize
+
+    cost_ansatz = _QAOAAnsatz(cost_operator=op, reps=reps).decompose(reps=3)
+    estimator = _EstimatorV2()
+
+    def sim_cost_fn(params):
+        job = estimator.run([(cost_ansatz, op, params)])
+        return job.result()[0].data.evs
+
+    best_opt = None
+    rng = np.random.default_rng(42)
+    for _ in range(sim_restarts):
+        x0 = rng.uniform(0, 2 * np.pi, cost_ansatz.num_parameters)
+        o = _minimize(sim_cost_fn, x0, method="COBYLA", options={"maxiter": maxiter})
+        if best_opt is None or o.fun < best_opt.fun:
+            best_opt = o
+    optimal_params = best_opt.x
+
+    print("submitting ONE job to real hardware with simulator-optimized "
+          "parameters...")
 
     service = QiskitRuntimeService(channel="ibm_quantum_platform")
     backend = service.backend(backend_name) if backend_name else service.least_busy(operational=True, simulator=False)
@@ -78,34 +130,10 @@ def run(seq, backend_name=None, reps=2, maxiter=50, penalty=None):
 
     pm = generate_preset_pass_manager(optimization_level=1, backend=backend)
     isa_ansatz = pm.run(ansatz)
-    isa_op = op.apply_layout(isa_ansatz.layout)
 
     sampler = RuntimeSamplerV2(mode=backend)
 
-    x0 = np.random.default_rng(42).uniform(0, 2 * np.pi, ansatz.num_parameters)
-
-    # NOTE: real hardware queue time makes a full COBYLA optimization loop
-    # expensive (each iteration = one queued job). This does a SHORT
-    # optimization budget by default -- raise maxiter only if you have
-    # queue time to spare, and expect this to take a while either way.
-    def cost_fn(params):
-        bound = isa_ansatz.assign_parameters(params)
-        job = sampler.run([bound], shots=1000)
-        result = job.result()[0]
-        counts = result.data.meas.get_counts()
-        # estimate expectation from counts against the ORIGINAL (unmapped) op
-        total = sum(counts.values())
-        # cheap proxy: use the best bitstring's raw stacking energy as the
-        # objective for the classical optimizer, rather than a full
-        # expectation value recompute per iteration (expensive on hardware)
-        best_bits = max(counts, key=counts.get)[::-1]
-        assignment = {v: int(best_bits[i]) for i, v in enumerate(var_list)}
-        selected = [v for v, val in assignment.items() if val == 1]
-        return sum(quartets[q] for q in selected)
-
-    opt = minimize(cost_fn, x0, method="COBYLA", options={"maxiter": maxiter})
-
-    bound = isa_ansatz.assign_parameters(opt.x)
+    bound = isa_ansatz.assign_parameters(optimal_params)
     job = sampler.run([bound], shots=2000)
     counts = job.result()[0].data.meas.get_counts()
 

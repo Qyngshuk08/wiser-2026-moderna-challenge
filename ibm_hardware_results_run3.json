@@ -1,0 +1,28 @@
+[
+  {
+    "seq": "GGGAAACCC", "n": 9, "backend": "ibm_fez", "num_qubits": 4,
+    "penalty_used": 6.10, "structure": "(((...)))", "raw_energy": -6.80,
+    "feasible": true, "rank_by_shot_count": 1, "chosen_shots": 432, "total_shots": 2000,
+    "match_exact": true, "note": "run A of 3 repeats on GGGAAACCC"
+  },
+  {
+    "seq": "GGGAAACCC", "n": 9, "backend": "ibm_fez", "num_qubits": 4,
+    "penalty_used": 6.10, "structure": "(((...)))", "raw_energy": -6.80,
+    "feasible": true, "rank_by_shot_count": 1, "chosen_shots": 480, "total_shots": 2000,
+    "match_exact": true, "note": "run B of 3 repeats on GGGAAACCC"
+  },
+  {
+    "seq": "GGGAAACCC", "n": 9, "backend": "ibm_marrakesh", "num_qubits": 4,
+    "penalty_used": 6.10, "structure": ".........", "raw_energy": 0.0,
+    "feasible": true, "rank_by_shot_count": 1, "chosen_shots": 306, "total_shots": 2000,
+    "match_exact": false,
+    "note": "run C of 3 repeats on GGGAAACCC -- WRONG answer this time (trivial empty structure), on a different backend (ibm_marrakesh vs ibm_fez for runs A/B). Same problem, same penalty, materially different outcome across 3 independent hardware runs."
+  },
+  {
+    "seq": "GGGUUCCCC", "n": 9, "backend": "ibm_marrakesh", "num_qubits": 5,
+    "penalty_used": 6.10, "structure": ".((....))", "raw_energy": -3.40,
+    "feasible": true, "rank_by_shot_count": 3, "chosen_shots": 188, "total_shots": 2000,
+    "match_exact": false,
+    "note": "5-qubit intermediate test case (exact classical answer is (((...))), energy -1.40 under the hairpin-aware model in effect at time of this run -- NOTE: run_ibm.py at the time of this run may have used the stale stacking-only classical exactness value 6.10 for a hairpin-aware BQM, see caveat below). Plurality bitstring infeasible or wrong, post-selection fell through to rank 3."
+  }
+]

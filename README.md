@@ -187,15 +187,61 @@ stated directly rather than implied:
    results use one encoding (quartets/stacked-pairs) on two backends
    (D-Wave, IBM); that is a backend comparison, not an encoding
    comparison.
-3. **Sampling / hardware-inspired noise** — partial, not a designed study.
-   Real IBM hardware results (see above) quantify actual noise (97.1% →
-   17.0% → 5.2% shot confidence across two qubit counts), which is
-   stronger evidence than a synthetic noise model, but was not a
-   deliberately swept experiment.
+3. **Sampling / hardware-inspired noise** — **partial, real progress.** 4
+   independent hardware runs of the same problem now exist across 3
+   backends. See dedicated section below.
 4. **Qubit count vs. constraint enforcement trade-off** — **done.** See
    dedicated section below.
 
-## Qubit Count vs. Constraint Enforcement Trade-off (`qubit_constraint_tradeoff.py`)
+## Sampling / Hardware Noise Study (`noise_study_aggregate.py`)
+
+The original hardware results (Finding 6) had exactly 2 data points — one
+success, one failure — at two different qubit counts. That's suggestive
+but not a real distribution. 3 additional real hardware runs were
+collected: 2 more runs of the identical `GGGAAACCC` problem (giving 3
+independent runs total of the same problem, plus the original from
+Finding 6 = **4 runs total**), and 1 run of a newly validated 5-qubit
+intermediate case (`GGGUUCCCC`, exact classical match confirmed before
+submission) to fill the gap between the existing 4- and 6-qubit points.
+**IBM's free-plan QPU-time budget was exhausted collecting this data —
+no further hardware runs are possible until it resets.**
+
+| seq | qubits | backend | confidence | correct? |
+|---|---|---|---|---|
+| GGGAAACCC | 4 | ibm_kingston | 17.0% | yes |
+| GGGAAACCC | 4 | ibm_fez | 21.6% | yes |
+| GGGAAACCC | 4 | ibm_fez | 24.0% | yes |
+| GGGAAACCC | 4 | ibm_marrakesh | 15.3% | **no** |
+| GGGUUCCCC | 5 | ibm_marrakesh | 9.4% | no |
+| GCGCUUCGGCGC | 6 | ibm_marrakesh | 5.2% | no |
+
+**Real finding: the identical 4-qubit problem gave 3 correct and 1
+incorrect result across 4 independent runs on 3 different backends.**
+Confidence for the correct runs clustered at 17.0-24.0%; the one
+incorrect run's confidence (15.3%) sits inside that same range — meaning
+confidence alone doesn't cleanly separate a correct outcome from an
+incorrect one at this qubit count, which is itself worth reporting rather
+than only citing the mean.
+
+**An honest confound, disclosed rather than hidden:** all 4 of these
+hardware runs used `run_ibm.py`'s *pre-fix* penalty calibration — the same
+stale-calibration bug pattern caught and fixed in `qaoa_simulator.py`
+earlier (Finding 5), but that fix was not carried over to `run_ibm.py`
+until after these runs were already submitted (the IBM QPU-time budget
+was exhausted before a corrected rerun was possible). Checked directly:
+the stale penalty used was 6.10 for both `GGGAAACCC` and `GGGUUCCCC`, vs.
+a correctly-calibrated 4.00 for both — a real but moderate gap, not the
+severe ~11x oversizing that caused total QAOA collapse in Finding 5. This
+means **the noise-vs-qubit-count trend reported here cannot be cleanly
+separated from a possible penalty-calibration effect** — both plausibly
+contribute to the observed variance, and this dataset cannot distinguish
+between them. `run_ibm.py` has since been corrected (uses the same
+`bqm.linear`-based calibration as `qaoa_simulator.py`) for whenever
+hardware access resumes.
+
+**What would make this a complete study:** rerunning all 6 rows with the
+corrected penalty calibration, once QPU budget resets, to separate the
+noise effect from the now-fixed calibration confound.
 
 Two different penalty regimes exist in this project, for good reasons:
 the **classical-exactness penalty** (`build_bqm.py`'s default, sized to
@@ -343,9 +389,11 @@ yet solved, honestly flagged rather than hidden.
 
 ## Future Work
 
-1. Rerun D-Wave/IBM hardware results against the hairpin-aware QUBO —
-   biggest expected impact at the short sequence lengths used in the IBM
-   QAOA runs.
+1. Rerun D-Wave/IBM hardware results against the hairpin-aware QUBO with
+   the now-corrected penalty calibration — blocked until IBM's free-plan
+   QPU-time budget resets (exhausted collecting the noise study data
+   above); biggest expected impact at the short sequence lengths used in
+   the IBM QAOA runs.
 2. Diagnose and fix QAOA's difficulty with the hairpin-aware Hamiltonian's
    correlated landscape (deeper circuits, better initialization, or a
    reformulation).

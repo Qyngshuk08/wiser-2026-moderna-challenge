@@ -2,25 +2,67 @@
   {
     "seq": "GGGAAACCC",
     "n": 9,
-    "backend": "ibm_kingston",
     "num_qubits": 4,
+    "num_runs": 4,
+    "mean_confidence": 0.1946,
+    "stdev_confidence": 0.0403,
+    "min_confidence": 0.153,
+    "max_confidence": 0.24,
+    "per_run": [
+      {
+        "backend": "ibm_kingston",
+        "confidence": 0.1695,
+        "match_exact": true
+      },
+      {
+        "backend": "ibm_fez",
+        "confidence": 0.216,
+        "match_exact": true
+      },
+      {
+        "backend": "ibm_fez",
+        "confidence": 0.24,
+        "match_exact": true
+      },
+      {
+        "backend": "ibm_marrakesh",
+        "confidence": 0.153,
+        "match_exact": false
+      }
+    ]
+  },
+  {
+    "seq": "GGGUUCCCC",
+    "n": 9,
+    "num_qubits": 5,
     "num_runs": 1,
-    "mean_confidence": 0.1695,
+    "mean_confidence": 0.094,
     "stdev_confidence": null,
-    "confidences": [
-      0.1695
+    "min_confidence": 0.094,
+    "max_confidence": 0.094,
+    "per_run": [
+      {
+        "backend": "ibm_marrakesh",
+        "confidence": 0.094,
+        "match_exact": false
+      }
     ]
   },
   {
     "seq": "GCGCUUCGGCGC",
     "n": 12,
-    "backend": "ibm_marrakesh",
     "num_qubits": 6,
     "num_runs": 1,
     "mean_confidence": 0.0515,
     "stdev_confidence": null,
-    "confidences": [
-      0.0515
+    "min_confidence": 0.0515,
+    "max_confidence": 0.0515,
+    "per_run": [
+      {
+        "backend": "ibm_marrakesh",
+        "confidence": 0.0515,
+        "match_exact": false
+      }
     ]
   }
 ]
