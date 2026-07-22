@@ -101,11 +101,11 @@ def build_bqm(seq, min_loop=3, penalty=None, include_hairpin=True):
     return bqm, quartets
 
 
-def solve_exact(seq, min_loop=3):
+def solve_exact(seq, min_loop=3, include_hairpin=True):
     """dimod ExactSolver -- brute force over the BQM itself, used ONLY to
     cross-check against validate_brute_force.py's independent brute force.
     Same size limit applies (small sequences only)."""
-    bqm, quartets = build_bqm(seq, min_loop)
+    bqm, quartets = build_bqm(seq, min_loop, include_hairpin=include_hairpin)
     if len(bqm.variables) > 20:
         raise ValueError(f"{len(bqm.variables)} variables -- too many for ExactSolver")
     sampleset = dimod.ExactSolver().sample(bqm)

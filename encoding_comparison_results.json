@@ -1,0 +1,50 @@
+[
+  {
+    "n": 20,
+    "quartet_qubits": 15,
+    "quartet_density": 0.886,
+    "pair_qubits": 55,
+    "pair_density": 0.677,
+    "qubit_ratio": 3.67
+  },
+  {
+    "n": 30,
+    "quartet_qubits": 41,
+    "quartet_density": 0.757,
+    "pair_qubits": 130,
+    "pair_density": 0.551,
+    "qubit_ratio": 3.17
+  },
+  {
+    "n": 40,
+    "quartet_qubits": 72,
+    "quartet_density": 0.61,
+    "pair_qubits": 239,
+    "pair_density": 0.498,
+    "qubit_ratio": 3.32
+  },
+  {
+    "n": 60,
+    "quartet_qubits": 178,
+    "quartet_density": 0.545,
+    "pair_qubits": 560,
+    "pair_density": 0.451,
+    "qubit_ratio": 3.15
+  },
+  {
+    "n": 80,
+    "quartet_qubits": 362,
+    "quartet_density": 0.497,
+    "pair_qubits": 1093,
+    "pair_density": 0.419,
+    "qubit_ratio": 3.02
+  },
+  {
+    "n": 100,
+    "quartet_qubits": 540,
+    "quartet_density": 0.475,
+    "pair_qubits": 1590,
+    "pair_density": 0.407,
+    "qubit_ratio": 2.94
+  }
+]
