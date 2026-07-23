@@ -27,6 +27,81 @@ def implied_pairs(q):
     return {(i, j), (i + 1, j - 1)}
 
 
+def nested_noncolinear(q1, q2):
+    """
+    Catches the confirmed branching/internal-loop bug: two quartets where
+    one is nested strictly inside the other's span, but they are NOT
+    colinear members of the same symmetric helix (i.e. their inward
+    offsets from each end don't match). This is exactly the pattern that
+    let the delta-correction wrongly charge a hairpin-closing cost for a
+    loop that actually contains an independent nested structure --
+    confirmed via direct energy recomputation on a real test case (see
+    README, "A second, more serious limitation").
+
+    Deep, fully continuous stacks (q1=(i,j), q2=(i+m,j-m) for any m) are
+    correctly recognized as compatible here (same offset -> not flagged),
+    regardless of stack depth -- this does not just handle the immediate
+    m=1 continuation case, unlike the delta-correction's own cancellation
+    logic, which only looks one step at a time (adjacent pairwise
+    cancellation chains correctly to any depth on its own).
+
+    A conservative, deliberate side effect: this also forbids symmetric
+    "gap" configurations (q2 nested at some offset m>1 with intermediate
+    depths NOT all independently selected) unless their offsets happen to
+    match -- consistent with this project not modeling bulge/internal
+    loops elsewhere either. This is a real, accepted scope limit, not
+    silently mispriced the way the original bug was.
+    """
+    i, j = q1
+    k, l = q2
+    if i < k and l < j:
+        return (k - i) != (j - l)
+    if k < i and j < l:
+        return (i - k) != (l - j)
+    return False
+
+
+def nested_noncolinear(q1, q2):
+    """
+    Catches the confirmed branching/internal-loop bug: two quartets where
+    one is nested strictly inside the other's span, but they are NOT
+    colinear members of the same symmetric helix (i.e. their inward
+    offsets from each end don't match). This is exactly the pattern that
+    let the hairpin delta-correction wrongly charge a hairpin-closing cost
+    for a loop that actually contains an independent nested structure --
+    confirmed via direct energy recomputation on a real test case (see
+    README, "A second, more serious limitation").
+
+    Deep, fully continuous stacks (q1=(i,j), q2=(i+m,j-m) for any m) are
+    correctly recognized as compatible here (same offset -> not flagged),
+    regardless of stack depth -- this does not just handle the immediate
+    m=1 continuation case; matching-offset pairs at any depth are
+    automatically exempt, without needing to check whether every
+    intermediate step is also selected.
+
+    Deliberately NOT part of conflicting() -- this restriction is only
+    correct under the hairpin-aware model (build_bqm's include_hairpin=
+    True). The stacking-only model, the alternative pair encoding
+    (rna_qubo_pairs.py), and run_dwave.py's feasibility check all use
+    conflicting() directly and should not be newly restricted by a fix
+    for a bug that doesn't apply to them.
+
+    A conservative, deliberate side effect: this also forbids symmetric
+    "gap" configurations (q2 nested at some offset m>1 without every
+    intermediate depth also independently selected) unless their offsets
+    happen to match -- consistent with this project not modeling bulge/
+    internal loops elsewhere either. This is a real, accepted scope
+    limit, not silently mispriced the way the original bug was.
+    """
+    i, j = q1
+    k, l = q2
+    if i < k and l < j:
+        return (k - i) != (j - l)
+    if k < i and j < l:
+        return (i - k) != (l - j)
+    return False
+
+
 def conflicting(q1, q2):
     if q1 == q2:
         return False
@@ -70,6 +145,19 @@ def build_bqm(seq, min_loop=3, penalty=None, include_hairpin=True):
     restricted model, before being trusted.
     include_hairpin=False reproduces the original stacking-only QUBO
     exactly, kept for comparison.
+
+    BRANCHING FIX: a real bug was found (see README) where a quartet's
+    baseline hairpin cost gets wrongly charged when the assumed-empty loop
+    actually contains an independent nested quartet (a branching/
+    internal-loop topology neither this delta-correction nor
+    dp_stack_hairpin.py was designed to represent). Fixed here, ONLY when
+    include_hairpin=True, by adding penalty edges between any two
+    quartets that are nested but not colinear members of the same
+    symmetric helix (see nested_noncolinear()). This does NOT change
+    conflicting() itself, which remains the general-purpose geometric
+    check used by the stacking-only model, the alternative pair encoding
+    (rna_qubo_pairs.py), and run_dwave.py's feasibility check -- none of
+    which have this bug or should be newly restricted by its fix.
     """
     quartets = build_quartets(seq, min_loop)
     if not quartets:
@@ -96,6 +184,18 @@ def build_bqm(seq, min_loop=3, penalty=None, include_hairpin=True):
 
     for q1, q2 in itertools.combinations(quartets.keys(), 2):
         if conflicting(q1, q2):
+            bqm.add_interaction(q1, q2, penalty)
+        elif include_hairpin and nested_noncolinear(q1, q2):
+            # not geometrically conflicting (no shared base, no crossing),
+            # but forbidden anyway ONLY under the hairpin-aware model:
+            # this is the confirmed branching bug -- q1's baseline hairpin
+            # cost assumes q2's region is empty when it isn't. dimod
+            # combines repeated add_interaction calls by summing, so if a
+            # quadratic term already exists here from the delta-correction
+            # (only possible when q2 is q1's direct continuation, which by
+            # construction is always colinear and never flagged by
+            # nested_noncolinear), this adds to it safely rather than
+            # overwriting.
             bqm.add_interaction(q1, q2, penalty)
 
     return bqm, quartets
