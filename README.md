@@ -416,6 +416,80 @@ listed as a real, open item: QAOA needs either deeper circuits, better
 initialization, or a reformulation to handle the richer Hamiltonian — not
 yet solved, honestly flagged rather than hidden.
 
+**Important scope correction to the claim above:** "the QUBO model itself
+is correct" was validated only against the two small toy sequences tested
+at that point. A larger-scale check (below) found a real, more general
+limitation in the same delta-correction technique.
+
+### A second, more serious limitation found during D-Wave rerun prep
+
+While selecting a replacement test sequence for the D-Wave rerun (below),
+simulated annealing on a candidate 60nt sequence found an energy
+(-5.40) *better* than the independent DP's reported optimum (-5.20) for
+the identical restricted model — which should be impossible if both are
+correct. Investigated directly rather than dismissed:
+
+The SA solution turned out to be a genuine **branching structure** — an
+outer stem enclosing a completely independent inner stem (an internal-loop
+topology), not a single continuous helix. Both `dp_stack_hairpin.py` and
+the QUBO's delta-correction technique were built to handle only two cases
+per closing pair: continue the stack, or close a hairpin over empty
+space. Neither was designed to represent "close over a loop that itself
+contains another independent nested stem." The DP simply cannot search
+that structure (a real, acceptable limitation, already documented). But
+the **QUBO's constraint system does not forbid it** — nothing in
+`conflicting()` prevents two non-crossing, non-base-sharing quartets from
+being selected even when one's assumed hairpin loop actually contains the
+other — and when this happens, the delta-correction wrongly charges a
+full hairpin-closure energy for a loop that isn't empty.
+
+Confirmed by direct, independent recomputation: the true physical energy
+of this exact structure (via ViennaRNA's own hairpin and internal-loop
+evaluators, correctly accounting for the branch) is **-6.20**. The BQM
+itself claims **-5.40** for the identical selection — a real ~0.8
+kcal/mol accounting error, not noise or a rounding artifact. This does
+not corrupt anything already run (it only matters for sequences whose
+true optimum happens to involve this branching pattern), but it is a
+genuine, previously-undiscovered boundary of the current hairpin port,
+found through the same validate-before-trust discipline used throughout
+this project. **This sequence was excluded from the D-Wave rerun below**
+rather than risk submitting a known-miscalculated case to real hardware.
+
+### D-Wave scaling rerun against the hairpin-aware QUBO
+
+The original D-Wave scaling results (Findings 3-4) all predate the
+hairpin port and reflect the stacking-only model. Rerun on the identical
+6 sequences (`scaling_results_hairpin_aware_dwave.json`):
+
+| n | qubits | qpu_access_time (μs) | energy | feasible |
+|---|---|---|---|---|
+| 20 | 15 | 109,803 | 0.00 | yes |
+| 30 | 41 | 81,754 | -1.60 | yes |
+| 40 | 72 | 91,378 | -5.00 | yes |
+| 60 | 178 | 97,603 | 0.00 | yes |
+| 80 | 362 | 99,026 | -6.90 | yes |
+| 100 | 540 | 102,362 | -7.93 | yes |
+
+**Two of six sequences (n=20, n=60) now optimize to the fully unfolded
+structure.** This was predicted and confirmed *before* running hardware,
+via `dp_stack_hairpin.py` — the independent ground truth for this exact
+model agreed these specific sequences genuinely have no favorable fold
+once real hairpin-loop entropy penalties are included, exactly the same
+phenomenon documented earlier for `GGAAUUCC` in the DP validation section.
+This is a correct, expected result, not a solver failure.
+
+**A real bug was caught and fixed in the process of interpreting these
+results.** `run_dwave.py`'s feasibility check originally compared the
+solver's true total energy against a stale stacking-only energy sum — the
+same bug pattern already caught twice elsewhere (`qaoa_simulator.py`'s
+`raw_stacking_energy` field and its penalty calibration). This caused 4 of
+6 runs to print a false `CONSTRAINT VIOLATED` warning. Fixed by checking
+the real constraint directly (`conflicting()` on the selected quartets)
+instead of comparing energies that were never supposed to match once the
+hairpin port landed. Independently re-verified after the fix: all 6
+selections are genuinely feasible, and every recomputed `true_model_energy`
+matches D-Wave's own reported energy exactly.
+
 ## Limitations
 
 - **No multiloop support**, DP or QUBO. A correct treatment needs a
@@ -439,29 +513,42 @@ yet solved, honestly flagged rather than hidden.
   backend/circuit combination without deeper error mitigation (dynamical
   decoupling, readout correction, zero-noise extrapolation — not
   attempted, out of scope for remaining time).
-- **D-Wave/IBM hardware results in this repo predate the hairpin port** —
-  all scaling and hardware runs reflect the original stacking-only QUBO.
-  Rerunning them against the hairpin-aware model is real future work.
+- **The QUBO's delta-correction cannot represent branching (internal-loop)
+  topologies** — confirmed on a real test case where the true optimal
+  structure has an independent nested stem inside another pair's assumed
+  hairpin closure. The constraint system doesn't forbid this, and when it
+  occurs, the reported energy is measurably wrong (-5.40 claimed vs. -6.20
+  true, confirmed by direct recomputation). Sequences whose true optimum
+  involves this pattern should not be trusted on the current QUBO without
+  this fix; the one sequence found to trigger it was excluded from the
+  D-Wave rerun rather than risk a known-miscalculated hardware submission.
+- **D-Wave hardware results now reflect the hairpin-aware QUBO** (rerun
+  completed) — **IBM hardware results still predate the hairpin port**
+  and cannot be rerun, since IBM QPU-time access is permanently exhausted.
 
 ## Future Work
 
-1. ~~Rerun D-Wave/IBM hardware results against the hairpin-aware QUBO with
-   the corrected penalty calibration~~ — **not achievable.** IBM QPU-time
-   access is permanently exhausted, not renewable. `run_ibm.py` has been
-   corrected for calibration and job-efficiency regardless, in case
-   hardware access becomes available through another source in the
-   future, but no further runs are possible under this project's access.
-2. Diagnose and fix QAOA's difficulty with the hairpin-aware Hamiltonian's
+1. ~~Rerun D-Wave hardware results against the hairpin-aware QUBO~~ —
+   **done.** ~~Rerun IBM hardware results~~ — **not achievable**, IBM
+   QPU-time access is permanently exhausted, not renewable. `run_ibm.py`
+   has been corrected for calibration and job-efficiency regardless, in
+   case hardware access becomes available through another source in the
+   future.
+2. Fix the QUBO's branching/internal-loop-topology gap found above — the
+   constraint system needs to actively forbid (or the energy model needs
+   to correctly account for) a quartet's assumed-empty hairpin loop
+   actually containing another selected quartet.
+3. Diagnose and fix QAOA's difficulty with the hairpin-aware Hamiltonian's
    correlated landscape (deeper circuits, better initialization, or a
    reformulation).
-3. Bulge/internal-loop QUBO extension via auxiliary "at most one active
+4. Bulge/internal-loop QUBO extension via auxiliary "at most one active
    child" constraints — proven by the DP to matter most at n≥40.
-4. Proper multiloop DP and QUBO extension (WM table, branch counting).
-5. Error mitigation to push usable QAOA qubit count past the observed
+5. Proper multiloop DP and QUBO extension (WM table, branch counting).
+6. Error mitigation to push usable QAOA qubit count past the observed
    4-6 qubit noise wall.
-6. Investigate D-Wave's apparent size-based QPU-access threshold directly
+7. Investigate D-Wave's apparent size-based QPU-access threshold directly
    (repeat n=100, test intermediate sizes).
-7. Pseudoknot-aware extension (challenge's optional advanced task).
+8. Pseudoknot-aware extension (challenge's optional advanced task).
 
 ## References
 

@@ -24,9 +24,10 @@ even if it's ugly.
 import argparse
 import time
 import sys
+from itertools import combinations
 sys.path.insert(0, ".")  # rna_qubo.py / build_bqm.py must be alongside this file
 
-from build_bqm import build_bqm
+from build_bqm import build_bqm, conflicting
 from validate_brute_force import pairs_used, to_dot_bracket
 
 
@@ -76,9 +77,23 @@ def run(seq, mode, min_loop=3, num_reads=1000):
           f"if feasible): {best.energy:.2f}")
     print(f"structure: {db}")
 
+    # Real feasibility check, not a stale energy-gap proxy. The old check
+    # compared against `sum(quartets[q] for q in selected)` -- the
+    # STACKING-ONLY energy -- but best.energy now includes real hairpin
+    # baseline/correction terms since build_bqm()'s include_hairpin=True
+    # became the default. Those two were never going to match once the
+    # hairpin port landed; this is the same stale-comparison bug pattern
+    # already caught and fixed twice elsewhere (qaoa_simulator.py's
+    # raw_stacking_energy, and its penalty calibration). Fixed the same
+    # way: check the REAL constraint directly (no shared bases, no
+    # crossing) rather than comparing energies that were never supposed
+    # to be equal post-hairpin-port.
+    is_feasible = not any(conflicting(q1, q2) for q1, q2 in combinations(selected, 2))
+    true_model_energy = bqm.energy({v: (1 if v in selected else 0) for v in bqm.variables})
     raw_energy = sum(quartets[q] for q in selected)
-    print(f"raw stacking energy of selected quartets: {raw_energy:.2f}  "
-          f"({'feasible' if abs(raw_energy - best.energy) < 1e-6 else 'CONSTRAINT VIOLATED -- raise penalty weight'})")
+    print(f"raw stacking-only energy of selected quartets (excludes hairpin terms): {raw_energy:.2f}")
+    print(f"true total model energy (stacking + hairpin, via bqm.energy()): {true_model_energy:.2f}")
+    print(f"feasible (real constraint check): {is_feasible}")
 
     def jsonable(x):
         # dimod/numpy scalars aren't JSON-serializable directly -- cast at
@@ -98,7 +113,8 @@ def run(seq, mode, min_loop=3, num_reads=1000):
         "run_time_us": jsonable(run_time_us),
         "qpu_timing_raw": jsonable(timing),
         "energy": jsonable(best.energy),
-        "structure": db, "feasible": bool(abs(raw_energy - best.energy) < 1e-6),
+        "structure": db, "feasible": bool(is_feasible),
+        "raw_stacking_energy": raw_energy, "true_model_energy": true_model_energy,
     }
 
 
