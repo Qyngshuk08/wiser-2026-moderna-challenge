@@ -50,6 +50,7 @@ def run(seq, mode, min_loop=3, num_reads=1000):
         t0 = time.time()
         sampleset = sampler.sample(bqm)
         wall_time = time.time() - t0
+        chain_break_stats = None
     else:
         from dwave.system import DWaveSampler, EmbeddingComposite
         sampler = EmbeddingComposite(DWaveSampler())
@@ -57,9 +58,41 @@ def run(seq, mode, min_loop=3, num_reads=1000):
         sampleset = sampler.sample(bqm, num_reads=num_reads)
         wall_time = time.time() - t0
 
+        # Real noise metrics for QPU-direct mode -- neither was captured
+        # before. chain_break_fraction is specific to embedded QPU solves
+        # (irrelevant to hybrid, which doesn't need chain embedding) and
+        # is a genuine, D-Wave-specific noise signal, structurally
+        # different from IBM's gate-based shot-confidence noise.
+        try:
+            cbf = sampleset.record.chain_break_fraction
+            chain_break_stats = {
+                "mean": float(cbf.mean()), "max": float(cbf.max()),
+                "min": float(cbf.min()), "frac_with_any_break": float((cbf > 0).mean()),
+            }
+        except Exception as e:
+            chain_break_stats = None
+            print(f"WARNING: could not extract chain_break_fraction: {e}")
+
     best = sampleset.first
     selected = [q for q, v in best.sample.items() if v == 1]
     db = to_dot_bracket(len(seq), pairs_used(selected))
+
+    # Read-level confidence: what fraction of all reads landed on the
+    # BEST energy found, vs scattered across worse answers? This is the
+    # D-Wave analog of IBM's shot-confidence metric -- not previously
+    # computed here at all (only .first, the single best sample, was
+    # ever inspected).
+    read_confidence = None
+    if mode == "qpu":
+        try:
+            total_reads = int(sampleset.record.num_occurrences.sum())
+            best_energy_reads = int(sum(
+                rec.num_occurrences for rec in sampleset.record
+                if abs(rec.energy - best.energy) < 1e-6
+            ))
+            read_confidence = best_energy_reads / total_reads if total_reads else None
+        except Exception as e:
+            print(f"WARNING: could not compute read-level confidence: {e}")
 
     # sampleset.info carries the actual quantum-resource breakdown -- wall
     # time alone is dominated by classical presolve on hybrid solves and is
@@ -76,6 +109,13 @@ def run(seq, mode, min_loop=3, num_reads=1000):
     print(f"best energy (incl. penalty, should be near pure-stacking energy "
           f"if feasible): {best.energy:.2f}")
     print(f"structure: {db}")
+    if chain_break_stats:
+        print(f"chain_break_fraction: mean={chain_break_stats['mean']:.4f}  "
+              f"max={chain_break_stats['max']:.4f}  "
+              f"frac_reads_with_any_break={chain_break_stats['frac_with_any_break']:.4f}")
+    if read_confidence is not None:
+        print(f"read-level confidence (fraction of {num_reads} reads at best energy): "
+              f"{read_confidence:.4f}")
 
     # Real feasibility check, not a stale energy-gap proxy. The old check
     # compared against `sum(quartets[q] for q in selected)` -- the
@@ -115,6 +155,9 @@ def run(seq, mode, min_loop=3, num_reads=1000):
         "energy": jsonable(best.energy),
         "structure": db, "feasible": bool(is_feasible),
         "raw_stacking_energy": raw_energy, "true_model_energy": true_model_energy,
+        "chain_break_stats": chain_break_stats,
+        "read_confidence": read_confidence,
+        "num_reads": num_reads if mode == "qpu" else None,
     }
 
 
