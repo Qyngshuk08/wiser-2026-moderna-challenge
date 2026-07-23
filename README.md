@@ -469,43 +469,68 @@ previously scored -5.40 now scores **7430.6** (correctly and heavily
 penalized), and simulated annealing on the fixed BQM converges to
 **-5.20** — exactly matching the independent DP.
 
-### D-Wave scaling rerun against the hairpin-aware QUBO
+### D-Wave scaling rerun against the hairpin-aware QUBO — including a confirmed correction
 
 The original D-Wave scaling results (Findings 3-4) all predate the
 hairpin port and reflect the stacking-only model. Rerun on the identical
-6 sequences (`scaling_results_hairpin_aware_dwave.json`) — note this rerun
-was performed *before* the branching fix above (the fix was discovered
-*while preparing* this rerun, on a replacement sequence that was excluded
-rather than risk submitting a known-miscalculated case to hardware); the
-6 sequences actually submitted did not trigger the branching bug, so
-these hardware results remain valid as reported:
+6 sequences (`scaling_results_hairpin_aware_dwave.json`).
 
-| n | qubits | qpu_access_time (μs) | energy | feasible |
-|---|---|---|---|---|
-| 20 | 15 | 109,803 | 0.00 | yes |
-| 30 | 41 | 81,754 | -1.60 | yes |
-| 40 | 72 | 91,378 | -5.00 | yes |
-| 60 | 178 | 97,603 | 0.00 | yes |
-| 80 | 362 | 99,026 | -6.90 | yes |
-| 100 | 540 | 102,362 | -7.93 | yes |
+**Correction to an earlier claim in this README:** the first hairpin-aware
+rerun (before the branching fix above) was reported here as unaffected by
+the branching bug — that claim was wrong, and it's being corrected
+directly rather than silently edited away. Checking the actual selected
+structures directly (`nested_noncolinear()`, after the fix existed)
+showed **2 of the 6 already-reported hardware results — n=80 and n=100 —
+had in fact exploited the exact branching bug**, the same way the toy
+test case that led to the fix did. Both were rerun on real D-Wave
+hardware against the corrected model:
 
-**Two of six sequences (n=20, n=60) now optimize to the fully unfolded
+| n | qubits | qpu_access_time (μs) | energy | feasible | corrected? |
+|---|---|---|---|---|---|
+| 20 | 15 | 109,803 | 0.00 | yes | no (unaffected, confirmed) |
+| 30 | 41 | 81,754 | -1.60 | yes | no (unaffected, confirmed) |
+| 40 | 72 | 91,378 | -5.00 | yes | no (unaffected, confirmed) |
+| 60 | 178 | 97,603 | 0.00 | yes | no (unaffected, confirmed) |
+| 80 | 362 | 150,045 | **-6.20** (was -6.90) | yes | **yes** |
+| 100 | 540 | 154,952 | **-6.70** (was -7.93) | yes | **yes** |
+
+Both wrong values (-6.90, -7.93) were genuinely reported by real D-Wave
+hardware before the fix — this was not a simulation artifact, it was a
+real, previously-undiscovered accounting error present in production
+hardware results already in this repository. The historical (wrong)
+values are preserved, clearly flagged, in
+`scaling_results_hairpin_aware_dwave_PRE_BRANCHING_FIX.json` rather than
+deleted, for transparency.
+
+**A real cost of the fix, worth reporting alongside the correction:**
+constraint edge count roughly doubled at both corrected sizes (n=80:
+32,614 → 49,678 edges; n=100: 69,299 → 110,355), and graph density
+increased substantially (n=80: 0.499 → 0.760; n=100: 0.476 → 0.758). The
+`nested_noncolinear` penalty pass adds real new constraint edges, and at
+these larger sizes, a meaningful fraction of all quartet pairs turn out
+to be non-colinear nested pairs that must now be forbidden. This is a
+genuine additional cost of correctness, not a free fix.
+
+**Two of six sequences (n=20, n=60) optimize to the fully unfolded
 structure.** This was predicted and confirmed *before* running hardware,
 via `dp_stack_hairpin.py` — the independent ground truth for this exact
 model agreed these specific sequences genuinely have no favorable fold
 once real hairpin-loop entropy penalties are included, exactly the same
 phenomenon documented earlier for `GGAAUUCC` in the DP validation section.
-This is a correct, expected result, not a solver failure.
+This is a correct, expected result, not a solver failure. These two were
+also independently confirmed unaffected by the branching bug via local
+simulated annealing before spending any QPU time re-confirming them.
 
-**A real bug was caught and fixed in the process of interpreting these
-results.** `run_dwave.py`'s feasibility check originally compared the
+**A separate real bug was also caught and fixed while interpreting the
+first rerun.** `run_dwave.py`'s feasibility check originally compared the
 solver's true total energy against a stale stacking-only energy sum — the
 same bug pattern already caught twice elsewhere (`qaoa_simulator.py`'s
 `raw_stacking_energy` field and its penalty calibration). This caused 4 of
-6 runs to print a false `CONSTRAINT VIOLATED` warning. Fixed by checking
-the real constraint directly (`conflicting()` on the selected quartets)
-instead of comparing energies that were never supposed to match once the
-hairpin port landed. Independently re-verified after the fix: all 6
+6 runs in the first rerun to print a false `CONSTRAINT VIOLATED` warning.
+Fixed by checking the real constraint directly (`conflicting()` on the
+selected quartets) instead of comparing energies that were never supposed
+to match once the hairpin port landed. Independently re-verified after
+the fix: all 6
 selections are genuinely feasible, and every recomputed `true_model_energy`
 matches D-Wave's own reported energy exactly.
 

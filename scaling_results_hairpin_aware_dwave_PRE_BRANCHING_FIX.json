@@ -54,27 +54,27 @@
     "n": 80,
     "mode": "hybrid",
     "num_variables": 362,
-    "num_edges": 49678,
-    "graph_density": 0.76,
-    "qpu_access_time_us": 150045,
-    "energy": -6.2,
-    "structure": "(((............)))(((((........................)))))..((((.........)))).........",
+    "num_edges": 32614,
+    "graph_density": 0.499,
+    "qpu_access_time_us": 99026,
+    "energy": -6.9,
+    "structure": "(((............)))(((((....(((((........)))))..)))))..((((.........)))).........",
     "feasible": true,
-    "corrected_after_branching_fix": true,
-    "prior_wrong_energy": -6.9
+    "CONFIRMED_WRONG": true,
+    "reason": "This selection contains a branching/internal-loop pattern the model could not yet detect. Confirmed via nested_noncolinear() after the fix: this exact structure scores heavily penalized under the corrected model, not the energy shown here. See scaling_results_hairpin_aware_dwave.json for the corrected value."
   },
   {
     "seq": "CAUCAAAUCCCAGGGCUUGCAUUCCCCACAACUUCCGUCAGUACUACGCCGAAGGCCAGAGGACCUUGAAAUUAGAAGCGGUGACUCUGUCAAAGUAGGC",
     "n": 100,
     "mode": "hybrid",
     "num_variables": 540,
-    "num_edges": 110355,
-    "graph_density": 0.758,
-    "qpu_access_time_us": 154952,
-    "energy": -6.7,
-    "structure": "............(((........))).........................((((........))))..........((((.....))))..........",
+    "num_edges": 69299,
+    "graph_density": 0.476,
+    "qpu_access_time_us": 102362,
+    "energy": -7.93,
+    "structure": "..............((((((..........................(((((((((........))))...........)))))...........))))))",
     "feasible": true,
-    "corrected_after_branching_fix": true,
-    "prior_wrong_energy": -7.93
+    "CONFIRMED_WRONG": true,
+    "reason": "This selection contains a branching/internal-loop pattern the model could not yet detect. Confirmed via nested_noncolinear() after the fix: this exact structure scores heavily penalized under the corrected model, not the energy shown here. See scaling_results_hairpin_aware_dwave.json for the corrected value."
   }
 ]
