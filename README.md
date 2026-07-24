@@ -185,9 +185,11 @@ stated directly rather than implied:
    no-crossing constraint is structural, not incidental).
 2. **Compare multiple quantum encodings** — **done.** See dedicated
    section below.
-3. **Sampling / hardware-inspired noise** — **partial, real progress.** 4
-   independent hardware runs of the same problem now exist across 3
-   backends. See dedicated section below.
+3. **Sampling / hardware-inspired noise** — **substantial progress across
+   two platforms.** 4 independent IBM runs across 3 backends, plus 3
+   independent D-Wave QPU-direct runs with real chain-break-fraction and
+   read-confidence metrics (neither captured before this task). See
+   dedicated sections below.
 4. **Qubit count vs. constraint enforcement trade-off** — **done.** See
    dedicated section below.
 
@@ -298,6 +300,48 @@ the corrected penalty calibration to separate the noise effect from the
 calibration confound. This is no longer possible — hardware access is
 permanently exhausted, not renewable — and is recorded here as a known,
 final limitation of this dataset rather than pending future work.
+
+### D-Wave noise study — a genuine extension, not a repeat of the IBM data
+
+D-Wave's noise characteristics are structurally different from IBM's:
+IBM's are gate-based (shallow-circuit decoherence, gate error), D-Wave's
+are annealing-based (chain breaks from embedding, thermal noise during
+the anneal). `run_dwave.py` previously captured neither `chain_break_
+fraction` nor any read-level confidence metric — only `sampleset.first`,
+the single best sample, was ever inspected. Both were added and validated
+before use (`dwave_noise_study_results.json`): 3 independent QPU-direct
+runs of the same problem (`GGACGGCGCUUCUACUCAAC`, n=20, 15 qubits, whose
+true optimum is the fully unfolded structure, independently confirmed
+earlier via `dp_stack_hairpin.py`).
+
+| run | chain_break_fraction (mean) | frac. reads w/ any break | read-level confidence | correct? |
+|---|---|---|---|---|
+| 1 | 0.0059 | 8.89% | 1.60% | yes |
+| 2 | 0.0047 | 6.98% | 2.70% | yes |
+| 3 | 0.0070 | 10.47% | 2.20% | yes |
+
+All 3 runs found the correct answer and were genuinely feasible. But
+**read-level confidence (mean 2.17%) is roughly 8-10x lower than IBM's
+shot confidence on its correct runs (mean ~21%)**, despite D-Wave's
+chain-break rate being quite modest (under 7 in 1000 reads have any break
+at all, on average). This means chain breaks alone do not explain the gap
+— something else about the annealing search is driving most reads away
+from the true optimum, even on a problem this small.
+
+**Honestly flagged, not overclaimed:** with only 3 runs and no access to
+the full per-read energy distribution beyond what `run_dwave.py` currently
+extracts, the specific mechanism (e.g. broad thermal exploration across
+many near-degenerate feasible states in a very dense penalty landscape —
+this problem's constraint graph density is 0.981, the highest recorded
+anywhere in this project) is a plausible explanation, not a confirmed
+one. This is also not a clean apples-to-apples comparison with the IBM
+numbers above: different qubit counts (15 vs. 4-6), different hardware
+paradigms entirely (quantum annealing vs. gate-based QAOA). The finding
+that stands on its own, without needing that comparison: **D-Wave's
+per-read confidence in the correct answer is low even when the answer
+found is consistently correct and chain breaks are rare** — a genuine,
+quantified, D-Wave-specific noise characteristic, distinct from anything
+the IBM data showed.
 
 Two different penalty regimes exist in this project, for good reasons:
 the **classical-exactness penalty** (`build_bqm.py`'s default, sized to
@@ -577,22 +621,25 @@ matches D-Wave's own reported energy exactly.
    case hardware access becomes available through another source in the
    future.
 2. ~~Fix the QUBO's branching/internal-loop-topology gap~~ — **done**
-   (`nested_noncolinear()`). Optionally: rerun the D-Wave scaling study
-   once more against the now-fixed model, to check whether any of the 6
-   standard sequences' true optima change as a result (none were
-   confirmed to trigger the bug, but this hasn't been exhaustively ruled
-   out for every sequence length tested).
-3. Diagnose and fix QAOA's difficulty with the hairpin-aware Hamiltonian's
+   (`nested_noncolinear()`). ~~Rerun the D-Wave scaling study once more
+   against the now-fixed model~~ — **done**; found and corrected 2 of 6
+   already-published results (n=80, n=100) that had exploited the bug.
+3. Add a genuine D-Wave noise study using the newly-added
+   `chain_break_fraction`/read-confidence metrics at additional qubit
+   counts (only n=20 tested so far) — would extend the current 3-run
+   dataset into a real qubit-count-vs-noise curve, the same way the IBM
+   data was originally intended to be before its access was exhausted.
+4. Diagnose and fix QAOA's difficulty with the hairpin-aware Hamiltonian's
    correlated landscape (deeper circuits, better initialization, or a
    reformulation).
-4. Bulge/internal-loop QUBO extension via auxiliary "at most one active
+5. Bulge/internal-loop QUBO extension via auxiliary "at most one active
    child" constraints — proven by the DP to matter most at n≥40.
-5. Proper multiloop DP and QUBO extension (WM table, branch counting).
-6. Error mitigation to push usable QAOA qubit count past the observed
+6. Proper multiloop DP and QUBO extension (WM table, branch counting).
+7. Error mitigation to push usable QAOA qubit count past the observed
    4-6 qubit noise wall.
-7. Investigate D-Wave's apparent size-based QPU-access threshold directly
+8. Investigate D-Wave's apparent size-based QPU-access threshold directly
    (repeat n=100, test intermediate sizes).
-8. Pseudoknot-aware extension (challenge's optional advanced task).
+9. Pseudoknot-aware extension (challenge's optional advanced task).
 
 ## References
 

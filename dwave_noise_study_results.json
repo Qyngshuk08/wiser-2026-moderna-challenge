@@ -1,0 +1,14 @@
+[
+  {"seq": "GGACGGCGCUUCUACUCAAC", "n": 20, "mode": "qpu", "num_variables": 15, "num_reads": 1000,
+   "energy": 0.00, "structure": "....................", "feasible": true, "match_exact": true,
+   "chain_break_fraction_mean": 0.0059, "chain_break_fraction_max": 0.0667, "frac_reads_with_any_break": 0.0889,
+   "read_confidence": 0.0160},
+  {"seq": "GGACGGCGCUUCUACUCAAC", "n": 20, "mode": "qpu", "num_variables": 15, "num_reads": 1000,
+   "energy": 0.00, "structure": "....................", "feasible": true, "match_exact": true,
+   "chain_break_fraction_mean": 0.0047, "chain_break_fraction_max": 0.0667, "frac_reads_with_any_break": 0.0698,
+   "read_confidence": 0.0270},
+  {"seq": "GGACGGCGCUUCUACUCAAC", "n": 20, "mode": "qpu", "num_variables": 15, "num_reads": 1000,
+   "energy": 0.00, "structure": "....................", "feasible": true, "match_exact": true,
+   "chain_break_fraction_mean": 0.0070, "chain_break_fraction_max": 0.0667, "frac_reads_with_any_break": 0.1047,
+   "read_confidence": 0.0220}
+]
