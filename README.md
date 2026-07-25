@@ -107,25 +107,40 @@ size-based threshold internal to Leap's hybrid workflow. *(DEVLOG.md,
 
 **5. QAOA required a fundamentally different penalty weight than the
 classical solvers — and a bug caused by reusing the wrong one was caught
-and fixed.** The QUBO's default penalty (sized for classical
-exactness-guarantees, ~2x the sum of all favorable energies) is roughly
-11x larger than any single favorable pairing on small instances. This is
-irrelevant to a classical exact solver but makes the QAOA cost landscape
-so penalty-dominated that "select nothing, violate nothing" becomes an
-inescapable local attractor — confirmed empirically (0% match across 8
-restarts, ruled out as an optimizer-effort problem before diagnosing the
-real cause). A much tighter, QAOA-specific penalty (~1.5x the largest
-single quartet energy) fixed this: exact match on both test sequences,
-confirmed with a real constraint check, not an energy-gap proxy.
+and fixed. Even after the fix, QAOA's success is genuinely stochastic,
+not reliable — measured directly, not assumed.** The QUBO's default
+penalty (sized for classical exactness-guarantees, ~2x the sum of all
+favorable energies) is roughly 11x larger than any single favorable
+pairing on small instances. This is irrelevant to a classical exact
+solver but makes the QAOA cost landscape so penalty-dominated that
+"select nothing, violate nothing" becomes an inescapable local attractor
+— confirmed empirically (0% match across 8 restarts, ruled out as an
+optimizer-effort problem before diagnosing the real cause). A much
+tighter, QAOA-specific penalty (~1.5x the largest single quartet energy)
+fixed the total-collapse failure mode.
+
+**Correction to an earlier claim in this README:** a single successful
+run was previously reported here as "exact match on both test sequences,"
+worded as if the fix guaranteed correctness. It doesn't. A 20-trial sweep
+across different random seeds, using the exact parameters `run_ibm.py`
+submits to hardware, found **GGGAAACCC succeeds only 15% of the time
+(3/20)** and **GCGCUUCGGCGC succeeds 25% of the time (5/20)** — real
+variance, not a guarantee, even on these tiny 4-6 qubit toy cases. This
+was found by rerunning the validation after IBM access was restored (see
+Finding 6 below) and getting a wrong answer on real hardware — investigated
+directly rather than dismissed, and confirmed as expected stochastic
+behavior (via a proper multi-seed sweep) rather than a new regression.
 *(DEVLOG.md, "QAOA / IBM".)*
 
-**6. Real IBM hardware confirms the formulation works, and reveals an
-early noise wall.** `ibm_kingston` (4 qubits, `GGGAAACCC`): exact match,
-but at only 17.0% shot confidence vs. 97.1% on the noiseless Aer
-simulator — real hardware noise, quantified directly. A second run
-(`ibm_marrakesh`, 6 qubits, `GCGCUUCGGCGC`) surfaced a further bug: the
-plurality bitstring was outright infeasible (malformed structure, energy
-exactly ~2x the true value — two conflicting quartets both firing).
+**6. Real IBM hardware confirms the formulation works on some runs, fails
+on others exactly as the success-rate finding above predicts, and reveals
+an early noise wall on top of that.** `ibm_kingston` (4 qubits,
+`GGGAAACCC`, first hardware run): exact match, but at only 17.0% shot
+confidence vs. 97.1% on the noiseless Aer simulator — real hardware
+noise, quantified directly. A second run (`ibm_marrakesh`, 6 qubits,
+`GCGCUUCGGCGC`) surfaced a further bug: the plurality bitstring was
+outright infeasible (malformed structure, energy exactly ~2x the true
+value — two conflicting quartets both firing).
 Fixed with post-selection (rank all sampled bitstrings by shot count,
 return the highest-count *feasible* one). After the fix, the top 3
 bitstrings by shot count were still all infeasible; the best feasible
@@ -298,13 +313,31 @@ hardware access resumes.
 
 **Correction:** the sentence below originally said this rerun was "no
 longer possible" because IBM access was "permanently exhausted." That
-claim was wrong — access was restored after this section was written.
-See the future-work item below for the completed rerun, or its current
-status if not yet done.
+claim was wrong — access was restored, and the rerun was completed.
 
-**What would have made this a complete study:** rerunning all 6 rows with
-the corrected penalty calibration to separate the noise effect from the
-calibration confound.
+**Rerun against the corrected penalty calibration, with a genuinely
+informative result — not the clean "noise vs. calibration" separation
+hoped for, but something more useful: hard evidence that QAOA's success
+on this Hamiltonian is fundamentally stochastic, not a calibration
+artifact.** Both `GGGAAACCC` and `GCGCUUCGGCGC` were rerun on
+`ibm_fez` with the corrected calibration (penalty 4.00 and 4.15
+respectively, matching `qaoa_simulator.py`'s formula exactly). **Both
+runs found the wrong answer** — `GGGAAACCC` converged to the trivial
+unfolded structure (simulator pre-optimization also found the wrong
+answer, 1458/2000 shots), `GCGCUUCGGCGC` converged to a different,
+suboptimal fold (`.(((....))).` instead of the true `((((....))))`).
+
+This was investigated directly rather than reported as a mystery: a
+20-trial sweep across random seeds, using `run_ibm.py`'s exact parameters
+(`reps=2, maxiter=100, restarts=5`), found **GGGAAACCC succeeds only 15%
+of the time (3/20) and GCGCUUCGGCGC succeeds 25% of the time (5/20)** —
+see Finding 5 above for the full correction this prompted to an earlier,
+overstated claim. Today's two real hardware failures are the *expected*
+outcome given those success rates (a combined ~64% chance both would
+fail), not evidence of a new regression. The corrected calibration is
+confirmed working (it eliminates the total-collapse failure mode from
+Finding 5), but it does not guarantee success on any individual run —
+this is the honest, now-measured shape of the remaining limitation.
 
 ### D-Wave noise study — a genuine extension, not a repeat of the IBM data
 
@@ -691,10 +724,12 @@ matches D-Wave's own reported energy exactly.
 ## Future Work
 
 1. ~~Rerun D-Wave hardware results against the hairpin-aware QUBO~~ —
-   **done.** Rerun IBM hardware results — **access restored**, this was
-   earlier reported as permanently exhausted; that was wrong. Rerun
-   against the hairpin-aware QUBO in progress (see IBM section for
-   current results).
+   **done.** ~~Rerun IBM hardware results~~ — **done** (access was
+   restored; earlier "permanently exhausted" claim corrected). Result:
+   both reruns found wrong answers on real hardware, investigated and
+   confirmed as expected given QAOA's measured ~15-25% success rate on
+   these toy cases (see Finding 5/6 corrections) — a genuine, informative
+   finding, not a clean confirmation.
 2. ~~Fix the QUBO's branching/internal-loop-topology gap~~ — **done**
    (`nested_noncolinear()`). ~~Rerun the D-Wave scaling study once more
    against the now-fixed model~~ — **done**; found and corrected 2 of 6

@@ -1,0 +1,34 @@
+[
+  {
+    "seq": "GGGAAACCC",
+    "n": 9,
+    "backend": "ibm_fez",
+    "num_qubits": 4,
+    "penalty_used": 4.0,
+    "structure": ".........",
+    "raw_energy": 0.0,
+    "feasible": true,
+    "match_exact": false,
+    "true_optimal": "(((...)))",
+    "true_optimal_energy": -1.4,
+    "simulator_preopt_confidence": 0.729,
+    "hardware_confidence": 0.65,
+    "note": "Wrong answer on both simulator pre-optimization and real hardware. Investigated via 20-seed sweep: this sequence succeeds only 15% of the time (3/20) under these exact parameters -- expected outcome, not a regression."
+  },
+  {
+    "seq": "GCGCUUCGGCGC",
+    "n": 12,
+    "backend": "ibm_fez",
+    "num_qubits": 6,
+    "penalty_used": 4.15,
+    "structure": ".(((....))).",
+    "raw_energy": -6.6,
+    "feasible": true,
+    "match_exact": false,
+    "true_optimal": "((((....))))",
+    "true_optimal_energy": -6.2,
+    "simulator_preopt_confidence": 0.194,
+    "hardware_confidence": 0.1065,
+    "note": "Wrong (suboptimal but feasible) answer on both simulator and hardware. 20-seed sweep: succeeds 25% of the time (5/20) under these exact parameters."
+  }
+]
