@@ -296,11 +296,15 @@ between them. `run_ibm.py` has since been corrected (uses the same
 `bqm.linear`-based calibration as `qaoa_simulator.py`) for whenever
 hardware access resumes.
 
+**Correction:** the sentence below originally said this rerun was "no
+longer possible" because IBM access was "permanently exhausted." That
+claim was wrong — access was restored after this section was written.
+See the future-work item below for the completed rerun, or its current
+status if not yet done.
+
 **What would have made this a complete study:** rerunning all 6 rows with
 the corrected penalty calibration to separate the noise effect from the
-calibration confound. This is no longer possible — hardware access is
-permanently exhausted, not renewable — and is recorded here as a known,
-final limitation of this dataset rather than pending future work.
+calibration confound.
 
 ### D-Wave noise study — a genuine extension, not a repeat of the IBM data
 
@@ -680,17 +684,17 @@ matches D-Wave's own reported energy exactly.
 - **D-Wave hardware results now reflect the hairpin-aware QUBO** (rerun
   completed, before the branching fix was found — the 6 sequences
   submitted did not trigger it, so those results remain valid) —
-  **IBM hardware results still predate the hairpin port** and cannot be
-  rerun, since IBM QPU-time access is permanently exhausted.
+  **IBM hardware results still predate the hairpin port.** IBM access
+  was reported exhausted earlier in this project; it has since been
+  restored (see future-work item below for status of the rerun).
 
 ## Future Work
 
 1. ~~Rerun D-Wave hardware results against the hairpin-aware QUBO~~ —
-   **done.** ~~Rerun IBM hardware results~~ — **not achievable**, IBM
-   QPU-time access is permanently exhausted, not renewable. `run_ibm.py`
-   has been corrected for calibration and job-efficiency regardless, in
-   case hardware access becomes available through another source in the
-   future.
+   **done.** Rerun IBM hardware results — **access restored**, this was
+   earlier reported as permanently exhausted; that was wrong. Rerun
+   against the hairpin-aware QUBO in progress (see IBM section for
+   current results).
 2. ~~Fix the QUBO's branching/internal-loop-topology gap~~ — **done**
    (`nested_noncolinear()`). ~~Rerun the D-Wave scaling study once more
    against the now-fixed model~~ — **done**; found and corrected 2 of 6
