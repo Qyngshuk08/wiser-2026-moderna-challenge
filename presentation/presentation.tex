@@ -306,7 +306,7 @@
 \end{frame}
 
 % ============================================================ QAOA PENALTY BUG
-\begin{frame}{8. QAOA: A Penalty-Landscape Bug, Caught and Fixed}
+\begin{frame}{8. QAOA: A Penalty-Landscape Bug --- Fixed, But Not Solved}
   \begin{columns}[T]
     \begin{column}{0.5\textwidth}
       \begin{cardbox}
@@ -322,14 +322,11 @@
     \end{column}
     \begin{column}{0.5\textwidth}
       \begin{greenbox}
-      \textbf{\color{accent}The fix}\\[5pt]
-      \footnotesize A much tighter, QAOA-specific penalty ($\sim$1.5x the single largest quartet energy) replaces the classical-exactness penalty for QAOA runs only.
+      \textbf{\color{accent}The fix (partial)}\\[5pt]
+      \footnotesize A much tighter, QAOA-specific penalty ($\sim$1.5x the single largest quartet energy) replaces the classical-exactness penalty for QAOA runs only. Eliminates the total-collapse failure mode above.
       \vspace{4pt}
 
-      Exact match on both test sequences, confirmed with a real constraint check --- not an energy-gap proxy.
-      \vspace{4pt}
-
-      Later hardened further with post-selection: rank sampled bitstrings by shot count, return the highest-count one that is actually feasible.
+      \textbf{Does not guarantee success.} A 20-seed sweep found real, measured success rates of only \textbf{15\%} (GGGAAACCC) and \textbf{25\%} (GCGCUUCGGCGC) even on these tiny 4--6 qubit cases --- corrected from an earlier overstated claim after real hardware reruns returned wrong answers.
       \end{greenbox}
     \end{column}
   \end{columns}
@@ -358,6 +355,23 @@
   \textbf{\color{navy}Two more qubits was enough to erase a correct answer entirely}\\[4pt]
   \footnotesize A post-selection bug was also caught here: the plurality bitstring on the 6-qubit run was outright infeasible (malformed structure, energy $\sim$2x the true value). Fixed by ranking all sampled bitstrings by shot count and returning the highest-count feasible one.
   \end{cardbox}
+\end{frame}
+
+% ============================================================ IBM ACCESS RESTORED, RERUN
+\begin{frame}{9b. IBM Access Restored --- A Correction, Not a Confirmation}
+  \small IBM access was reported permanently exhausted earlier in this project. That was wrong --- access was restored, and both toy cases were rerun against the corrected, hairpin-aware QUBO.
+  \vspace{6pt}
+  \begin{redbox}
+  \textbf{Both reruns found the wrong answer on real hardware.}\\[4pt]
+  \footnotesize GGGAAACCC $\to$ trivial unfolded structure. GCGCUUCGGCGC $\to$ a different, suboptimal fold. Neither matched the true optimum.
+  \end{redbox}
+  \vspace{8pt}
+  \begin{navybox}
+  \textbf{\color{accent}Investigated directly, not dismissed}\\[4pt]
+  \footnotesize A 20-seed sweep using the exact hardware-submission parameters found real success rates of only \textbf{15\%} (GGGAAACCC) and \textbf{25\%} (GCGCUUCGGCGC). Today's two hardware failures were the statistically expected outcome ($\sim$64\% combined chance both would fail) --- not a new regression, and not the guaranteed success an earlier version of this deck implied.
+  \end{navybox}
+  \vspace{8pt}
+  \small\textit{This corrected an overstated claim in our own earlier documentation --- caught by the same validate-before-trust discipline used throughout this project.}
 \end{frame}
 
 % ============================================================ NOISE STUDY: TWO PLATFORMS
@@ -471,8 +485,8 @@
     \end{column}
     \begin{column}{0.5\textwidth}
       \begin{cardbox}
-      \textbf{\footnotesize\color{badred}QAOA struggles on the hairpin-aware Hamiltonian}\\[3pt]
-      \tiny Confirmed via simulated annealing that the model is correct --- the landscape is genuinely harder for a shallow circuit.
+      \textbf{\footnotesize\color{badred}QAOA succeeds only 15--25\% of the time}\\[3pt]
+      \tiny Measured directly via a 20-seed sweep on toy cases. Model confirmed correct via simulated annealing --- the landscape is genuinely harder for a shallow circuit, not a bug.
       \end{cardbox}
       \vspace{4pt}
       \begin{cardbox}
@@ -481,8 +495,8 @@
       \end{cardbox}
       \vspace{4pt}
       \begin{cardbox}
-      \textbf{\footnotesize\color{badred}IBM access permanently exhausted}\\[3pt]
-      \tiny No further hardware reruns possible under this project's access.
+      \textbf{\footnotesize\color{badred}D-Wave's n=100 QPU trigger unexplained}\\[3pt]
+      \tiny Only 1 of 6 sequences invoked the QPU at all; the connected-components hypothesis was tested and refuted, real cause still unconfirmed.
       \end{cardbox}
     \end{column}
   \end{columns}
