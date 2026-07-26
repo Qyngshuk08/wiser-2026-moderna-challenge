@@ -264,6 +264,47 @@ different variable/constraint geometries led the same solver to different
 (equally valid) optima. Reported honestly as a finding about degenerate
 solution landscapes, not a bug in either encoding.
 
+## QAOA Depth Investigation: A Real Effect That Doesn't Generalize
+
+Following up directly on the corrected Finding 5/6 claim (QAOA succeeds
+only 15-25% of the time on toy cases), the obvious next question was
+investigated: does increasing circuit depth (`reps`) fix it? Tested with
+controlled, real data, not assumed.
+
+**On `GGGAAACCC`, depth genuinely matters** — a controlled sweep (8
+trials per depth, `maxiter=100`):
+
+| reps | success rate |
+|---|---|
+| 1 | 0.0% |
+| 2 (baseline) | 12.5% |
+| 3 | 37.5% |
+| 4 | 25.0% (non-monotonic dip) |
+| 5 | 62.5% |
+| 6 | 62.5% (plateau) |
+
+**Ruled out a confound before trusting this:** is the improvement really
+about circuit depth, or just about giving the optimizer a bigger budget
+(deeper circuits have more parameters to tune)? Controlled directly:
+`reps=2` with 3x the optimizer budget (`maxiter=300`) still scored
+**12.5%** — identical to the `maxiter=100` baseline. This confirms the
+limitation at `reps=2` is genuine circuit expressibility, not insufficient
+optimization time — a shallow circuit structurally cannot represent the
+answer well, no matter how long it's tuned.
+
+**This does not generalize, and that's the real finding.** The same
+`reps=5` depth increase was tested on `GCGCUUCGGCGC`: success rate was
+**12.5%**, *worse* than that sequence's `reps=2` baseline of 25%. The
+exact opposite effect of what happened on the first test case.
+
+**Honest conclusion:** circuit depth is a real, confirmed lever — but the
+correct depth is problem-specific, not a universal fix. `run_ibm.py`'s
+current fixed `reps=2` default is neither optimal for either toy case
+individually nor a stable choice across them. Real remaining work is
+per-problem depth tuning (or a different reformulation entirely) rather
+than a single blanket depth increase, which this investigation directly
+ruled out as a complete fix.
+
 ## Sampling / Hardware Noise Study (`noise_study_aggregate.py`)
 
 The original hardware results (Finding 6) had exactly 2 data points — one
@@ -782,9 +823,12 @@ matches D-Wave's own reported energy exactly.
    counts (only n=20 tested so far) — would extend the current 3-run
    dataset into a real qubit-count-vs-noise curve, the same way the IBM
    data was originally intended to be before its access was exhausted.
-4. Diagnose and fix QAOA's difficulty with the hairpin-aware Hamiltonian's
-   correlated landscape (deeper circuits, better initialization, or a
-   reformulation).
+4. ~~Diagnose QAOA's difficulty with the hairpin-aware Hamiltonian's
+   correlated landscape~~ — **partially diagnosed.** See dedicated
+   section below: it's a genuine circuit-depth/expressibility effect
+   on one test case, but the fix does not generalize to the other —
+   real remaining work: per-problem depth tuning or a different
+   reformulation, not a single blanket depth increase.
 5. Bulge/internal-loop QUBO extension via auxiliary "at most one active
    child" constraints — proven by the DP to matter most at n≥40.
 6. Proper multiloop DP and QUBO extension (WM table, branch counting).

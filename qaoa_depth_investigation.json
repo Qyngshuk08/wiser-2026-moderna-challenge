@@ -1,0 +1,55 @@
+{
+  "GGGAAACCC": {
+    "exact_energy": -1.4,
+    "exact_structure": "(((...)))",
+    "by_reps": {
+      "1": {
+        "success_rate": 0.0,
+        "n_trials": 8
+      },
+      "2": {
+        "success_rate": 12.5,
+        "n_trials": 8
+      },
+      "2_maxiter300_control": {
+        "success_rate": 12.5,
+        "n_trials": 8,
+        "note": "control: same depth, 3x optimizer budget -- confirms this is a depth/expressibility limit, not an optimizer-tuning limit"
+      },
+      "3": {
+        "success_rate": 37.5,
+        "n_trials": 8
+      },
+      "4": {
+        "success_rate": 25.0,
+        "n_trials": 8,
+        "note": "non-monotonic dip"
+      },
+      "5": {
+        "success_rate": 62.5,
+        "n_trials": 8
+      },
+      "6": {
+        "success_rate": 62.5,
+        "n_trials": 8,
+        "note": "plateau"
+      }
+    }
+  },
+  "GCGCUUCGGCGC": {
+    "exact_energy": -6.2,
+    "exact_structure": "((((....))))",
+    "by_reps": {
+      "2": {
+        "success_rate": 25.0,
+        "n_trials": 20,
+        "note": "from earlier 20-seed sweep"
+      },
+      "5": {
+        "success_rate": 12.5,
+        "n_trials": 8,
+        "note": "WORSE than reps=2 baseline -- depth increase does not generalize"
+      }
+    }
+  }
+}
