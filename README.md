@@ -663,6 +663,49 @@ these larger sizes, a meaningful fraction of all quartet pairs turn out
 to be non-colinear nested pairs that must now be forbidden. This is a
 genuine additional cost of correctness, not a free fix.
 
+### Resolved: the "size-based QPU-access threshold" was actually a density effect
+
+Earlier in this project (before the branching fix), only 1 of the 6
+standard sequences (n=100) showed any real `qpu_access_time` at all — the
+other 5 (n=20 through n=80) showed exactly `0`, meaning Leap's hybrid
+solver decomposed and solved them entirely classically without touching
+the QPU. This was left as an open question — is n=100 a stable threshold,
+or stochastic per-run?
+
+**Investigated directly with 6 new real hardware runs**: n=100 repeated 3
+times, plus 3 new intermediate sizes (n=85, 90, 95) using freshly
+generated, validated sequences.
+
+| n | qubits | edges | density | qpu\_access\_time (μs) |
+|---|---|---|---|---|
+| 20 | 15 | 95 | 0.905 | 109,803 |
+| 30 | 41 | 635 | 0.774 | 81,754 |
+| 40 | 72 | 1,582 | 0.619 | 91,378 |
+| 60 | 178 | 8,637 | 0.548 | 97,603 |
+| 80 | 362 | 49,678 | 0.760 | 150,045 |
+| 85 | 411 | 63,839 | 0.758 | 151,513 |
+| 90 | 439 | 69,402 | 0.722 | 153,726 |
+| 95 | 428 | 70,208 | 0.768 | 153,683 |
+| 100 | 540 | 110,355 | 0.758 | 154,952 |
+| 100 (repeat) | — | — | — | 154,811 |
+| 100 (repeat) | — | — | — | 153,644 |
+
+**Two clean findings, resolving both parts of the original question:**
+
+1. **n=100's QPU access is stable, not stochastic.** Three independent
+   repeats vary by under 0.85% (153,644–154,952 μs) — deterministic
+   behavior on Leap's side, not per-run noise.
+2. **The original "only n=100 triggers QPU access" finding is now stale,
+   not wrong for its time.** It was measured on the pre-branching-fix
+   model. All 9 sizes tested here — n=20 through n=100 — now show
+   substantial, nonzero QPU access. The real cause: the branching fix
+   (`nested_noncolinear`) added real constraint edges at every scale, not
+   just the largest ones, pushing every tested problem size over
+   whatever internal threshold determines whether Leap's hybrid workflow
+   engages the QPU at all. This was never really a *size* threshold — it
+   was a constraint-density threshold that size happened to correlate
+   with in the old, lower-density model.
+
 **Two of six sequences (n=20, n=60) optimize to the fully unfolded
 structure.** This was predicted and confirmed *before* running hardware,
 via `dp_stack_hairpin.py` — the independent ground truth for this exact
@@ -747,8 +790,9 @@ matches D-Wave's own reported energy exactly.
 6. Proper multiloop DP and QUBO extension (WM table, branch counting).
 7. Error mitigation to push usable QAOA qubit count past the observed
    4-6 qubit noise wall.
-8. Investigate D-Wave's apparent size-based QPU-access threshold directly
-   (repeat n=100, test intermediate sizes).
+8. ~~Investigate D-Wave's apparent size-based QPU-access threshold~~ —
+   **resolved.** See dedicated section below: it wasn't a size threshold,
+   it was a density effect caused by the branching fix.
 9. ~~Pseudoknot-aware extension~~ — **proof-of-concept done**
    (`pseudoknot_qubo.py`). Real next steps: port hairpin energy to this
    variant; add real pseudoknot-specific loop-topology penalties

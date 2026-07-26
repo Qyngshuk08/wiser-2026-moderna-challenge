@@ -1,0 +1,117 @@
+{
+  "full_scaling_curve": [
+    {
+      "seq": "GGACGGCGCUUCUACUCAAC",
+      "n": 20,
+      "mode": "hybrid",
+      "num_variables": 15,
+      "num_edges": 95,
+      "graph_density": 0.905,
+      "qpu_access_time_us": 109803,
+      "energy": 0.0,
+      "structure": "....................",
+      "feasible": true,
+      "note": "true optimum is the fully unfolded structure under the real hairpin-aware model -- confirmed independently via dp_stack_hairpin.py before this run, not a solver failure"
+    },
+    {
+      "seq": "GACGCUGGCAAAGAGCUCAUUUUGAACGAC",
+      "n": 30,
+      "mode": "hybrid",
+      "num_variables": 41,
+      "num_edges": 635,
+      "graph_density": 0.774,
+      "qpu_access_time_us": 81754,
+      "energy": -1.6,
+      "structure": "......(((.....))).............",
+      "feasible": true
+    },
+    {
+      "seq": "CACUCGAGCUCUUUACGAAUUAAGCUUGCGGCACAGCUUA",
+      "n": 40,
+      "mode": "hybrid",
+      "num_variables": 72,
+      "num_edges": 1582,
+      "graph_density": 0.619,
+      "qpu_access_time_us": 91378,
+      "energy": -5.0,
+      "structure": "....((((((............)))))).(((...)))..",
+      "feasible": true
+    },
+    {
+      "seq": "CAUCUCGAAUUAAAAUAGACAAAUUAGUAAGACAUACCGUAGAAGUCCGUUAUUCCAGUA",
+      "n": 60,
+      "mode": "hybrid",
+      "num_variables": 178,
+      "num_edges": 8637,
+      "graph_density": 0.548,
+      "qpu_access_time_us": 97603,
+      "energy": 0.0,
+      "structure": "............................................................",
+      "feasible": true,
+      "note": "true optimum is the fully unfolded structure under the real hairpin-aware model -- confirmed independently via dp_stack_hairpin.py before this run, not a solver failure"
+    },
+    {
+      "seq": "GGCCGCUAGACACUUGCCCUCGGAAUCUUUGGGAGGAUGACUGGAAGCCGAGUAUAGGCAUAAAUAUCCUAGGAACGACU",
+      "n": 80,
+      "mode": "hybrid",
+      "num_variables": 362,
+      "num_edges": 49678,
+      "graph_density": 0.76,
+      "qpu_access_time_us": 150045,
+      "energy": -6.2,
+      "structure": "(((............)))(((((........................)))))..((((.........)))).........",
+      "feasible": true,
+      "corrected_after_branching_fix": true,
+      "prior_wrong_energy": -6.9
+    },
+    {
+      "n": 85,
+      "num_variables": 411,
+      "num_edges": 63839,
+      "graph_density": 0.758,
+      "qpu_access_time_us": 151513,
+      "energy": -12.9,
+      "structure": "(((((..........)))))................((((.......))))(((((.................))))).......",
+      "feasible": true
+    },
+    {
+      "n": 90,
+      "num_variables": 439,
+      "num_edges": 69402,
+      "graph_density": 0.722,
+      "qpu_access_time_us": 153726,
+      "energy": -10.3,
+      "structure": "....................(((((.............)))))....(((((.............)))))....................",
+      "feasible": true
+    },
+    {
+      "n": 95,
+      "num_variables": 428,
+      "num_edges": 70208,
+      "graph_density": 0.768,
+      "qpu_access_time_us": 153683,
+      "energy": -7.8,
+      "structure": ".................(((.................)))...................((((.(((((....))))).))))............",
+      "feasible": true
+    },
+    {
+      "seq": "CAUCAAAUCCCAGGGCUUGCAUUCCCCACAACUUCCGUCAGUACUACGCCGAAGGCCAGAGGACCUUGAAAUUAGAAGCGGUGACUCUGUCAAAGUAGGC",
+      "n": 100,
+      "mode": "hybrid",
+      "num_variables": 540,
+      "num_edges": 110355,
+      "graph_density": 0.758,
+      "qpu_access_time_us": 154952,
+      "energy": -6.7,
+      "structure": "............(((........))).........................((((........))))..........((((.....))))..........",
+      "feasible": true,
+      "corrected_after_branching_fix": true,
+      "prior_wrong_energy": -7.93
+    }
+  ],
+  "n100_repeats_us": [
+    154948,
+    154811,
+    153644
+  ]
+}
