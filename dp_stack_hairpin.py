@@ -29,7 +29,7 @@ def dp_fold_stack_hairpin(seq, min_loop=3):
 
     def stack_e(i0, j0):
         bt_o = BP_TYPE[(seq[i0], seq[j0])]
-        bt_i = BP_TYPE[(seq[i0 + 1], seq[j0 - 1])]
+        bt_i = BP_TYPE[(seq[j0 - 1], seq[i0 + 1])]  # REVERSED -- see rna_qubo.py fix note
         return stack[bt_o][bt_i] / 100.0
 
     canon = [[False] * n for _ in range(n)]

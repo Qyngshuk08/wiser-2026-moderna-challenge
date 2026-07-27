@@ -46,7 +46,7 @@ def build_pair_bqm(seq, min_loop=3, penalty=None):
         inner = (i + 1, j - 1)
         if inner in pair_set:
             bt_o = BP_TYPE[(seq[i], seq[j])]
-            bt_i = BP_TYPE[(seq[i + 1], seq[j - 1])]
+            bt_i = BP_TYPE[(seq[j - 1], seq[i + 1])]  # REVERSED -- see rna_qubo.py fix note
             e = stack[bt_o][bt_i] / 100.0
             bqm.add_interaction((i, j), inner, e)
             stack_terms[((i, j), inner)] = e

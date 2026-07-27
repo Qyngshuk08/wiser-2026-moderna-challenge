@@ -35,7 +35,7 @@ def dp_fold(seq, min_loop=3):
     def stack_energy(i, j):
         # stacking energy of pair (i,j) on inner pair (i+1,j-1)
         bt_o = BP_TYPE[(seq[i], seq[j])]
-        bt_i = BP_TYPE[(seq[i + 1], seq[j - 1])]
+        bt_i = BP_TYPE[(seq[j - 1], seq[i + 1])]  # REVERSED -- see rna_qubo.py fix note
         return stack[bt_o][bt_i] / 100.0
 
     # W[i][j]: best (most negative) energy for window [i, j], i,j not
@@ -101,7 +101,7 @@ def traceback(seq, W, V, canon, min_loop=3):
             from rna_qubo import BP_TYPE
             stack = get_stack_matrix()
             bt_o = BP_TYPE[(seq[i], seq[j])]
-            bt_i = BP_TYPE[(seq[i + 1], seq[j - 1])]
+            bt_i = BP_TYPE[(seq[j - 1], seq[i + 1])]  # REVERSED -- see rna_qubo.py fix note
             e = stack[bt_o][bt_i] / 100.0
             if abs(V[i][j] - (e + V[i + 1][j - 1])) < 1e-9:
                 trace_v(i + 1, j - 1)

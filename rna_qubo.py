@@ -57,6 +57,18 @@ def build_quartets(seq, min_loop=3):
     A quartet is valid if (i,j) and (i+1,j-1) are both canonical pairs.
     Energy convention: stack[][] values are already negative (favorable)
     for stable stacks, in units of 10 cal/mol. We convert to kcal/mol.
+
+    CRITICAL FIX (found during the bulge-loop QUBO port investigation):
+    the inner pair must be indexed in REVERSED tuple order when looking
+    up the stack table -- stack[bt_outer][bt_inner_reversed], not
+    stack[bt_outer][bt_inner_normal_order]. This was wrong from the very
+    start of the project. Confirmed via direct, systematic testing: 36/36
+    canonical outer/inner pair-type combinations match ViennaRNA's own
+    eval_int_loop evaluator exactly ONLY with the inner pair reversed;
+    the un-reversed convention mismatched on 34/36 combinations, by up to
+    1.8 kcal/mol on individual stacks. This affected every stacking
+    energy computed anywhere in this codebase prior to the fix. See
+    README for the full investigation and impact assessment.
     """
     stack = get_stack_matrix()
     pset = set(valid_pairs(seq, min_loop))
@@ -65,7 +77,7 @@ def build_quartets(seq, min_loop=3):
         inner = (i + 1, j - 1)
         if inner in pset:
             bt_outer = BP_TYPE[(seq[i], seq[j])]
-            bt_inner = BP_TYPE[(seq[i + 1], seq[j - 1])]
+            bt_inner = BP_TYPE[(seq[j - 1], seq[i + 1])]  # REVERSED -- see fix note above
             e = stack[bt_outer][bt_inner] / 100.0  # 10cal/mol -> kcal/mol
             quartets[(i, j)] = e
     return quartets

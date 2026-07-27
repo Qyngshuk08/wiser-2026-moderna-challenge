@@ -2,6 +2,26 @@
 
 Team: **Qudit Creons**
 
+> ## ⚠️ Major Correction (found during the bulge-loop investigation below)
+> A foundational indexing bug in the raw stacking-energy lookup
+> (`rna_qubo.py`'s `build_quartets()`, and 3 other files with the same
+> pattern) was present since the very start of this project. It affected
+> **every stacking energy computed anywhere in this codebase**, including
+> every D-Wave and IBM hardware result reported throughout this README.
+> Confirmed and fixed via systematic testing (36/36 canonical pair-type
+> combinations against ViennaRNA's own evaluator). **The impact on
+> structure selection (this project's primary reported metric) was
+> small** — the 320-sequence match-rate statistics moved by about 1
+> percentage point in each case (10.0%→10.6% stacking-only, 35.6%→36.9%
+> hairpin-only) — **but every individual numeric energy value reported
+> anywhere in this project prior to the fix (DP energies, QUBO energies,
+> D-Wave/IBM hardware energies) was off by up to ~1.8 kcal/mol per
+> stack** and should not be trusted at face value. Full details, the
+> investigation, and what remains unresolved are in the dedicated section
+> below. This notice is placed here, at the top, rather than buried,
+> because it affects how every number elsewhere in this document should
+> be read.
+
 ## Summary
 
 We formulate mRNA minimum-free-energy (MFE) secondary structure prediction
@@ -12,21 +32,25 @@ prior quantum-annealing RNA folding work. We solve this QUBO on D-Wave
 (Leap hybrid and direct QPU) and via QAOA on IBM hardware, benchmark
 against ViennaRNA's classical MFE at both small and large scale, and
 characterize where the formulation succeeds, where it breaks down, and
-why — including several real bugs caught mid-project by cross-checking
+why — including several real bugs caught mid-project (including one
+foundational one, see the correction notice above) by cross-checking
 results against independent ground truth rather than trusting
 plausible-looking output.
 
-**Headline result:** the base stacking-only model matches real MFE only
-10% of the time on unbiased random sequences (0% at n≥60nt). A dynamic
-program confirms adding real hairpin/bulge/internal-loop energies raises
-this to 53.4% — and further confirms hairpin alone (the part now ported
-into the actual QUBO) accounts for most of that gain at short sequences
-(n≤30) but very little at longer ones, where bulge/internal loops (not
-yet ported, harder QUBO engineering) dominate. Both D-Wave and IBM QAOA
-successfully solve the QUBO as formulated; porting hairpin energy in
-surfaced a real, separate finding — it creates a correlated landscape
-that shallow QAOA cannot yet reliably solve, confirmed via simulated
-annealing that the model itself is correct.
+**Headline result (numbers below predate the stacking-energy indexing
+fix above; corrected numbers are very close — see the dedicated section
+— but read the original figures below as approximate):** the base
+stacking-only model matches real MFE only 10% of the time on unbiased
+random sequences (0% at n≥60nt). A dynamic program confirms adding real
+hairpin/bulge/internal-loop energies raises this to 53.4% — and further
+confirms hairpin alone (the part now ported into the actual QUBO)
+accounts for most of that gain at short sequences (n≤30) but very little
+at longer ones, where bulge/internal loops (not yet fully ported, harder
+QUBO engineering) dominate. Both D-Wave and IBM QAOA successfully solve
+the QUBO as formulated; porting hairpin energy in surfaced a real,
+separate finding — it creates a correlated landscape that shallow QAOA
+cannot yet reliably solve, confirmed via simulated annealing that the
+model itself is correct.
 
 ## Approach
 
@@ -464,6 +488,67 @@ edges (93 → 95 at n=20, confirmed directly) — a minor, explainable,
 expected side effect of porting more real physics into the model, not a
 discrepancy to gloss over.
 
+## Major Correction: A Foundational Stacking-Energy Indexing Bug
+
+Found while investigating a bulge-loop QUBO port (below): the bulge DP's
+own energy for a test structure came out *worse* (-1.00) than the
+existing hairpin-only DP's energy for the *same problem* (-1.50) — a
+direct logical contradiction, since the bulge model has strictly more
+options available (every hairpin-only choice remains available as a
+"zero-length bulge"). Investigated rather than dismissed.
+
+**Root cause:** `rna_qubo.py`'s `build_quartets()` (and the same pattern
+independently duplicated in `dp_stack_hairpin.py`, `dp_validator.py`, and
+`rna_qubo_pairs.py`) indexed the *inner* pair of a stack in the wrong
+tuple order when looking up ViennaRNA's raw stacking-energy table.
+Confirmed systematically: tested all 36 canonical outer/inner pair-type
+combinations directly against ViennaRNA's own `eval_int_loop` evaluator
+(the same evaluator already trusted elsewhere in this project, e.g.
+`dp_full_energy.py`). The un-reversed indexing matched only 2/36
+combinations; reversing the inner pair's tuple order before lookup
+matched all 36/36 exactly, confirming both the bug and the fix
+unambiguously — not by inspection or assumption.
+
+**Scope of impact:** every stacking energy computed anywhere in this
+codebase prior to the fix — the original stacking-only QUBO, the hairpin
+port, the branching-topology fix, every D-Wave and IBM hardware
+result — used this incorrect indexing. Individual stack errors ranged up
+to ~1.8 kcal/mol. `dp_full_energy.py` is the one exception: it uses
+`eval_int_loop`/`eval_hp_loop` exclusively, never the raw table, so its
+53.4% finding was never affected.
+
+**Fixed and revalidated, not just patched:**
+- All 5 toy sequences: went from "structure matches ViennaRNA but energy
+  doesn't" (the original, at-the-time-unexplained mismatch first seen
+  when `dp_stack_hairpin.py` was built) to **exact match on both energy
+  and structure, 5/5** — confirming the earlier "mismatch is expected,
+  we don't model bulge/internal loops" explanation was itself wrong; the
+  mismatch was this bug the whole time, not missing physics.
+- The QUBO (`build_bqm.py`) re-validated against the corrected DP: 5/5
+  exact match, energy and structure, confirming the fix propagated
+  correctly through the delta-correction machinery.
+- **The 320-sequence match-rate statistics were rerun with the fix.**
+  This is the important, non-obvious result: aggregate structure-match
+  rates moved only slightly — stacking-only: 10.0% → 10.6%; hairpin-only:
+  35.6% → 36.9% — meaning the bug's effect on *which structure gets
+  chosen* was small in aggregate, even though the *numeric energy value*
+  for any individual result was measurably, sometimes substantially,
+  wrong throughout the entire project until now.
+
+**What this does and doesn't mean for everything reported elsewhere in
+this document:** structural findings (match-rate trends, the D-Wave
+scaling/embedding results, the branching-bug correction, the pseudoknot
+proof-of-concept, the encoding comparison) are very likely still
+qualitatively valid, since the aggregate match-rate shift was small. But
+**every specific numeric energy value quoted anywhere else in this
+README — every DP energy, every QUBO energy, every D-Wave/IBM hardware
+energy — was computed with the buggy indexing and is off by an unknown,
+case-specific amount up to ~1.8 kcal/mol per stack.** Re-running every
+prior hardware result with the fix is real, substantial work not yet
+done (would require re-spending D-Wave and IBM hardware time this
+project may not have remaining) — tracked honestly as the top
+future-work priority below, not silently left uncorrected.
+
 ## Pseudoknots (`pseudoknot_qubo.py`)
 
 General pseudoknot folding is NP-hard, and even restricted, well-studied
@@ -806,6 +891,13 @@ matches D-Wave's own reported energy exactly.
   restored (see future-work item below for status of the rerun).
 
 ## Future Work
+
+0. **Highest priority, added after the stacking-energy indexing fix:**
+   rerun all D-Wave and IBM hardware results against the corrected
+   indexing to get accurate individual numeric energies (structures are
+   likely still mostly valid given the small aggregate match-rate shift,
+   but this hasn't been confirmed per-result). Requires real hardware
+   time this project may not have remaining.
 
 1. ~~Rerun D-Wave hardware results against the hairpin-aware QUBO~~ —
    **done.** ~~Rerun IBM hardware results~~ — **done** (access was
