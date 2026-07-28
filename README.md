@@ -894,10 +894,13 @@ matches D-Wave's own reported energy exactly.
 
 0. **Highest priority, added after the stacking-energy indexing fix:**
    rerun all D-Wave and IBM hardware results against the corrected
-   indexing to get accurate individual numeric energies (structures are
-   likely still mostly valid given the small aggregate match-rate shift,
-   but this hasn't been confirmed per-result). Requires real hardware
-   time this project may not have remaining.
+   indexing to get accurate individual numeric energies. **IBM toy cases:
+   done** (`ibm_hardware_results_post_indexing_fix.json`) — both
+   `GGGAAACCC` and `GCGCUUCGGCGC` reran on `ibm_marrakesh`, both found
+   the wrong answer, consistent with the previously-measured 15%/25%
+   success rates (not a new concern — the combined probability of both
+   succeeding was under 4%). **D-Wave scaling results: not yet rerun** —
+   still needed.
 
 1. ~~Rerun D-Wave hardware results against the hairpin-aware QUBO~~ —
    **done.** ~~Rerun IBM hardware results~~ — **done** (access was

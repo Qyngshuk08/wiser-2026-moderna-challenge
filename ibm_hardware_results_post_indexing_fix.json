@@ -1,0 +1,32 @@
+[
+  {
+    "seq": "GGGAAACCC",
+    "n": 9,
+    "backend": "ibm_marrakesh",
+    "num_qubits": 4,
+    "penalty_used": 4.15,
+    "structure": ".((....))",
+    "true_total_energy_corrected": 0.8,
+    "feasible": true,
+    "match_exact": false,
+    "corrected_exact_optimum": "(((...)))",
+    "corrected_exact_energy": -1.2,
+    "hardware_confidence": 0.3,
+    "note": "First hardware run after the stacking-energy indexing fix. Wrong answer, consistent with previously-measured ~15% success rate on this sequence (not a new concern)."
+  },
+  {
+    "seq": "GCGCUUCGGCGC",
+    "n": 12,
+    "backend": "ibm_marrakesh",
+    "num_qubits": 6,
+    "penalty_used": 5.5,
+    "structure": ".(((....))).",
+    "true_total_energy_corrected": -2.1,
+    "feasible": true,
+    "match_exact": false,
+    "corrected_exact_optimum": "((((....))))",
+    "corrected_exact_energy": -5.5,
+    "hardware_confidence": 0.1985,
+    "note": "First hardware run after the stacking-energy indexing fix. Wrong answer, consistent with previously-measured ~25% success rate on this sequence (not a new concern)."
+  }
+]
