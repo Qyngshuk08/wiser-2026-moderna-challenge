@@ -622,6 +622,55 @@ claimed energy exactly (-17.40 = -17.40).
   toward validating the formulation correctly rather than spending
   limited hardware access on a proof-of-concept.
 
+## Bulge-Loop DP: Validated, QUBO Port Not Yet Built (`dp_bulge.py`)
+
+Started as an attempt to port bulge/internal-loop energy into the QUBO
+(the highest-priority item flagged after the hairpin port). Scoped
+deliberately to **bulges only** (asymmetric gap, one side 0), bounded to
+a small max length (4nt) — not full two-sided internal loops, which are a
+strictly larger combinatorial space left as documented future work.
+
+**This investigation is what led directly to the stacking-energy indexing
+bug fix above.** An early sanity check found the bulge DP scoring a
+problem *worse* than the hairpin-only DP on the identical sequence — a
+direct logical contradiction, since bulges are a strict superset of
+hairpin-only's options. That contradiction was traced to its root cause
+(the indexing bug), not dismissed, leading to the correction documented
+above.
+
+**With the fix in place, the comparison is valid, and the result is
+clean and physically sensible:** a full 320-sequence sweep (identical
+seed and methodology as every other validation) shows bulges improving
+match rate at every single sequence length tested, never worse:
+
+| length | hairpin-only (corrected) | + bulges (bounded, this section) |
+|---|---|---|
+| 10 | 100.0% | 100.0% |
+| 15 | 72.5% | 75.0% |
+| 20 | 77.5% | 80.0% |
+| 30 | 35.0% | 45.0% |
+| 40 | 5.0% | 15.0% |
+| 60 | 5.0% | 10.0% |
+| 80 | 0.0% | 2.5% |
+| 100 | 0.0% | 0.0% |
+| **overall** | **36.9%** | **40.9%** |
+
+Still well below `dp_full_energy.py`'s 53.4% (which includes full
+two-sided internal loops, not just bulges) — meaning most of the
+remaining gap to the complete model comes specifically from two-sided
+internal loops, not bulges alone. A useful, quantified scoping result on
+its own.
+
+**Honest status: the DP ground truth is built and validated; the actual
+QUBO port (the original goal) is not yet built.** Porting bulges into the
+QUBO is harder than the hairpin delta-correction: a closing pair can have
+*multiple* possible bulge-successor pairs (not just one, like hairpin's
+single continuation), requiring new "at most one active successor"
+mutual-exclusion constraints between all candidate successors of the same
+closing pair — real, scoped, buildable work, but not completed given
+remaining time and the priority shift toward the indexing-bug
+investigation and correction it led to.
+
 ## QUBO Port: Real Hairpin Energy (`rna_qubo.py`, `build_bqm.py`)
 
 The DP proved a full-energy model (stacking + hairpin + bulge + internal
@@ -933,8 +982,13 @@ matches D-Wave's own reported energy exactly.
    on one test case, but the fix does not generalize to the other —
    real remaining work: per-problem depth tuning or a different
    reformulation, not a single blanket depth increase.
-5. Bulge/internal-loop QUBO extension via auxiliary "at most one active
-   child" constraints — proven by the DP to matter most at n≥40.
+5. ~~Bulge/internal-loop DP ground truth~~ — **done** (`dp_bulge.py`,
+   bulges only, bounded length; 36.9%→40.9% overall improvement,
+   validated). **QUBO port still pending**: auxiliary "at most one
+   active successor" mutual-exclusion constraints between candidate
+   bulge successors of the same closing pair — real, scoped, buildable,
+   not yet done. Full two-sided internal loops remain unattempted
+   entirely (larger combinatorial space than bulges).
 6. Proper multiloop DP and QUBO extension (WM table, branch counting).
 7. Error mitigation to push usable QAOA qubit count past the observed
    4-6 qubit noise wall.
