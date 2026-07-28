@@ -543,11 +543,14 @@ qualitatively valid, since the aggregate match-rate shift was small. But
 **every specific numeric energy value quoted anywhere else in this
 README — every DP energy, every QUBO energy, every D-Wave/IBM hardware
 energy — was computed with the buggy indexing and is off by an unknown,
-case-specific amount up to ~1.8 kcal/mol per stack.** Re-running every
-prior hardware result with the fix is real, substantial work not yet
-done (would require re-spending D-Wave and IBM hardware time this
-project may not have remaining) — tracked honestly as the top
-future-work priority below, not silently left uncorrected.
+case-specific amount up to ~1.8 kcal/mol per stack.** IBM toy cases were
+rerun with the fix (see future-work item 0 below) — both found wrong
+answers, consistent with, not contradicting, the previously-measured
+QAOA success rates. **D-Wave's scaling results could not be rerun: all
+hardware access (D-Wave and IBM) is now exhausted for this project.**
+This is recorded as a final, accepted limitation, not a pending item —
+see future-work item 0 for the local-classical predictions used as the
+best available (non-hardware-verified) substitute.
 
 ## Pseudoknots (`pseudoknot_qubo.py`)
 
@@ -899,8 +902,14 @@ matches D-Wave's own reported energy exactly.
    `GGGAAACCC` and `GCGCUUCGGCGC` reran on `ibm_marrakesh`, both found
    the wrong answer, consistent with the previously-measured 15%/25%
    success rates (not a new concern — the combined probability of both
-   succeeding was under 4%). **D-Wave scaling results: not yet rerun** —
-   still needed.
+   succeeding was under 4%). **D-Wave scaling results: not achievable —
+   all hardware access (D-Wave and IBM) is now exhausted for this
+   project.** The best available substitute, not a replacement for real
+   hardware confirmation: local simulated annealing on the corrected
+   model predicts n=20: 0.00, n=30: -1.30, n=40: -4.40, n=60: 0.00,
+   n=80: -6.60, n=100: -6.70 — these are classical predictions only, not
+   verified on the QPU, and are recorded here as the honest final state
+   of this item rather than left silently unresolved.
 
 1. ~~Rerun D-Wave hardware results against the hairpin-aware QUBO~~ —
    **done.** ~~Rerun IBM hardware results~~ — **done** (access was
