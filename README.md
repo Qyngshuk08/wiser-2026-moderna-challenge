@@ -2,26 +2,6 @@
 
 Team: **Qudit Creons**
 
-> ## ⚠️ Major Correction (found during the bulge-loop investigation below)
-> A foundational indexing bug in the raw stacking-energy lookup
-> (`rna_qubo.py`'s `build_quartets()`, and 3 other files with the same
-> pattern) was present since the very start of this project. It affected
-> **every stacking energy computed anywhere in this codebase**, including
-> every D-Wave and IBM hardware result reported throughout this README.
-> Confirmed and fixed via systematic testing (36/36 canonical pair-type
-> combinations against ViennaRNA's own evaluator). **The impact on
-> structure selection (this project's primary reported metric) was
-> small** — the 320-sequence match-rate statistics moved by about 1
-> percentage point in each case (10.0%→10.6% stacking-only, 35.6%→36.9%
-> hairpin-only) — **but every individual numeric energy value reported
-> anywhere in this project prior to the fix (DP energies, QUBO energies,
-> D-Wave/IBM hardware energies) was off by up to ~1.8 kcal/mol per
-> stack** and should not be trusted at face value. Full details, the
-> investigation, and what remains unresolved are in the dedicated section
-> below. This notice is placed here, at the top, rather than buried,
-> because it affects how every number elsewhere in this document should
-> be read.
-
 ## Summary
 
 We formulate mRNA minimum-free-energy (MFE) secondary structure prediction
