@@ -22,7 +22,7 @@ import statistics
 
 def load_all_results():
     records = []
-    for path in sorted(glob.glob("ibm_hardware_results_run*.json")):
+    for path in sorted(glob.glob("results/ibm_hardware_results_run*.json")):
         with open(path) as f:
             data = json.load(f)
             for r in data:
@@ -131,7 +131,7 @@ if __name__ == "__main__":
                   f"{s['mean_confidence']:>12.4f}{s['min_confidence']:>8.4f}{s['max_confidence']:>8.4f}")
             for pr in s["per_run"]:
                 print(f"    -> {pr['backend']:<16} confidence={pr['confidence']:.4f}  match_exact={pr['match_exact']}")
-        with open("noise_study_summary.json", "w") as f:
+        with open("results/noise_study_summary.json", "w") as f:
             json.dump(seq_summary, f, indent=2)
 
     print()

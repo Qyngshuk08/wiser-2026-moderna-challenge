@@ -174,27 +174,43 @@ correct answer entirely on this backend/circuit combination** — a sharp,
 quantified, real hardware-noise finding. *(DEVLOG.md, "IBM hardware
 results".)*
 
-## Files
+## Repository Structure
+
+```
+├── README.md              this file
+├── requirements.txt
+├── src/                   all library code and entry-point scripts (co-located so cross-imports work unmodified)
+├── results/               every JSON result file produced during development
+├── notebooks/             colab_run.ipynb — end-to-end Colab runner
+├── docs/                  DEVLOG.md — full chronological development log
+└── presentation/          presentation.tex / presentation.pdf — Beamer slide deck
+```
+
+## Files (`src/`)
 
 | File | Purpose |
 |---|---|
 | `rna_qubo.py` | Quartet variable enumeration; real Turner2004 stacking energies from ViennaRNA; `get_hairpin_energy()` for the QUBO port. |
 | `validate_brute_force.py` | Exact brute-force solver, small sequences; ground truth for the energy model. |
-| `build_bqm.py` | `dimod` BQM/QUBO construction. Ports real hairpin energy by default (`include_hairpin=True`) via delta-correction; `include_hairpin=False` reproduces the original stacking-only model exactly. |
+| `build_bqm.py` | `dimod` BQM/QUBO construction. Ports real hairpin energy by default (`include_hairpin=True`) via delta-correction; `include_hairpin=False` reproduces the original stacking-only model exactly. Also defines `nested_noncolinear()`, the branching-topology fix. |
 | `dp_validator.py` | O(n³) DP, stacking-only model, validated at scale (320 random sequences). |
 | `dp_stack_hairpin.py` | O(n³) DP restricted to exactly the model the QUBO can express (stacking+hairpin) — used to scope the QUBO port honestly before writing it. |
 | `dp_full_energy.py` | O(n⁴) DP with real hairpin/bulge/internal-loop energies via ViennaRNA's own evaluators (bulge/internal not yet ported into the QUBO). |
+| `dp_bulge.py` | O(n³) DP adding bounded bulge-loop energy on top of stacking+hairpin — ground truth for the (partially built) bulge QUBO port. |
 | `qaoa_hamiltonian.py` | Converts the same BQM into a QAOA-ready Ising Hamiltonian. |
 | `qaoa_simulator.py` | QAOA on Aer simulator, with post-selection and the tight-penalty fix. |
+| `rna_qubo_pairs.py` | Encoding B (raw base-pair variables) — the alternative encoding compared against the primary quartet formulation. |
+| `pseudoknot_qubo.py` | Pseudoknot-permissive QUBO extension (relaxed no-crossing constraint), validated proof-of-concept. |
+| `noise_study_aggregate.py` | Aggregates IBM hardware run results into the sampling/noise study. |
+| `qubit_constraint_tradeoff.py` | Computes the qubit-count vs. constraint-enforcement trade-off analysis. |
 | `run_dwave.py` | D-Wave Leap submission (hybrid/QPU). Run locally — not reachable from a sandboxed environment. |
 | `run_ibm.py` | IBM Quantum submission. Run locally — not reachable from a sandboxed environment. |
-| `colab_run.ipynb` | End-to-end Colab runner for the full validation + D-Wave pipeline. |
-| `DEVLOG.md` | Full chronological development log — every run, bug, and fix in detail. |
 
 ## Setup
 
 ```bash
 pip install -r requirements.txt
+
 dwave setup                                    # or: export DWAVE_API_TOKEN=...
 python -c "from qiskit_ibm_runtime import QiskitRuntimeService; \
   QiskitRuntimeService.save_account(channel='ibm_quantum_platform', \
@@ -203,16 +219,21 @@ python -c "from qiskit_ibm_runtime import QiskitRuntimeService; \
 
 ## Reproducing the results
 
-```bash
-python validate_brute_force.py   # energy model vs. real ViennaRNA MFE (toy cases)
-python build_bqm.py              # BQM vs. independent brute force (must match)
-python dp_validator.py           # DP vs. brute force cross-check
-python dp_full_energy.py         # full-loop-energy DP self-consistency check
-python qaoa_simulator.py         # QAOA vs. exact ground truth, Aer simulator
+All commands below assume you're in the repo root (paths are relative to
+that; the `src/` scripts import each other directly since they're
+co-located, so no `PYTHONPATH` setup is needed).
 
-python run_dwave.py GGGAAACCC --qpu
-python run_dwave.py <30-100nt sequence> --hybrid
-python run_ibm.py GGGAAACCC
+```bash
+python src/validate_brute_force.py   # energy model vs. real ViennaRNA MFE (toy cases)
+python src/build_bqm.py              # BQM vs. independent brute force (must match)
+python src/dp_validator.py           # DP vs. brute force cross-check
+python src/dp_full_energy.py         # full-loop-energy DP self-consistency check
+python src/dp_bulge.py               # bulge-loop DP self-consistency check
+python src/qaoa_simulator.py         # QAOA vs. exact ground truth, Aer simulator
+
+python src/run_dwave.py GGGAAACCC --qpu
+python src/run_dwave.py <30-100nt sequence> --hybrid
+python src/run_ibm.py GGGAAACCC
 ```
 
 ## Optional Advanced Tasks — status

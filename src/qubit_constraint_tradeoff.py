@@ -75,5 +75,5 @@ if __name__ == "__main__":
         print(f"{r['n']:>5}{r['num_qubits']:>8}{r['density']:>10.3f}"
               f"{r['classical_penalty']:>20.2f}{r['tight_penalty']:>16.2f}{r['ratio']:>9.2f}")
 
-    with open("qubit_constraint_tradeoff_results.json", "w") as f:
+    with open("results/qubit_constraint_tradeoff_results.json", "w") as f:
         json.dump(results, f, indent=2)
