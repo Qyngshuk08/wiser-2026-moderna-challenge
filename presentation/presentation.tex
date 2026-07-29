@@ -165,6 +165,34 @@
   \end{columns}
 \end{frame}
 
+% ============================================================ MAJOR CORRECTION: INDEXING BUG
+\begin{frame}{3b. Major Correction: A Foundational Indexing Bug}
+  \small Found while investigating a bulge-loop QUBO port, months into the project --- affects how every energy value in this deck should be read.
+  \vspace{6pt}
+  \begin{redbox}
+  \textbf{The trigger:} the bulge DP scored a problem \emph{worse} than the hairpin-only DP on the identical sequence --- a direct logical contradiction, since bulges are a strict superset of hairpin-only's options. Investigated rather than dismissed.
+  \end{redbox}
+  \vspace{8pt}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      \begin{cardbox}
+      \textbf{\color{navy}Root cause}\\[4pt]
+      \footnotesize The raw stacking-energy lookup indexed the inner pair of a stack in the wrong tuple order --- present in 4 files since the start of the project. Confirmed systematically: 36/36 canonical pair-type combinations match ViennaRNA's own evaluator only with the inner pair reversed.
+      \end{cardbox}
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      \begin{greenbox}
+      \textbf{\color{accent}Impact, precisely measured}\\[4pt]
+      \footnotesize Structure-match rates barely moved (10.0\%$\to$10.6\%, 35.6\%$\to$36.9\%) --- but every individual energy value reported anywhere in this project, including every D-Wave/IBM hardware result, was off by up to 1.8 kcal/mol per stack.
+      \end{greenbox}
+    \end{column}
+  \end{columns}
+  \vspace{8pt}
+  \begin{navybox}
+  \footnotesize \textbf{Fixed and revalidated, not patched and moved on:} all 5 toy sequences now match ViennaRNA exactly on \emph{both} energy and structure (previously only structure matched --- the energy mismatch had been wrongly attributed to missing bulge/internal-loop physics). IBM toy cases rerun on real hardware post-fix; D-Wave scaling results could not be rerun --- hardware access is now fully exhausted, recorded as a final, honest limitation, not silently left uncorrected.
+  \end{navybox}
+\end{frame}
+
 % ============================================================ FINDING: MATCH RATE COLLAPSE
 \begin{frame}{4. Finding: Stacking-Only Match Rate Collapses at Scale}
   \small Small hand-picked toy sequences gave a misleadingly good 4/5 match. A 320-sequence sweep of random sequences tells the real story.
