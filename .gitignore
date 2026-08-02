@@ -2,3 +2,9 @@ __pycache__/
 *.pyc
 .ipynb_checkpoints/
 scaling_results.json
+*.aux
+*.log
+*.nav
+*.out
+*.snm
+*.toc
