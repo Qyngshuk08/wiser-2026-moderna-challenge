@@ -2,6 +2,10 @@
 
 Team: **Qudit Creons**
 
+**Recorded presentation walkthrough:** https://youtu.be/kq_Uz2GqvGU?si=mKmpGjBFRh0_1SgY
+(slides: `presentation/presentation.pdf`; narration script:
+`presentation/recording_script.txt`)
+
 ## Summary
 
 We formulate mRNA minimum-free-energy (MFE) secondary structure prediction
